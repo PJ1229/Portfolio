@@ -1,0 +1,30 @@
+@font-face {
+  font-family: sf-pro;
+  src: url(/fonts/SF-Pro.ttf);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: sf-pro;
+  color: #000;
+}
+
+div {
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  color: black;
+  background-color: rgb(242,242,247);
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  div {
+      width: 100%;
+      margin: 0;
+      border-radius: 0;
+  }
+}
