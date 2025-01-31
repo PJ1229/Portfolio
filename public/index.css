@@ -110,6 +110,9 @@ a {
     padding: 20px;
     border-radius: 0;
   }
+  .bullets .description {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 1408px) {
