@@ -50,6 +50,7 @@ body {
 }
 
 h1 {
+  font-weight: normal;
   font-family: sf-pro-display-thin;
   font-size: 36px;
   margin-bottom: 10px;
