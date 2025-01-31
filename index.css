@@ -3,28 +3,118 @@
   src: url(/fonts/SF-Pro.ttf);
 }
 
+@font-face {
+  font-family: sf-pro-display-thin;
+  src: url(/fonts/SF-Pro-Display-Thin.otf);
+}
+
+@font-face {
+  font-family: sf-pro-text-thin;
+  src: url(/fonts/SF-Pro-Text-Thin.otf);
+}
+
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 100vw; /* Ensures no extra width */
   overflow-x: hidden;
-  font-family: sf-pro;
+  font-family: sf-pro-text-thin;
   color: #000;
+  background-color: rgb(242, 242, 247);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
-div {
-  width: 50%;
-  margin: 20px auto;
-  padding: 20px;
-  color: black;
-  background-color: rgb(242,242,247);
+body {
+  padding: 0; /* Remove padding to prevent extra width */
+}
+
+.intro-container {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between divs */
+}
+
+.intro {
+  max-width: 800px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: white;
   border-radius: 8px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+h1 {
+  font-family: sf-pro-display-thin;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.description {
+  font-size: 24px;
+  color: gray;
+  line-height: 1.5;
+}
+
+.bullets {
+  font-size: 24px;
+  color: gray;
+  list-style: none; /* Removes default bullets */
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 30px; /* Space for the hollow box */
+}
+
+.bullets li::before {
+  content: "-"; /* Hollow box character */
+  position: absolute;
+  left: 0;
+  font-size: 24px;
+  color: gray;
+}
+
+.socials{
+  height: 30px;
+  margin-left: -4px;
+  margin-top: -12px;
+  margin-right: 16px;
+  opacity: 0.5;
+}
+
+.separator {
+  margin: 24px 0;
+  height: 5px;
+  background-color: rgb(242, 242, 247);
+  border: none;
+  border-radius: 2px;
 }
 
 @media (max-width: 768px) {
-  div {
-      width: 100%;
-      margin: 0;
-      border-radius: 0;
+  .intro {
+    width: 95%;
+    padding: 20px;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 1408px) {
+  .intro-container {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
   }
 }
