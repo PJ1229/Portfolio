@@ -93,7 +93,9 @@ a {
   margin-left: -4px;
   margin-top: -12px;
   margin-right: 16px;
-  opacity: 0.5;
+  opacity: 0.8;
+  background-color: transparent;
+  filter: invert(1);
 }
 
 .separator {
