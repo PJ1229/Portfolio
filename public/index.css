@@ -19,8 +19,8 @@ html, body {
   width: 100vw; /* Ensures no extra width */
   overflow-x: hidden;
   font-family: sf-pro-text-thin;
-  color: #000;
-  background-color: rgb(242, 242, 247);
+  color: white;
+  background-color: rgb(13, 13, 8);
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -42,7 +42,7 @@ body {
   width: 90%;
   margin: 40px auto;
   padding: 40px;
-  background-color: white;
+  background-color: black;
   border-radius: 8px;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -63,13 +63,13 @@ a {
 
 .description {
   font-size: 24px;
-  color: gray;
+  color: lightgray;
   line-height: 1.5;
 }
 
 .bullets {
   font-size: 24px;
-  color: gray;
+  color: lightgray;
   list-style: none; /* Removes default bullets */
   padding-left: 0;
   margin-top: 10px;
@@ -99,7 +99,7 @@ a {
 .separator {
   margin: 24px 0;
   height: 5px;
-  background-color: rgb(242, 242, 247);
+  background-color: rgb(13, 13, 8);
   border: none;
   border-radius: 2px;
 }
