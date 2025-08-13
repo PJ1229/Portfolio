@@ -1,40 +1,131 @@
+/* ========================
+   Fonts
+======================== */
 @font-face {
   font-family: sf-pro;
   src: url('./fonts/SF-Pro.ttf') format('truetype');
 }
-
 @font-face {
   font-family: sf-pro-display-thin;
   src: url('./fonts/SF-Pro-Display-Thin.otf') format('opentype');
 }
-
 @font-face {
   font-family: sf-pro-text-thin;
   src: url('./fonts/SF-Pro-Text-Thin.otf') format('opentype');
 }
 
+/* ========================
+   Globals / CSS Vars
+======================== */
+:root {
+  --tx: 0px;  /* set by aura.js */
+  --ty: 0px;  /* set by aura.js */
+}
+
+/* ========================
+   Base Layout
+======================== */
 html, body {
   margin: 0;
   padding: 0;
-  width: 100vw; /* Ensures no extra width */
+  width: 100vw;
   overflow-x: hidden;
-  font-family: sf-pro-text-thin;
+  font-family: sf-pro-text-thin, 'Helvetica Neue', Arial, sans-serif;
   color: white;
   background-color: rgb(13, 13, 8);
   box-sizing: border-box;
   display: flex;
   justify-content: center;
+  position: relative; /* stacking context for ::before */
 }
 
-body {
-  padding: 0; /* Remove padding to prevent extra width */
+/* ========================
+   Animated Background Aura (CSS-only)
+======================== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -25% -25%;
+  pointer-events: none;
+  z-index: 0; /* behind content, above body bg */
+  opacity: 0.7;
+
+  /* 4 soft blobs */
+  background:
+    radial-gradient(50% 60% at 15% 20%, rgba(255, 70, 120, 0.25), transparent 60%),
+    radial-gradient(45% 55% at 85% 25%, rgba(80, 120, 255, 0.22), transparent 60%),
+    radial-gradient(60% 70% at 30% 85%, rgba(0, 220, 190, 0.18), transparent 65%),
+    radial-gradient(55% 65% at 80% 80%, rgba(255, 220, 120, 0.14), transparent 65%);
+
+  /* Give each layer room to drift */
+  background-size:
+    160% 160%,
+    170% 170%,
+    180% 180%,
+    160% 160%;
+
+  /* starting positions for each gradient layer */
+  background-position:
+    12% 18%,
+    88% 22%,
+    28% 82%,
+    78% 78%;
+
+  filter: blur(80px) saturate(110%);
+  will-change: transform, background-position;
+
+  /* Two animations: gentle rotation/scale + slow parallax pan */
+  animation:
+    aura-rotate 20s ease-in-out infinite alternate,
+    aura-pan    24s ease-in-out infinite alternate;
 }
 
+/* slow, subtle rotation/scale */
+@keyframes aura-rotate {
+  0%   { transform: rotate(0deg)   scale(1.02); }
+  50%  { transform: rotate(9deg)   scale(1.06); }
+  100% { transform: rotate(-7deg)  scale(1.04); }
+}
+
+/* parallax-style drifting of each background layer */
+@keyframes aura-pan {
+  0% {
+    background-position:
+      12% 18%,
+      88% 22%,
+      28% 82%,
+      78% 78%;
+  }
+  50% {
+    background-position:
+      22% 26%,
+      82% 18%,
+      34% 74%,
+      72% 84%;
+  }
+  100% {
+    background-position:
+      10% 24%,
+      92% 30%,
+      22% 86%,
+      84% 70%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
+
+/* ========================
+   Content Layout
+======================== */
 .intro-container {
   width: 95%;
   display: flex;
   justify-content: center;
-  gap: 20px; /* Space between divs */
+  gap: 20px;
+  position: relative;
+  z-index: 1; /* above aura */
 }
 
 .intro {
@@ -42,22 +133,33 @@ body {
   width: 90%;
   margin: 40px auto;
   padding: 40px;
-  background-color: black;
-  border-radius: 8px;
+
+  /* Slightly transparent container + glassy feel */
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border-radius: 12px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
+  position: relative;
+  z-index: 1;
 }
 
+/* ========================
+   Typography & Links
+======================== */
 h1 {
   font-weight: normal;
-  font-family: sf-pro-display-thin;
+  font-family: sf-pro-display-thin, 'Helvetica Neue', Arial, sans-serif;
   font-size: 36px;
   margin-bottom: 10px;
 }
 
 a {
-  color: #007bff;
+  color: #4da3ff;
   text-decoration: none;
 }
 
@@ -70,25 +172,28 @@ a {
 .bullets {
   font-size: 24px;
   color: lightgray;
-  list-style: none; /* Removes default bullets */
+  list-style: none;
   padding-left: 0;
   margin-top: 10px;
 }
 
 .bullets li {
   position: relative;
-  padding-left: 30px; /* Space for the hollow box */
+  padding-left: 30px;
 }
 
 .bullets li::before {
-  content: "-"; /* Hollow box character */
+  content: "-";
   position: absolute;
   left: 0;
   font-size: 24px;
   color: gray;
 }
 
-.socials{
+/* ========================
+   Misc Elements
+======================== */
+.socials {
   height: 30px;
   margin-left: -4px;
   margin-top: -12px;
@@ -106,11 +211,15 @@ a {
   border-radius: 2px;
 }
 
+/* ========================
+   Responsive
+======================== */
 @media (max-width: 768px) {
   .intro {
     width: 90%;
     padding: 20px;
-    border-radius: 0;
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
   }
   .bullets .description {
     font-size: 20px;
