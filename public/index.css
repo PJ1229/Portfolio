@@ -11,11 +11,16 @@
   src: url('./fonts/SF-Pro-Text-Thin.otf') format('opentype');
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html, body {
   margin: 0;
   padding: 0;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
   font-family: sf-pro-text-thin, 'Helvetica Neue', Arial, sans-serif;
   color: white;
@@ -178,6 +183,7 @@ a {
   border: none;
   border-radius: 2px;
 }
+
 @media (max-width: 768px) {
   .intro {
     width: 95%;
@@ -214,6 +220,10 @@ a {
     height: 24px;
     margin-top: -10px;
     margin-right: 12px;
+  }
+  
+  .separator {
+    height: 2px;
   }
 }
 
