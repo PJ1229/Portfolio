@@ -178,18 +178,45 @@ a {
   border: none;
   border-radius: 2px;
 }
-
 @media (max-width: 768px) {
   .intro {
-    width: 90%;
-    padding: 20px;
+    width: 95%;
+    margin: 20px auto;
+    padding: 16px;
     border-radius: 10px;
-    backdrop-filter: blur(4px);
+
+    background: rgba(0, 0, 0, 0.12); 
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
-  .bullets .description {
-    font-size: 20px;
+
+  .description,
+  .bullets {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .bullets li {
+    padding-left: 24px;
+  }
+
+  .bullets li::before {
+    font-size: 18px;
+  }
+
+  .socials {
+    height: 24px;
+    margin-top: -10px;
+    margin-right: 12px;
   }
 }
+
 
 @media (max-width: 1408px) {
   .intro-container {
