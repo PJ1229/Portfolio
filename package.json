@@ -12,5 +12,10 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "gray": "^0.0.6",
+    "marked": "^16.2.1",
+    "matter": "^0.2.0"
   }
 }
