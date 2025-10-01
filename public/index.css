@@ -1,3 +1,8 @@
+@font-face {
+  font-family: sf-pro;
+  src: url(fonts/SF-Pro.ttf);
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -6,6 +11,7 @@ html, body {
   background: #fff;
   line-height: 1.6;
   font-size: 16px;
+  font-family: sf-pro;
 }
 
 .container {
@@ -17,7 +23,6 @@ html, body {
 h1, h2, h3 {
   font-family: sf-pro-display-thin, 'Helvetica Neue', Arial, sans-serif;
   font-weight: normal;
-  margin: 2em 0 0.6em;
   color: #000;
 }
 
@@ -26,13 +31,16 @@ h2 { font-size: 26px; }
 h3 { font-size: 20px; }
 
 p {
-  margin: 0.6em 0 1.2em;
   color: #222;
 }
 
 a {
   color: #000;
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #d3d3d3;
 }
 
 ul {
