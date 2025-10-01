@@ -68,3 +68,38 @@ li { margin: 0.3em 0; }
   h2 { font-size: 22px; }
   h3 { font-size: 17px; }
 }
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: 1em; /* space between jobs */
+}
+
+.job {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.job-left {
+  flex: 1;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.company {
+  font-style: italic;
+  color: #222;
+}
+
+.job-right {
+  text-align: right;
+  min-width: 200px; /* keeps right column aligned */
+}
+
+.location {
+  font-style: italic;
+}
