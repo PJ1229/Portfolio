@@ -10,13 +10,16 @@
 
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
     <a class="active" href="index.html">Home</a>
     <a href="experience.html">Experience</a>
     <a href="projects.html">Projects</a>
     <a href="film.html">Film</a>
-  </nav>
 
+    <!-- THEME TOGGLE -->
+    <button id="theme-toggle" class="theme-btn">◆</button>
+  </nav>
 
   <div class="container">
     <h1>PJ Kim</h1>
@@ -44,6 +47,30 @@
       you can reach me at <a href="mailto:pekim@umich.edu">pekim@umich.edu</a>
     </p>
   </div>
+
+  <!-- DARK MODE SCRIPT -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    // Load saved theme
+    if (localStorage.theme === "dark") {
+      root.classList.add("dark");
+      toggle.textContent = "◇";
+    }
+
+    toggle.addEventListener("click", () => {
+      root.classList.toggle("dark");
+
+      if (root.classList.contains("dark")) {
+        localStorage.theme = "dark";
+        toggle.textContent = "◇";
+      } else {
+        localStorage.theme = "light";
+        toggle.textContent = "◆";
+      }
+    });
+  </script>
 
 </body>
 </html>

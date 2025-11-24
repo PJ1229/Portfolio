@@ -3,14 +3,38 @@
   src: url(fonts/SF-Pro.ttf);
 }
 
+/* ---------- THEME VARIABLES ---------- */
+
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --subtext: #222222;
+  --heading: #000000;
+  --border: #dddddd;
+  --link: #000000;
+  --link-hover: #555555;
+  --nav-active: #1a73e8;
+}
+
+html.dark {
+  --bg: #0d0d0d;
+  --text: #e5e5e5;
+  --subtext: #bbbbbb;
+  --heading: #ffffff;
+  --border: #333333;
+  --link: #ffffff;
+  --link-hover: #bbbbbb;
+  --nav-active: #4d8dff;
+}
+
 /* ---------- Base Styles ---------- */
 
 html, body {
   margin: 0;
   padding: 0;
   font-family: sf-pro, 'Helvetica Neue', Arial, sans-serif;
-  background: #fff;
-  color: #111;
+  background: var(--bg);
+  color: var(--text);
   font-size: 16px;
   line-height: 1.65;
 }
@@ -26,7 +50,7 @@ html, body {
 h1, h2, h3 {
   font-family: sf-pro, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 600;
-  color: #000;
+  color: var(--heading);
   margin-top: 0;
 }
 
@@ -34,15 +58,15 @@ h1 { font-size: 34px; }
 h2 { font-size: 26px; margin-top: 40px; }
 h3 { font-size: 20px; margin-top: 32px; }
 
-p { color: #222; }
+p { color: var(--subtext); }
 
 a {
   text-decoration: none;
-  color: #000;
+  color: var(--link);
   transition: color .15s ease;
 }
 
-a:hover { color: #555; }
+a:hover { color: var(--link-hover); }
 
 ul {
   padding-left: 20px;
@@ -57,7 +81,7 @@ li { margin-bottom: 6px; }
   display: flex;
   gap: 28px;
   padding: 24px 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   max-width: 760px;
   margin: 0 auto;
   padding-left: 24px;
@@ -66,16 +90,32 @@ li { margin-bottom: 6px; }
 
 .navbar a {
   font-size: 16px;
-  color: #000;
+  color: var(--link);
 }
 
 .navbar a.active {
-  color: #1a73e8;
+  color: var(--nav-active);
   font-weight: 600;
 }
 
 .navbar a:hover {
-  color: #555;
+  color: var(--link-hover);
+}
+
+/* Dark Mode Toggle Button */
+
+.theme-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+
+.theme-btn:hover {
+  color: var(--link-hover);
 }
 
 /* ---------- Experience Page Styling ---------- */
@@ -92,98 +132,19 @@ li { margin-bottom: 6px; }
 .exp-title {
   font-size: 20px;
   font-weight: 600;
-  color: #000;
+  color: var(--heading);
 }
 
 .exp-title span {
   font-weight: 400;
-  color: #333;
+  color: var(--subtext);
 }
 
 .exp-date {
   margin-top: 4px;
   margin-bottom: 14px;
   font-size: 15px;
-  color: #555;
-}
-
-/* ---------- Contact Page ---------- */
-
-.contact-form {
-  margin-top: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.contact-form label {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: #fafafa;
-  font-size: 15px;
-  transition: border 0.2s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border: 1px solid #000;
-  outline: none;
-}
-
-.contact-form button {
-  padding: 12px 0;
-  border: 1px solid #000;
-  background: #fff;
-  color: #000;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background .25s;
-}
-
-.contact-form button:hover {
-  background: #f2f2f2;
-}
-
-/* ---------- Mobile Optimizations ---------- */
-
-@media (max-width: 768px) {
-  body {
-    font-size: 15px;
-  }
-
-  .container {
-    margin: 40px auto;
-    padding: 0 16px;
-  }
-
-  .navbar {
-    gap: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
-    overflow-x: auto;     /* allows horizontal scroll if too many items */
-    white-space: nowrap;  /* prevents wrapping */
-  }
-
-  h1 { font-size: 28px; }
-  h2 { font-size: 22px; }
-  h3 { font-size: 18px; }
-
-  .exp-title {
-    font-size: 18px;
-  }
-
-  .exp-date {
-    font-size: 14px;
-  }
+  color: var(--subtext);
 }
 
 /* ---------- Projects Page ---------- */
@@ -200,7 +161,7 @@ li { margin-bottom: 6px; }
   align-items: flex-start;
   gap: 20px;
   padding-bottom: 32px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--border);
 }
 
 .project-thumb {
@@ -219,10 +180,11 @@ li { margin-bottom: 6px; }
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 6px;
+  color: var(--heading);
 }
 
 .project-desc {
-  color: #444;
+  color: var(--subtext);
   font-size: 15px;
   line-height: 1.5;
 }
@@ -236,13 +198,12 @@ li { margin-bottom: 6px; }
 }
 
 .project-links a {
-  color: #1a73e8;
+  color: var(--nav-active);
   font-size: 14px;
 }
 
-/* Mobile */
+/* Mobile for Projects */
 @media (max-width: 768px) {
-
   .project-item {
     flex-direction: column;
     gap: 12px;
@@ -266,7 +227,7 @@ li { margin-bottom: 6px; }
 
 .section-divider {
   border: none;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border);
   margin: 40px 0;
 }
 
@@ -279,7 +240,40 @@ li { margin-bottom: 6px; }
 
 .film-grid img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 8px;
+}
+
+/* ---------- Mobile Optimizations ---------- */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  .container {
+    margin: 40px auto;
+    padding: 0 16px;
+  }
+
+  .navbar {
+    gap: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  h1 { font-size: 28px; }
+  h2 { font-size: 22px; }
+  h3 { font-size: 18px; }
+
+  .exp-title {
+    font-size: 18px;
+  }
+
+  .exp-date {
+    font-size: 14px;
+  }
 }

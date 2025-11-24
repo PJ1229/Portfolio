@@ -15,11 +15,13 @@
     <a href="experience.html">Experience</a>
     <a class="active" href="projects.html">Projects</a>
     <a href="film.html">Film</a>
+
+    <button id="theme-toggle" class="theme-btn">◆</button>
   </nav>
 
   <div class="container">
     <h1>Projects</h1>
-    <p style="margin-top:-6px; color:#444;">
+    <p style="margin-top:-6px;">
       A showcase of things I've built and shipped.
     </p>
 
@@ -89,6 +91,30 @@
 
     </div>
   </div>
+
+    <!-- DARK MODE SCRIPT -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    // Load saved theme
+    if (localStorage.theme === "dark") {
+      root.classList.add("dark");
+      toggle.textContent = "◇";
+    }
+
+    toggle.addEventListener("click", () => {
+      root.classList.toggle("dark");
+
+      if (root.classList.contains("dark")) {
+        localStorage.theme = "dark";
+        toggle.textContent = "◇";
+      } else {
+        localStorage.theme = "light";
+        toggle.textContent = "◆";
+      }
+    });
+  </script>
 
 </body>
 </html>
