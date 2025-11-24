@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../index.css">
+  <title>MSU aKDPhi Reveal</title>
+  <link rel="icon" href="../images/logo.png" type="image/icon type">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html">Home</a>
+    <a href="../experience.html">Experience</a>
+    <a href="../projects.html">Projects</a>
+    <a class="active" href="../film.html">Film</a>
+
+    <button id="theme-toggle" class="theme-btn">◆</button>
+  </nav>
+
+  <div class="container">
+
+    <h1>MSU aKDPhi Reveal</h1>
+    <p style="margin-top:-6px;">
+      a vertical 9:16 reveal trailer for the new class reveal
+    </p>
+
+    <hr class="section-divider">
+
+    <!-- VIDEO EMBED (swap link when ready) -->
+    <div style="margin-bottom:28px;">
+      <div style="position:relative; padding-bottom:177.78%; height:0; border-radius:12px; overflow:hidden;">
+        <iframe 
+          src="https://www.youtube.com/embed/QPo2jvfSGbI"
+          title="MSU aKDPhi Reveal Film"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="position:absolute; top:0; left:0; width:100%; height:100%;"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <h2 style="margin-top:0;">About</h2>
+    <p style="margin-top:-4px;">
+      shot in a fast, dynamic 9:16 format to match the chapter’s energy. the film blends
+      handheld motion, tight portraits, and quick transitions to create a hype, modern
+      reveal that feels true to msu akdphi culture.
+    </p>
+
+    <h3>Role</h3>
+    <ul>
+      <li>direction, cinematography, and edit — <span style="font-weight:500;">PJ Kim</span></li>
+    </ul>
+
+    <h3>Details</h3>
+    <ul>
+      <li>Format: 9:16 vertical, optimized for reels + tiktok</li>
+      <li>Camera: Fujifilm XS-20, handheld, studio lighting</li>
+      <li>Tools: Premiere Pro (cut + color), After Effects (motion overlays)</li>
+    </ul>
+
+    <hr class="section-divider" style="margin-top:40px;">
+    <p>
+      <a href="../film.html" style="color:#1a73e8;">← back to film</a>
+    </p>
+  </div>
+
+  <!-- DARK MODE SCRIPT -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    // Load saved theme
+    if (localStorage.theme === "dark") {
+      root.classList.add("dark");
+      toggle.textContent = "◇";
+    }
+
+    toggle.addEventListener("click", () => {
+      root.classList.toggle("dark");
+
+      if (root.classList.contains("dark")) {
+        localStorage.theme = "dark";
+        toggle.textContent = "◇";
+      } else {
+        localStorage.theme = "light";
+        toggle.textContent = "◆";
+      }
+    });
+  </script>
+</body>
+</html>

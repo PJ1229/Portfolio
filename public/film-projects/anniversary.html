@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../index.css">
+  <title>Carter & Alyssa — Anniversary Portraits</title>
+  <link rel="icon" href="../images/logo.png" type="image/icon type">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html">Home</a>
+    <a href="../experience.html">Experience</a>
+    <a href="../projects.html">Projects</a>
+    <a class="active" href="../film.html">Film</a>
+
+    <button id="theme-toggle" class="theme-btn">◆</button>
+  </nav>
+
+  <div class="container">
+
+    <h1>Carter & Alyssa</h1>
+    <p style="margin-top:-6px;">
+      a 3:4 portrait set for their anniversary — clean, soft, and intimate.
+    </p>
+
+    <hr class="section-divider">
+
+    <!-- GALLERY -->
+    <h2 style="margin-top:0;">Gallery</h2>
+    <p style="margin-top:-4px;">
+      a warm, natural portrait session focused on expression and simplicity.
+    </p>
+
+    <div class="gallery-3x4">
+      <div class="image-wrap"><img src="../images/anniversary1.jpg" loading="lazy" alt=""></div>
+      <div class="image-wrap"><img src="../images/anniversary2.jpg" loading="lazy" alt=""></div>
+      <div class="image-wrap"><img src="../images/anniversary3.jpg" loading="lazy" alt=""></div>
+      <div class="image-wrap"><img src="../images/anniversary4.jpg" loading="lazy" alt=""></div>
+      <div class="image-wrap"><img src="../images/anniversary7.jpg" loading="lazy" alt=""></div>
+      <div class="image-wrap"><img src="../images/anniversary5.jpg" loading="lazy" alt=""></div>
+      <div class="image-wrap"><img src="../images/anniversary6.jpg" loading="lazy" alt=""></div>
+      <div class="image-wrap"><img src="../images/anniversary8.jpg" loading="lazy" alt=""></div>
+      <div class="image-wrap"><img src="../images/anniversary9.jpg" loading="lazy" alt=""></div>
+    </div>
+
+    <h3 style="margin-top:32px;">Details</h3>
+    <ul>
+      <li>Format: 3:4 vertical portraits</li>
+      <li>Camera: Fujifilm XS-20 + 35mm</li>
+      <li>Color: soft film-style grading in Lightroom</li>
+    </ul>
+
+    <hr class="section-divider" style="margin-top:40px;">
+    <p><a href="../film.html" style="color:#1a73e8;">← back to film</a></p>
+
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" style="
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;">
+  <img id="lightbox-img" src="" style="
+        max-width: 92%;
+        max-height: 92%;
+        border-radius: 12px;
+        box-shadow: 0 0 40px rgba(0,0,0,0.4);">
+  </div>
+
+  <script>
+    const galleryImages = document.querySelectorAll(".gallery-3x4 img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    galleryImages.forEach(img => {
+        img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = img.src;
+        });
+    });
+
+    lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+    });
+  </script>
+
+
+  <!-- DARK MODE SCRIPT -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    if (localStorage.theme === "dark") {
+      root.classList.add("dark");
+      toggle.textContent = "◇";
+    }
+
+    toggle.addEventListener("click", () => {
+      root.classList.toggle("dark");
+
+      if (root.classList.contains("dark")) {
+        localStorage.theme = "dark";
+        toggle.textContent = "◇";
+      } else {
+        localStorage.theme = "light";
+        toggle.textContent = "◆";
+      }
+    });
+  </script>
+
+</body>
+</html>
