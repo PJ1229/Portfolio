@@ -355,3 +355,14 @@ li { margin-bottom: 6px; }
 .gallery-3x4 img:hover {
   opacity: 1;
 }
+
+.blog-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: opacity .15s ease;
+}
+
+.blog-link:hover {
+  opacity: 0.5;
+}

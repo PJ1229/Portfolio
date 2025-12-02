@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../index.css">
+  <title>Detroit Redlining — Blog</title>
+  <link rel="icon" href="../images/logo.png" type="image/icon type">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="../index.html">Home</a>
+    <a href="../experience.html">Experience</a>
+    <a href="../projects.html">Projects</a>
+    <a href="../film.html">Film</a>
+    <a class="active" href="../blog.html">Blog</a>
+
+    <button id="theme-toggle" class="theme-btn">◆</button>
+  </nav>
+
+  <div class="container">
+
+    <h1>“In Detroit, Life is Worth Living” Ignores Detroit’s Redlining History</h1>
+    <p style="color:var(--subtext); margin-top:-6px; font-size:15px;">
+      (Sept 2024)
+    </p>
+
+    <hr class="section-divider" style="margin-top:28px;">
+
+    <!-- YOUR TEXT EXACTLY AS IS -->
+    <p>
+      In the early 1900s, the city of Detroit was multiplying. By 1900, Detroit was home to around
+      300,000 residents, making it the 13th largest city in the United States according to the Detroit Historical
+      Society. To top it off, a catchy new slogan spread quickly downtown: “In Detroit, life is worth living”
+      (Detroit Free Press, 2021). This slogan was incorporated into businesses, postcards, songs, and even floral
+      displays in Grand Circus Park. However, the slogan “In Detroit, Life is Worth Living” is problematic due
+      to the persistent segregation of housing dating back to Detroit’s origins.
+    </p>
+
+    <p>
+      If “In Detroit, Life is Worth Living”, then why is it challenging for African Americans to find a
+      safe place to live? The majority of housing discrimination incidents across the Detroit Metropolitan Area
+      are due to race. According to data obtained from FHCMD discrimination cases and the American
+      Community Survey, the percentage of housing discrimination incidents due to race in Detroit is 54.25%.
+      Racial housing discrimination is a huge reason the Detroit homeownership rate fell from 55% to 47%”
+      ("Residential Racial and Socioeconomic Segregation," 2020). Areas of Detroit remain segregated today
+      and it raises the question of “In Detroit, Life is Worth Living” for the citizens forced into poorer areas due
+      to their race. A shining example of African American citizens being subject to poverty is Black Bottom.
+      As stated by Professor Deegan-Krause in his Week 3 lecture, Black Bottom was one of the poorest and
+      densest neighborhoods in the east side of Detroit between the 1920s and 1930s, and it is no coincidence
+      that around 70% of Detroit’s African American population lived there in 1920 (Detroit Divided, 2002). It
+      is also no coincidence how in the late 1950s to early 1960s, Black Bottom, a neighborhood that became a
+      central hub for African Americans, was selected for demolition to make way for a highway. For the
+      citizens living in Black Bottom during this time, life was not worth living.
+    </p>
+
+    <p>
+      Racial discrimination is a big contributing factor to the decline in homeownership. Housing
+      segregation is not new, however. African Americans have faced housing segregation since the Great
+      Migration in the early 1900s. According to Farley Reynolds in Detroit Divided, “Restrictive covenants,
+      real estate codes, and racial prejudice were forces that prevented African Americans from exercising free
+      choice when it came to housing.” Additionally, “Haynes estimated that discrimination and lack of new
+      housing stock were responsible for squeezing 12,000 to 15,000 Black Detroiters into the East Side… ”
+      (Detroit Divided, 2002). For African Americans, “Detroit Life” meant the bottom of the barrel: unhealthy
+      living conditions and overcrowded spaces. Furthermore, violence against African Americans was
+      prevalent. As stated by Tiya Miles in Dawn of Detroit, “It seems that the old streets of Detroit are still
+      drawing traffickers, who rely on the unwieldy size of the 139-square-mile city, its decreasing population,
+      its proximity to major highways and bridges, and its status as America’s most active border for
+      international trade to ensure ease of passage and anonymity for dreadful deeds.” Preceding this statement,
+      Miles tells the harrowing story of two African American girls being held captive by Sedrick Mitchell in
+      2012. This story shows how the stain of slavery and racism in Detroit still prevails today. “Will Detroit's
+      housing and unemployment problems be addressed? No. Will suburban housing segregation be combated,
+      so blacks can move to suburbs? No. Will artificial boundaries be ended? No.” (Detroit, Where Life Is
+      Worth Living, 1974).
+    </p>
+
+    <p>
+      “In Detroit, Life is Worth Living” is a statement that misses a huge part of Detroit’s redlining
+      history. For many, Detroit Life may be worth living, but to generalize the statement to the entire Detroit
+      population does not do the African American citizens justice. African Americans have and will continue
+      to live under poor conditions and continual discrimination. For them “In Detroit, Life is not Worth
+      Living”.
+    </p>
+
+    <h2>Works Cited</h2>
+
+    <ul>
+      <li>
+        Farley, Reynolds, Sheldon Danziger, and Harry J. Holzer. <i>Detroit Divided</i>.  
+        Russell Sage Foundation, 2002.
+      </li>
+
+      <li>
+        Hinds, Julie. “Detroit City’s New Slogan is Part of a Bold Ad Campaign to Change the Narrative.”  
+        <i>Detroit Free Press</i>, 22 Aug. 2021.
+      </li>
+
+        <li>
+        Miles, Tiya. <i>The Dawn of Detroit: A Chronicle of Slavery and Freedom in the City of the Straits</i>.  
+        The New Press, 2017.
+      </li>
+
+      <li>
+        Serrin, William. “Detroit: Where Life Is Worth Living.”  
+        <i>The New York Times</i>, 1 Aug. 1974.
+      </li>
+
+      <li>
+        Swope, Christopher B., and Michael A. Hernández.  
+        “Residential Racial and Socioeconomic Segregation as Predictors of Urban Tree Canopy.”  
+        <i>Landscape and Urban Planning</i>, vol. 210, 2021, p. 104035.
+      </li>
+    </ul>
+
+
+    <!-- FOOTER SUBSTITUTE -->
+    <hr class="section-divider" style="margin-top:40px;">
+    <p>
+      <a href="../blog.html" style="color:#1a73e8;">← back to blog</a>
+    </p>
+    
+
+  </div>
+
+  <!-- DARK MODE SCRIPT -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    if (localStorage.theme === "dark") {
+      root.classList.add("dark");
+      toggle.textContent = "◇";
+    }
+
+    toggle.addEventListener("click", () => {
+      root.classList.toggle("dark");
+      localStorage.theme = root.classList.contains("dark") ? "dark" : "light";
+      toggle.textContent = root.classList.contains("dark") ? "◇" : "◆";
+    });
+  </script>
+
+</body>
+</html>
