@@ -366,3 +366,17 @@ li { margin-bottom: 6px; }
 .blog-link:hover {
   opacity: 0.5;
 }
+
+.gallery-16x9 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.gallery-16x9 img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 12px;
+  cursor: pointer;
+}
