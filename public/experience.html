@@ -14,7 +14,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-M0J8NYPG27');
 </script>
 
@@ -31,13 +30,44 @@
   </nav>
 
   <div class="container">
-    <h1>Experience</h1>
+    <div class="exp-header">
+      <div class="exp-header-text">
+        <h1>Experience</h1>
+        <div class="exp-subtitle" id="exp-subtitle">SWE Experience</div>
+      </div>
+
+      <div class="segmented" role="tablist" aria-label="Experience view toggle">
+        <button class="segmented-btn is-active" type="button" data-view="swe" role="tab" aria-selected="true">
+          SWE
+        </button>
+        <button class="segmented-btn" type="button" data-view="growth" role="tab" aria-selected="false">
+          Growth
+        </button>
+      </div>
+    </div>
+
 
     <div class="exp-section">
 
+      <div class="exp-entry" data-type="growth">
+        <div class="exp-title">
+          Milieu — <span>Growth Intern</span>
+        </div>
+        <div class="exp-date">Jan 2025 – Present</div>
+      </div>
+
+      <div class="exp-entry" data-type="growth">
+        <div class="exp-title">
+          V1 Michigan — <span>Growth Team Member</span>
+        </div>
+        <div class="exp-date">Dec 2025 – Present</div>
+      </div>
+
       <!-- YII / Yazaki -->
-      <div class="exp-entry">
-        <div class="exp-title">YII x Yazaki North America — <span>Software Engineer Co-Op</span></div>
+      <div class="exp-entry" data-type="swe">
+        <div class="exp-title">
+          YII x Yazaki North America — <span>Software Engineer Co-Op</span>
+        </div>
         <div class="exp-date">Sep 2025 – Present</div>
         <ul>
           <li>developed Random Forest ML model achieving 99% accuracy in part-number classification</li>
@@ -47,19 +77,23 @@
       </div>
 
       <!-- Ford x Yazaki -->
-      <div class="exp-entry">
-        <div class="exp-title">Ford Motor Company x Yazaki — <span>Software Engineer Intern</span></div>
+      <div class="exp-entry" data-type="swe">
+        <div class="exp-title">
+          Ford Motor Company x Yazaki — <span>Software Engineer Intern</span>
+        </div>
         <div class="exp-date">May 2025 – Aug 2025</div>
         <ul>
           <li>added support for new internal harness formats and automated defect flagging logic</li>
-          <li>reduced engineering review time from 128 hrs to 16 hrs and uncovered $44,000 in per frame cost savings with automation</li>
+          <li>reduced engineering review time from 128 hrs to 16 hrs and uncovered $44,000 in per frame cost savings</li>
           <li>shipped features used by Ford wire harness validation teams</li>
         </ul>
       </div>
 
       <!-- OOTD -->
-      <div class="exp-entry">
-        <div class="exp-title">OOTD — <span>Head of Growth</span></div>
+      <div class="exp-entry" data-type="growth">
+        <div class="exp-title">
+          OOTD — <span>Head of Growth</span>
+        </div>
         <div class="exp-date">Feb 2025 – Nov 2025</div>
         <ul>
           <li>led growth + product direction for early-stage app, attained 300+ users in a day</li>
@@ -68,9 +102,11 @@
         </ul>
       </div>
 
-      <!-- PDL -->
-      <div class="exp-entry">
-        <div class="exp-title">Plymouth District Library — <span>Software Engineer Intern</span></div>
+      <!-- Plymouth District Library -->
+      <div class="exp-entry" data-type="swe">
+        <div class="exp-title">
+          Plymouth District Library — <span>Software Engineer Intern</span>
+        </div>
         <div class="exp-date">Aug 2023 – Aug 2024</div>
         <ul>
           <li>developed internal automation tools to manage catalog data</li>
@@ -82,12 +118,48 @@
     </div>
   </div>
 
-    <!-- DARK MODE SCRIPT -->
+  <!-- EXPERIENCE TOGGLE SCRIPT -->
+  <script>
+    const buttons = document.querySelectorAll(".segmented-btn");
+    const entries = document.querySelectorAll(".exp-entry");
+    const subtitle = document.getElementById("exp-subtitle");
+
+    function setView(view) {
+      // buttons
+      buttons.forEach(b => {
+        const active = b.dataset.view === view;
+        b.classList.toggle("is-active", active);
+        b.setAttribute("aria-selected", active ? "true" : "false");
+      });
+
+      // entries
+      entries.forEach(entry => {
+        entry.style.display = (entry.dataset.type === view) ? "block" : "none";
+      });
+
+      // subtitle
+      if (subtitle) subtitle.textContent = view === "swe" ? "SWE Experience" : "Growth Experience";
+
+      // persist
+      localStorage.exp_view = view;
+    }
+
+    // init (default: swe)
+    const saved = localStorage.exp_view;
+    setView(saved === "growth" ? "growth" : "swe");
+
+    // click handlers
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => setView(btn.dataset.view));
+    });
+  </script>
+
+
+  <!-- DARK MODE SCRIPT -->
   <script>
     const toggle = document.getElementById("theme-toggle");
     const root = document.documentElement;
 
-    // Load saved theme
     if (localStorage.theme === "dark") {
       root.classList.add("dark");
       toggle.textContent = "◇";

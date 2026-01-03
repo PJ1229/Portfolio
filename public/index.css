@@ -147,6 +147,25 @@ li { margin-bottom: 6px; }
   color: var(--subtext);
 }
 
+.exp-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.exp-header-text h1 {
+  margin: 0;
+}
+
+.exp-subtitle {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+
 /* ---------- Projects Page ---------- */
 
 .project-list {
@@ -379,4 +398,56 @@ li { margin-bottom: 6px; }
   height: auto;
   border-radius: 12px;
   cursor: pointer;
+}
+
+/* Apple-style segmented control */
+
+.segmented {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+html.dark .segmented {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.segmented-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--subtext);
+  transition: background .15s ease, opacity .15s ease, transform .12s ease;
+}
+
+.segmented-btn:hover {
+  opacity: 0.95;
+}
+
+.segmented-btn.is-active {
+  background: rgba(255,255,255,0.9);
+  color: #000;
+  opacity: 1;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+html.dark .segmented-btn.is-active {
+  background: rgba(0,0,0,0.55);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+html.dark .segmented-btn:not(.is-active) {
+  color: rgba(229,229,229,0.75);
+}
+
+.segmented-btn:active {
+  transform: scale(0.97);
 }
