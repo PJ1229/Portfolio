@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../index.css">
+  <title>Authenticity & Virality — Blog</title>
+  <link rel="icon" href="../images/logo.png" type="image/icon type">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M0J8NYPG27"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M0J8NYPG27');
+</script>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="../index.html">Home</a>
+    <a href="../experience.html">Experience</a>
+    <a href="../projects.html">Projects</a>
+    <a href="../film.html">Film</a>
+    <a class="active" href="../blog.html">Blog</a>
+
+    <button id="theme-toggle" class="theme-btn">◆</button>
+  </nav>
+
+  <div class="container">
+
+    <h1>Authenticity & Virality</h1>
+    <p style="color:var(--subtext); margin-top:-6px; font-size:15px;">
+      (Jan 2026)
+    </p>
+
+    <hr class="section-divider" style="margin-top:28px;">
+
+    <p>I’ve been thinking a lot about what I want to do with my life. I’m in college for computer engineering, and I’ve been studying math and science since high-school. I’ve been working as a SWE for 2 years. I’ve been making videos since I was 12 years old, and I just starting committing to filmmaking last year. Additionally, I’ve just recently tapped into the beautiful world of startups after starting and failing my first startup last year and joining UMich’s premiere startup club. I have so many paths I can take, but which one feels the most meaningful? That’s been my biggest internal struggle over the past year.</p>
+
+    <p>I could take the safe route, and pursue a big tech. I’d get a cushy job with a lot of security. The path to that seems simple. I’d grind Leetcode, technical interview prep, resume review, and coding side projects. Right, simple, but unfulfilling. SWE feels so easy to fall into because of the high salary and relatively easy work (by this I mean I’m not a surgeon trying to save someones life). However, I’ve worked in industry for a year now, and it hasn’t been mentally stimulating in the slightest. Additionally, the longer I stay here the more I realize how little impact I actually have. Spending my entire life moving up the corporate ladder in pursuit of impact especially in an industry I don’t even find particularly interesting seems so menial. I want impact fast. </p>
+
+    <p>After realizing that I didn’t want to pursue SWE at big tech, I felt conflicted. I honestly still feel this way a lot of times. What other skills do I have? What other passions could I pursue? One of my options was marketing. Not just marketing though: more specifically, growth at a startup. I already had video making experience and experience going viral. I also genuinely enjoyed putting clips together to form a story, so I thought I’d give it a shot.</p>
+
+    <p>My first shot at this was at my first startup OOTD. I ended up running the marketing for them and it was at this point where I ran into the current “virality market”. What I mean by this is how startups are pursing virality at this time. I got introduced to the world of UGC, Cluely, and content marketing on social media. I tried hitting the content loops a lot of these viral startups did. I tried UGC. I tried event based marketing. I tried creating merch. I tried making my own content. The list goes on. </p>
+
+    <p>While this was certainly an interesting experiment, I started to lose fulfillment and the reason why I started making videos in the first place: to share peoples stories. I get so mentally detached with marketing due to it’s inauthentic nature. I never felt like I was creating meaningful art, I just felt like I was creating an advertisement. Now, you could argue that advertisements can never be art. I’m still trying to draw this line between content and art on social media, but I believe there’s a way to meaningfully and authentically generate virality towards a story.</p>
+
+    <p>I get so inspired by companies such as Creator Camp by Simon Kim (prev. UMich dropout) and A24 because it seems like they’ve cracked authentic storytelling in marketing. When I watch their marketing on social media, it seems like the perfect blend between art and content. I realized I want to create something similar. Something meaningful that allows me to create art while still having an impact. </p>
+
+    <p>I know I still have a ton of time to figure out where I’m headed, but I think things are becoming a lot more clear. I definitely still need to experiment, put myself out there, try the things I’m scared of, and commit. I think the world is at a stage where originality is extremely valued, and I want to be a driving factor in it’s growth especially in film + tech. I want to thank everyone so far who’s contributed to helping me achieve this goal. I don’t believe in “self-made”, I’m a product of everyone I’ve met, talked to, and connected with and my growth is owed to that.</p>
+
+    <p>P.S. just realizing that "self-made" comment is completely unrelated to the writing, but it's an intersting thing to think about. I will definitely have to write on that more in the future.</p>
+
+    <!-- FOOTER SUBSTITUTE -->
+    <hr class="section-divider" style="margin-top:40px;">
+    <p>
+      <a href="../blog.html" style="color:#1a73e8;">← back to blog</a>
+    </p>
+    
+
+  </div>
+
+  <!-- DARK MODE SCRIPT -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    if (localStorage.theme === "dark") {
+      root.classList.add("dark");
+      toggle.textContent = "◇";
+    }
+
+    toggle.addEventListener("click", () => {
+      root.classList.toggle("dark");
+      localStorage.theme = root.classList.contains("dark") ? "dark" : "light";
+      toggle.textContent = root.classList.contains("dark") ? "◇" : "◆";
+    });
+  </script>
+
+</body>
+</html>
