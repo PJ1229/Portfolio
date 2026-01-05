@@ -80,14 +80,14 @@
         title: "My OOTD Work",
         subtitle: "Content + growth experiments I contributed",
         links: [
-          { label: "Hoodie Photoshoot (Nov. 2025)", url: "https://www.instagram.com/p/DRaMMbJiQQ8/" },
 
           // series -> opens an on-page writeup view (replaces linktree)
+          { label: "Hoodie Photoshoot (Nov. 2025)", seriesId: "hoodie" },
           { label: "Launch Series (Aug. 2025 - Nov. 2025)", seriesId: "launch" },
           { label: "V1 Collab Series (Apr. 2025 - Sep. 2025)", seriesId: "v1-collab" },
           { label: "Daft Punk Series (May 2025)", seriesId: "daft-punk" },
+          { label: "Pinball Petes Photoshoot (Apr. 2025)", seriesId: "pinball" },
 
-          { label: "Pinball Petes Photoshoot (Apr. 2025)", url: "https://www.instagram.com/p/DIl-gbbRpk4/?img_index=1" },
           { label: "Jollibee Photoshoot (Mar. 2025)", url: "https://www.instagram.com/p/DHlTKYcRupa/" },
           { label: "Beta Photoshoot (Mar. 2025)", url: "https://www.instagram.com/p/DHRbqx-p5hW/" }
         ]
@@ -96,6 +96,20 @@
 
     // series content lives here
     const seriesPages = {
+      "pinball": {
+        title: "Hoodie Photoshoot",
+        blurb: "Achieved >50 attendees & >26k organic instagram views on one post. Co-hosted 2 professional photographers. Photographed, edited, and marketed event.",
+        links: [
+          { label: "- Photo Shoot", url: "https://www.instagram.com/p/DIl-gbbRpk4/?img_index=1" }
+        ]
+      },
+      "hoodie": {
+        title: "Hoodie Photoshoot",
+        blurb: "Co-designed branded merch such as hoodies, keychains, and stickers. Hosted a shoot in the UMich Stamps Video/Photo Studio.",
+        links: [
+          { label: "- Video Shoot", url: "https://www.instagram.com/p/DRaMMbJiQQ8/" }
+        ]
+      },
       "launch": {
         title: "Launch Series",
         blurb: "Recieved & sorted through >50 applications. Hosted 3 seperate photo/video events with storyboarding for 9 actors/actresses. Planned, marketed, filmed, photographed, edited, and posted product launch content over 3 months. Achieved ~50k organic instagram views.",
