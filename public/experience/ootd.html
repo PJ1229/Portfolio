@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../index.css" />
+  <title>OOTD</title>
+  <link rel="icon" href="../images/logo.png" type="image/icon type">
+
+  <!-- page-local helpers -->
+  <style>
+    .series-link-btn{
+      all: unset;
+      cursor: pointer;
+    }
+
+    .series-card{
+      border-radius: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html">Home</a>
+    <a href="../experience.html">Experience</a>
+    <a href="../film.html">Film</a>
+    <a href="../blog.html">Blog</a>
+    <button id="theme-toggle" class="theme-btn">◆</button>
+  </nav>
+
+  <div class="container" style="max-width: 720px;">
+    <div class="exp-header" style="align-items:flex-end;">
+      <div class="exp-header-text">
+        <h1 id="page-title">OOTD</h1>
+        <div class="exp-subtitle" id="page-subtitle">Head of Growth · Selected Work</div>
+      </div>
+
+      <!-- toggle: stays on same page, swaps content; also exits series if you're in one -->
+      <div class="segmented" role="tablist" aria-label="OOTD links toggle">
+        <button class="segmented-btn is-active" type="button" data-set="v1" role="tab" aria-selected="true">
+          OOTD
+        </button>
+        <button class="segmented-btn" type="button" data-set="mywork" role="tab" aria-selected="false">
+          Deliverables
+        </button>
+      </div>
+    </div>
+
+    <!-- LINKTREE LIST (shows by default) -->
+    <div class="exp-section" id="links-container"></div>
+
+    <!-- SERIES WRITEUP (hidden until you click a series; replaces the linktree) -->
+    <div class="exp-section" id="series-container" style="margin-top: 2rem; display:none;"></div>
+
+    <!-- footer link: changes based on series state -->
+    <div style="margin-top: 2.5rem;">
+      <a id="footer-back-link" href="../experience.html" style="color:#1a73e8;">
+        ← back to experience
+      </a>
+    </div>
+
+  </div>
+
+  <!-- LINK SWAP + SERIES VIEW SCRIPT -->
+  <script>
+    const linkSets = {
+      v1: {
+        title: "OOTD",
+        subtitle: "Head of Growth · Selected Work",
+        links: [
+          { label: "Website", url: "https://www.joinootd.com/" },
+          { label: "Instagram", url: "https://www.instagram.com/ootdfashn/" },
+          { label: "LinkedIn", url: "https://www.linkedin.com/company/ootdfashn/" },
+          { label: "Download", url: "https://apps.apple.com/us/app/ootd-gamified-fit-checks/id6747948753" }
+        ]
+      },
+      mywork: {
+        title: "My OOTD Work",
+        subtitle: "Content + growth experiments I contributed",
+        links: [
+          { label: "Hoodie Photoshoot (Nov. 2025)", url: "https://www.instagram.com/p/DRaMMbJiQQ8/" },
+
+          // series -> opens an on-page writeup view (replaces linktree)
+          { label: "Launch Series (Aug. 2025 - Nov. 2025)", seriesId: "launch" },
+          { label: "V1 Collab Series (Apr. 2025 - Sep. 2025)", seriesId: "v1-collab" },
+          { label: "Daft Punk Series (May 2025)", seriesId: "daft-punk" },
+
+          { label: "Pinball Petes Photoshoot (Apr. 2025)", url: "https://www.instagram.com/p/DIl-gbbRpk4/?img_index=1" },
+          { label: "Jollibee Photoshoot (Mar. 2025)", url: "https://www.instagram.com/p/DHlTKYcRupa/" },
+          { label: "Beta Photoshoot (Mar. 2025)", url: "https://www.instagram.com/p/DHRbqx-p5hW/" }
+        ]
+      }
+    };
+
+    // series content lives here
+    const seriesPages = {
+      "launch": {
+        title: "Launch Series",
+        blurb: "Recieved & sorted through >50 applications. Hosted 3 seperate photo/video events with storyboarding for 9 actors/actresses. Planned, marketed, filmed, photographed, edited, and posted product launch content over 3 months. Achieved ~50k organic instagram views.",
+        links: [
+          { label: "- Casting Call", url: "https://www.instagram.com/p/DN14AR0UgJ3/" },
+          { label: "- Behind the Scenes", url: "https://www.instagram.com/p/DQw0PeDCK3j/" },
+          { label: "- Launch Video", url: "https://www.instagram.com/p/DQur1o_iVP6/" },
+          { label: "- Launch Photos Day 1", url: "https://www.instagram.com/p/DPuvpLwkcvO/?img_index=1" },
+          { label: "- Launch Photos Day 2", url: "https://www.instagram.com/p/DP91luvkcHP/?img_index=1" },
+          { label: "- Launch Photos Day 3", url: "https://www.instagram.com/p/DQSk3I3EdTJ/?img_index=1" }
+        ]
+      },
+      "v1-collab": {
+        title: "V1 Collab Series",
+        blurb: "Pitched and photographed our product at V1 Demo Day 2025. Later helped market, pitch, record, and edit our presence at V1 Kickoff 2025. Achieved >30k organic instagram views.",
+        links: [
+          { label: "- V1 Demo Day Photos", url: "https://www.instagram.com/p/DIrB4JExAC2/?img_index=1" },
+          { label: "- V1 Kickoff Graphic", url: "https://www.instagram.com/p/DOGvQRLjUvG/" },
+          { label: "- V1 Kickoff Video", url: "https://www.instagram.com/p/DOTzbwDiThU/" }
+        ]
+      },
+      "daft-punk": {
+        title: "Daft Punk Series",
+        blurb: "Reached out to 10 models and 1 additional photographer to host a model shoot in Detroit, MI. Edited the photos, graphics, and video. Achieved >35k organic instagram views.",
+        links: [
+          { label: "- Model Shoot Photos", url: "https://www.instagram.com/p/DJyQQxYtb3v/?img_index=1" },
+          { label: "- Model Shoot Video", url: "https://www.instagram.com/p/DKHBsrWJhOA/" },
+          { label: "- OOTD Edit", url: "https://www.instagram.com/p/DKYGvdPtizn/" }
+        ]
+      }
+    };
+
+    const buttons = document.querySelectorAll(".segmented-btn");
+    const titleEl = document.getElementById("page-title");
+    const subtitleEl = document.getElementById("page-subtitle");
+    const linksContainer = document.getElementById("links-container");
+    const seriesContainer = document.getElementById("series-container");
+    const footerBackLink = document.getElementById("footer-back-link");
+
+    let currentSetKey = "v1";
+    let inSeriesView = false;
+
+    function setFooterLink() {
+      if (inSeriesView) {
+        footerBackLink.href = "../experience/ootd.html?tab=mywork";
+        footerBackLink.textContent = "← back to deliverables";
+      } else {
+        footerBackLink.href = "../experience.html";
+        footerBackLink.textContent = "← back to experience";
+      }
+    }
+
+    function showLinktree() {
+      inSeriesView = false;
+      seriesContainer.style.display = "none";
+      seriesContainer.innerHTML = "";
+      linksContainer.style.display = "";
+
+      // restore header copy for active set
+      const set = linkSets[currentSetKey] || linkSets.v1;
+      titleEl.textContent = set.title;
+      subtitleEl.textContent = set.subtitle;
+
+      setFooterLink();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showSeries(seriesId) {
+      const page = seriesPages[seriesId];
+      if (!page) return;
+
+      inSeriesView = true;
+
+      // hide linktree, show series page
+      linksContainer.style.display = "none";
+      seriesContainer.style.display = "";
+
+      // update header to match series
+      titleEl.textContent = page.title;
+      subtitleEl.textContent = "Series write-up";
+
+      const linksHtml = (page.links || [])
+        .map(l => `<div class="exp-entry"><a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a></div>`)
+        .join("");
+
+      seriesContainer.innerHTML = `
+        <div class="exp-entry series-card">
+          <div style="margin-top: 1rem;">
+            <!--<h2 style="margin:0 0 .5rem 0;">${page.title}</h2>-->
+            <p style="margin:0 0 1.25rem 0; opacity:.85;">${page.blurb || ""}</p>
+          </div>
+
+          ${linksHtml}
+        </div>
+      `;
+
+      setFooterLink();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderSet(key) {
+      currentSetKey = key;
+      const set = linkSets[key] || linkSets.v1;
+
+      // update header copy
+      titleEl.textContent = set.title;
+      subtitleEl.textContent = set.subtitle;
+
+      // swap active state
+      buttons.forEach(b => {
+        const active = b.dataset.set === key;
+        b.classList.toggle("is-active", active);
+        b.setAttribute("aria-selected", active ? "true" : "false");
+      });
+
+      // render list
+      linksContainer.innerHTML = "";
+      set.links.forEach(({ label, url, seriesId }) => {
+        const div = document.createElement("div");
+        div.className = "exp-entry";
+
+        if (seriesId) {
+          div.innerHTML = `<button class="series-link-btn" type="button" data-series="${seriesId}">${label}</button>`;
+        } else {
+          div.innerHTML = `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+        }
+
+        linksContainer.appendChild(div);
+      });
+    }
+
+    // init (supports ?tab=v1 or ?tab=mywork)
+    const params = new URLSearchParams(window.location.search);
+    const initialTab = params.get("tab");
+    if (initialTab && linkSets[initialTab]) {
+    renderSet(initialTab);
+    } else {
+    renderSet("v1");
+    }
+    setFooterLink();
+
+
+    // toggle handlers: stay on same page, and if in series, exit series first
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (inSeriesView) showLinktree();
+        renderSet(btn.dataset.set);
+      });
+    });
+
+    // series click handler (event delegation)
+    linksContainer.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-series]");
+      if (!btn) return;
+      showSeries(btn.dataset.series);
+    });
+  </script>
+
+  <!-- DARK MODE SCRIPT -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    if (localStorage.theme === "dark") {
+      root.classList.add("dark");
+      toggle.textContent = "◇";
+    }
+
+    toggle.addEventListener("click", () => {
+      root.classList.toggle("dark");
+      localStorage.theme = root.classList.contains("dark") ? "dark" : "light";
+      toggle.textContent = root.classList.contains("dark") ? "◇" : "◆";
+    });
+  </script>
+
+</body>
+</html>

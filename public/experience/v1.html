@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../index.css" />
+  <title>V1 Michigan</title>
+  <link rel="icon" href="../images/logo.png" type="image/icon type">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html">Home</a>
+    <a href="../experience.html">Experience</a>
+    <a href="../film.html">Film</a>
+    <a href="../blog.html">Blog</a>
+    <button id="theme-toggle" class="theme-btn">◆</button>
+  </nav>
+
+  <div class="container" style="max-width: 720px;">
+    <div class="exp-header" style="align-items:flex-end;">
+      <div class="exp-header-text">
+        <h1 id="page-title">V1 Michigan</h1>
+        <div class="exp-subtitle" id="page-subtitle">Growth Team · Selected Work</div>
+      </div>
+
+      <!-- toggle: stays on same page, swaps links -->
+      <div class="segmented" role="tablist" aria-label="V1 links toggle">
+        <button class="segmented-btn is-active" type="button" data-set="v1" role="tab" aria-selected="true">
+          V1
+        </button>
+        <button class="segmented-btn" type="button" data-set="mywork" role="tab" aria-selected="false">
+          Deliverables
+        </button>
+      </div>
+    </div>
+
+    <div class="exp-section" id="links-container"></div>
+
+    <div style="margin-top: 2.5rem;">
+        <a href="../experience.html" style="color:#1a73e8;">
+            ← back to experience
+        </a>
+    </div>
+  
+  </div>
+
+  <!-- LINK SWAP SCRIPT -->
+  <script>
+    const linkSets = {
+      v1: {
+        title: "V1 Michigan",
+        subtitle: "Growth Team · Selected Work",
+        links: [
+          { label: "Website", url: "https://v1michigan.com" },
+          { label: "Instagram", url: "https://www.instagram.com/v1michigan/" },
+          { label: "LinkedIn", url: "https://www.linkedin.com/company/v1-michigan/" }
+        ]
+      },
+      mywork: {
+        title: "My V1 Work",
+        subtitle: "Content + growth experiments I contributed",
+        links: [
+          { label: "Demo Day Recap (Dec. 2025)", url: "https://www.instagram.com/p/DSsjp5tkmk-/" }
+          // add real links here:
+          // { label: "Reel: Demo Day teaser", url: "..." },
+          // { label: "Post: Growth recap", url: "..." }
+        ]
+      }
+    };
+
+    const buttons = document.querySelectorAll(".segmented-btn");
+    const titleEl = document.getElementById("page-title");
+    const subtitleEl = document.getElementById("page-subtitle");
+    const linksContainer = document.getElementById("links-container");
+
+    function renderSet(key) {
+      const set = linkSets[key] || linkSets.v1;
+
+      // update header copy
+      titleEl.textContent = set.title;
+      subtitleEl.textContent = set.subtitle;
+
+      // swap active state
+      buttons.forEach(b => {
+        const active = b.dataset.set === key;
+        b.classList.toggle("is-active", active);
+        b.setAttribute("aria-selected", active ? "true" : "false");
+      });
+
+      // render links
+      linksContainer.innerHTML = "";
+      set.links.forEach(({ label, url }) => {
+        const div = document.createElement("div");
+        div.className = "exp-entry";
+        div.innerHTML = `<a href="${url}" target="_blank">${label}</a>`;
+        linksContainer.appendChild(div);
+      });
+    }
+
+    // init
+    renderSet("v1");
+
+    // handlers
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => renderSet(btn.dataset.set));
+    });
+  </script>
+
+  <!-- DARK MODE SCRIPT -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    if (localStorage.theme === "dark") {
+      root.classList.add("dark");
+      toggle.textContent = "◇";
+    }
+
+    toggle.addEventListener("click", () => {
+      root.classList.toggle("dark");
+      localStorage.theme = root.classList.contains("dark") ? "dark" : "light";
+      toggle.textContent = root.classList.contains("dark") ? "◇" : "◆";
+    });
+  </script>
+
+</body>
+</html>
