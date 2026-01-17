@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../index.css">
+  <title>V1 Hype Video</title>
+  <link rel="icon" href="../images/logo.png" type="image/icon type">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M0J8NYPG27"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M0J8NYPG27');
+</script>
+
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html">Home</a>
+    <a href="../experience.html">Experience</a>
+    <a class="active" href="../film.html">Film</a>
+    <a href="../blog.html">Blog</a>
+    <button id="theme-toggle" class="theme-btn">◆</button>
+  </nav>
+
+  <div class="container">
+
+    <h1>V1 Hype Video</h1>
+    <p style="margin-top:-6px;">
+      hype video for V1 Michigan — student founders, builders, and creatives.
+    </p>
+
+    <hr class="section-divider">
+
+    <!-- VIDEO EMBED -->
+    <div style="margin-bottom:28px;">
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden;">
+        <iframe 
+          src="https://www.youtube.com/embed/QhwXnKFsZ7M"
+          title="V1 Michigan Hype Video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="position:absolute; top:0; left:0; width:100%; height:100%;"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- PROJECT META -->
+    <h2 style="margin-top:0;">About</h2>
+    <p style="margin-top:-4px;">
+      This was my first big project for V1 Michigan. I was recruited to help create their W26 hype video. 
+      Charlie Leversha first scripted out a draft, and I filmed and directed him. 
+      I then spent a week editing and iterating based on the team's preferences.
+    </p>
+
+    <h3>Role</h3>
+    <ul>
+      <li>Direction, cinematography, edit — <span style="font-weight:500;">PJ Kim</span></li>
+      <li>Script, voice, on-camera — <span style="font-weight:500;">Charlie Leversha</span></li>
+    </ul>
+
+    <h3>Details</h3>
+    <ul>
+      <li>Shot on FujiFilm XS-20</li>
+      <li>Edited with Adobe Premiere Pro and After Effects</li>
+    </ul>
+
+    <hr class="section-divider" style="margin-top:40px;">
+    <p>
+      <a href="../film.html" style="color:#1a73e8;">← back to film</a>
+    </p>
+
+  </div>
+
+  <!-- DARK MODE SCRIPT -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    if (localStorage.theme === "dark") {
+      root.classList.add("dark");
+      toggle.textContent = "◇";
+    }
+
+    toggle.addEventListener("click", () => {
+      root.classList.toggle("dark");
+      if (root.classList.contains("dark")) {
+        localStorage.theme = "dark";
+        toggle.textContent = "◇";
+      } else {
+        localStorage.theme = "light";
+        toggle.textContent = "◆";
+      }
+    });
+  </script>
+
+</body>
+</html>
