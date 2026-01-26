@@ -451,3 +451,56 @@ html.dark .segmented-btn:not(.is-active) {
 .segmented-btn:active {
   transform: scale(0.97);
 }
+
+/* Apple-style minimal list */
+
+.apple-list{
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.apple-row{
+  display: grid;
+  grid-template-columns: 84px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--link);
+}
+
+.apple-row:last-child{
+  border-bottom: none;
+}
+
+.apple-date{
+  font-size: 12px;
+  opacity: .55;
+}
+
+.apple-title{
+  font-size: 16px;
+}
+
+.apple-arrow{
+  opacity: .4;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.apple-row:hover{
+  color: var(--nav-active);
+}
+
+.apple-row:hover .apple-arrow{
+  transform: translateX(2px);
+  opacity: .8;
+}
+
+@media (max-width:520px){
+  .apple-row{
+    grid-template-columns: 72px 1fr auto;
+    gap: 12px;
+  }
+}

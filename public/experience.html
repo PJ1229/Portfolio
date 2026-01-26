@@ -1,31 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css" />
   <title>Experience</title>
-  <link rel="icon" href="images/logo.png" type="image/icon type">
+  <link rel="icon" href="images/logo.png" />
 </head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M0J8NYPG27"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-M0J8NYPG27');
-</script>
-
 <body>
 
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a class="active" href="experience.html">Experience</a>
-    <!--<a href="projects.html">Projects</a>-->
     <a href="film.html">Film</a>
     <a href="blog.html">Blog</a>
-
     <button id="theme-toggle" class="theme-btn">◆</button>
   </nav>
 
@@ -37,191 +25,96 @@
       </div>
 
       <div class="segmented" role="tablist" aria-label="Experience view toggle">
-        <button class="segmented-btn is-active" type="button" data-view="swe" role="tab" aria-selected="true">
-          SWE
-        </button>
-        <button class="segmented-btn" type="button" data-view="growth" role="tab" aria-selected="false">
-          Growth
-        </button>
+        <button class="segmented-btn is-active" type="button" data-view="swe" role="tab" aria-selected="true">SWE</button>
+        <button class="segmented-btn" type="button" data-view="growth" role="tab" aria-selected="false">Growth</button>
       </div>
     </div>
 
-
     <div class="exp-section">
 
+      <!-- Growth -->
       <div class="exp-entry" data-type="growth">
-        <div class="exp-title">
-          Milieu — <span>Growth Intern</span>
-        </div>
+        <div class="exp-title">Milieu — <span>Growth Intern</span></div>
         <div class="exp-date">Jan 2025 – Present</div>
       </div>
 
       <div class="exp-entry" data-type="growth">
-        <div class="exp-title">
-          V1 Michigan — <span>Growth Team Member</span>
-        </div>
+        <div class="exp-title">V1 Michigan — <span>Growth Team Member</span></div>
         <div class="exp-date">Dec 2025 – Present</div>
-        <a href="experience/v1.html" style="color:#1a73e8;">
-          view more →
-        </a>
+        <a href="experience/v1.html" class="exp-link">view more →</a>
       </div>
 
-      <!-- YII / Yazaki -->
-      <div class="exp-entry" data-type="swe">
-        <div class="exp-title">
-          YII x Yazaki North America — <span>Software Engineer Co-Op</span>
-        </div>
-        <div class="exp-date">Sep 2025 – Present</div>
-        <ul>
-          <li>developed Random Forest ML model achieving 99% accuracy in part-number classification</li>
-          <li>enhanced harness drawing check React + Express + Python OCR pipeline (Tesseract + OpenCV)</li>
-          <li>led internal tooling improvements used across tesla, rivian, and polaris drawings</li>
-        </ul>
-        <a href="https://www.linkedin.com/posts/pjk1m_im-incredibly-excited-to-be-joining-yazaki-activity-7364744734038228993-FM3y?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIOXacB14tevQ2mdPDzYy6R5pJoLcl7FAA" target="_blank" style="color:#1a73e8;">
-          view more →
-        </a>
-      </div>
-
-      <!-- Ford x Yazaki -->
-      <div class="exp-entry" data-type="swe">
-        <div class="exp-title">
-          Ford Motor Company x Yazaki — <span>Software Engineer Intern</span>
-        </div>
-        <div class="exp-date">May 2025 – Aug 2025</div>
-        <ul>
-          <li>added support for new internal harness formats and automated defect flagging logic</li>
-          <li>reduced engineering review time from 128 hrs to 16 hrs and uncovered $44,000 in per frame cost savings</li>
-          <li>shipped features used by Ford wire harness validation teams</li>
-        </ul>
-        <a href="experience/ford.html" style="color:#1a73e8;">
-          view more →
-        </a>
-      </div>
-
-      <!-- OOTD -->
       <div class="exp-entry" data-type="growth">
-        <div class="exp-title">
-          OOTD — <span>Head of Growth</span>
-        </div>
+        <div class="exp-title">OOTD — <span>Head of Growth</span></div>
         <div class="exp-date">Feb 2025 – Nov 2025</div>
         <ul>
           <li>led growth + product direction for early-stage app, attained 300+ users in a day</li>
           <li>produced all launch video content, reaching 300k+ organic IG impressions</li>
           <li>coordinated engineering roadmap across mobile + backend teams</li>
         </ul>
-        <a href="experience/ootd.html" style="color:#1a73e8;">
-          view more →
-        </a>
+        <a href="experience/ootd.html" class="exp-link">view more →</a>
       </div>
 
-      <!-- OOTD -->
       <div class="exp-entry" data-type="growth">
-        <div class="exp-title">
-          Freelance Filmmaker — <span>Self-Employed</span>
-        </div>
+        <div class="exp-title">Freelance Filmmaker — <span>Self-Employed</span></div>
         <div class="exp-date">Aug 2024 – Present</div>
         <ul>
           <li>produced branded video content for startups, student orgs, and creatives</li>
-          <li>delivered on 6+ projects with end-to-end production: concept, filming, editing, etc</li>
+          <li>delivered on 6+ projects with end-to-end production: concept, filming, editing</li>
           <li>worked cross-functionally with founders, marketers, and engineers</li>
         </ul>
-        <a href="film.html" style="color:#1a73e8;">
-          view more →
-        </a>
+        <a href="film.html" class="exp-link">view more →</a>
       </div>
 
-      <!-- Plymouth District Library -->
+      <div class="exp-entry" data-type="growth">
+        <div class="exp-title">YouTube — <span>Content Creator</span></div>
+        <div class="exp-date">Aug 2017 – Feb 2019</div>
+        <ul>
+          <li>scaled channel to 30K+ subscribers and 15M+ organic impressions</li>
+          <li>generated $12K+ in revenue over 18 months</li>
+          <li>used analytics to optimize retention + distribution</li>
+        </ul>
+        <a href="https://www.youtube.com/@SquabbleProductions" target="_blank" class="exp-link">view more →</a>
+      </div>
+
+      <!-- SWE -->
       <div class="exp-entry" data-type="swe">
-        <div class="exp-title">
-          Plymouth District Library — <span>Software Engineer Intern</span>
-        </div>
+        <div class="exp-title">YII x Yazaki North America — <span>Software Engineer Co-Op</span></div>
+        <div class="exp-date">Sep 2025 – Present</div>
+        <ul>
+          <li>developed Random Forest ML model achieving 99% accuracy in part-number classification</li>
+          <li>enhanced harness drawing check React + Express + Python OCR pipeline (Tesseract + OpenCV)</li>
+          <li>led internal tooling improvements used across tesla, rivian, and polaris drawings</li>
+        </ul>
+        <a href="https://www.linkedin.com/posts/pjk1m_im-incredibly-excited-to-be-joining-yazaki-activity-7364744734038228993-FM3y" target="_blank" class="exp-link">view more →</a>
+      </div>
+
+      <div class="exp-entry" data-type="swe">
+        <div class="exp-title">Ford Motor Company x Yazaki — <span>Software Engineer Intern</span></div>
+        <div class="exp-date">May 2025 – Aug 2025</div>
+        <ul>
+          <li>added support for new internal harness formats and automated defect flagging logic</li>
+          <li>reduced review time from 128 hrs to 16 hrs and uncovered $44,000 in per frame cost savings</li>
+          <li>shipped features used by Ford wire harness validation teams</li>
+        </ul>
+        <a href="experience/ford.html" class="exp-link">view more →</a>
+      </div>
+
+      <div class="exp-entry" data-type="swe">
+        <div class="exp-title">Plymouth District Library — <span>Software Engineer Intern</span></div>
         <div class="exp-date">Aug 2023 – Aug 2024</div>
         <ul>
           <li>developed internal automation tools to manage catalog data</li>
           <li>built frontend features improving accessibility + navigation</li>
           <li>designed new internal admin dashboard for staff use</li>
         </ul>
-        <a href="https://www.linkedin.com/posts/pjk1m_i-had-the-pleasure-of-working-as-a-teen-stem-activity-7230379451576938496-6V-t?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIOXacB14tevQ2mdPDzYy6R5pJoLcl7FAA" target="_blank" style="color:#1a73e8;">
-          view more →
-        </a>
+        <a href="https://www.linkedin.com/posts/pjk1m_i-had-the-pleasure-of-working-as-a-teen-stem-activity-7230379451576938496-6V-t" target="_blank" class="exp-link">view more →</a>
       </div>
 
-      <div class="exp-entry" data-type="growth">
-        <div class="exp-title">
-          Youtube — <span>Content Creator</span>
-        </div>
-        <div class="exp-date">Aug 2017 – Feb 2019</div>
-        <ul>
-          <li>scaled channel to 30K+ subscribers and 15M+ organic impressions through iterative content experimentation</li>
-          <li>monetized audience, generating $12K+ in revenue over 18 months</li>
-          <li>applied analytics-driven optimization to improve engagement, retention, and distribution</li>
-        </ul>
-        <a href="https://www.youtube.com/@SquabbleProductions" target="_blank" style="color:#1a73e8;">
-          view more →
-        </a>
-      </div>
     </div>
   </div>
 
-  <!-- EXPERIENCE TOGGLE SCRIPT -->
-  <script>
-    const buttons = document.querySelectorAll(".segmented-btn");
-    const entries = document.querySelectorAll(".exp-entry");
-    const subtitle = document.getElementById("exp-subtitle");
-
-    function setView(view) {
-      // buttons
-      buttons.forEach(b => {
-        const active = b.dataset.view === view;
-        b.classList.toggle("is-active", active);
-        b.setAttribute("aria-selected", active ? "true" : "false");
-      });
-
-      // entries
-      entries.forEach(entry => {
-        entry.style.display = (entry.dataset.type === view) ? "block" : "none";
-      });
-
-      // subtitle
-      if (subtitle) subtitle.textContent = view === "swe" ? "SWE Experience" : "Growth Experience";
-
-      // persist
-      localStorage.exp_view = view;
-    }
-
-    // init (default: swe)
-    const saved = localStorage.exp_view;
-    setView(saved === "growth" ? "growth" : "swe");
-
-    // click handlers
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => setView(btn.dataset.view));
-    });
-  </script>
-
-
-  <!-- DARK MODE SCRIPT -->
-  <script>
-    const toggle = document.getElementById("theme-toggle");
-    const root = document.documentElement;
-
-    if (localStorage.theme === "dark") {
-      root.classList.add("dark");
-      toggle.textContent = "◇";
-    }
-
-    toggle.addEventListener("click", () => {
-      root.classList.toggle("dark");
-
-      if (root.classList.contains("dark")) {
-        localStorage.theme = "dark";
-        toggle.textContent = "◇";
-      } else {
-        localStorage.theme = "light";
-        toggle.textContent = "◆";
-      }
-    });
-  </script>
-
+  <script defer src="js/experience-toggle.js"></script>
+  <script defer src="js/theme.js"></script>
 </body>
 </html>
