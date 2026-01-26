@@ -1007,8 +1007,18 @@ html.dark.v1-page .segmented-btn.is-active{
     0 0 0 1px rgba(241,200,75,0.16);
 }
 
-/* Rows: remove gradient hover. Use a clean Apple hover surface. */
+/* V1: text hover uses gold instead of blue */
 
+html.v1-page .apple-row:hover,
+html.v1-page .series-link-btn:hover,
+html.v1-page .navbar a:hover{
+  color: #f1c84b;
+}
+
+/* arrow follows text color */
+html.v1-page .apple-row:hover .apple-arrow{
+  color: #f1c84b;
+}
 
 /* Arrow alignment fix + micro motion (feels premium) */
 html.v1-page .apple-arrow{
