@@ -540,26 +540,40 @@ html.dark .segmented-btn:not(.is-active) {
   }
 }
 
-
-
-
 /* =========================
-   OOTD — MATCH V1 (PURPLE)
-   Usage: <html class="ootd-page">
+   ACCENT PAGES (V1 + OOTD)
+   Usage:
+   <html class="accent-page v1-page">   (sets gold)
+   <html class="accent-page ootd-page"> (sets purple)
    ========================= */
 
-html.ootd-page{
-  --ootd-accent: #8b5cf6;
-  --ootd-soft: rgba(139,92,246,.18);
+/* page-specific color choices */
+html.v1-page{
+  --accent: #f1c84b;
+  --accent-soft: rgba(241,200,75,.18);
+  --accent-line: rgba(241,200,75,.55);
 }
 
-/* keep page clean */
-html.ootd-page body{
+html.ootd-page{
+  --accent: #8b5cf6;
+  --accent-soft: rgba(139,92,246,.18);
+  --accent-line: rgba(139,92,246,.55);
+}
+
+html.yazaki-page{
+  --accent: #e11d48;                 /* Yazaki red */
+  --accent-soft: rgba(225,29,72,.18);
+  --accent-line: rgba(225,29,72,.55);
+}
+
+
+/* shared styling (applies to both) */
+html.accent-page body{
   background: var(--bg) !important;
 }
 
-/* header underline (same as V1, purple) */
-html.ootd-page .exp-header::after{
+/* header underline */
+html.accent-page .exp-header::after{
   content:"";
   position:absolute;
   left:0;
@@ -569,68 +583,71 @@ html.ootd-page .exp-header::after{
   opacity:.8;
   background: linear-gradient(
     90deg,
-    rgba(139,92,246,0),
-    rgba(139,92,246,.55),
-    rgba(139,92,246,0)
+    rgba(0,0,0,0),
+    var(--accent-line),
+    rgba(0,0,0,0)
   );
 }
 
-/* segmented (same behavior as V1) */
-html.ootd-page .segmented{
+/* segmented */
+html.accent-page .segmented{
   background: rgba(0,0,0,.035);
   border-color: rgba(0,0,0,.10);
   box-shadow: 0 10px 26px rgba(0,0,0,.04);
 }
 
-html.dark.ootd-page .segmented{
+html.dark.accent-page .segmented{
   background: rgba(255,255,255,.06);
   border-color: rgba(255,255,255,.12);
   box-shadow: 0 18px 36px rgba(0,0,0,.35);
 }
 
-html.ootd-page .segmented-btn.is-active{
+html.accent-page .segmented-btn.is-active{
   background: rgba(255,255,255,.92);
   box-shadow:
     0 12px 28px rgba(0,0,0,.08),
-    0 0 0 1px var(--ootd-soft);
+    0 0 0 1px var(--accent-soft);
 }
 
-html.dark.ootd-page .segmented-btn.is-active{
+html.dark.accent-page .segmented-btn.is-active{
   background: rgba(0,0,0,.55);
   box-shadow:
     0 14px 30px rgba(0,0,0,.45),
-    0 0 0 1px rgba(139,92,246,.16);
+    0 0 0 1px color-mix(in srgb, var(--accent) 16%, transparent);
 }
 
-/* rows: FLAT like V1 (no cards) */
-html.ootd-page .apple-row{
+/* hover colors */
+html.accent-page .apple-row:hover,
+html.accent-page .series-link-btn:hover,
+html.accent-page .navbar a:hover{
+  color: var(--accent);
+}
+
+html.accent-page .apple-row:hover .apple-arrow,
+html.accent-page .series-link-btn:hover .apple-arrow{
+  color: var(--accent);
+}
+
+/* arrows */
+html.accent-page .apple-arrow{
+  margin-right: 10px;
+  opacity: .65;
+  transform: translateX(0);
+  transition: transform 140ms ease, opacity 140ms ease;
+}
+
+html.accent-page .apple-row:hover .apple-arrow,
+html.accent-page .series-link-btn:hover .apple-arrow{
+  opacity: .9;
+  transform: translateX(2px);
+}
+
+/* left rail */
+html.accent-page .apple-row{
   position: relative;
 }
 
-/* purple text on hover */
-html.ootd-page .apple-row:hover{
-  color: var(--ootd-accent);
-}
-
-/* arrow follows */
-html.ootd-page .apple-row:hover .apple-arrow{
-  color: var(--ootd-accent);
-}
-
-/* arrow micro motion */
-html.ootd-page .apple-arrow{
-  margin-right:10px;
-  opacity:.45;
-  transition: transform .14s ease, opacity .14s ease;
-}
-
-html.ootd-page .apple-row:hover .apple-arrow{
-  transform: translateX(2px);
-  opacity:.9;
-}
-
-/* subtle left rail (V1 style) */
-html.ootd-page .apple-row::before{
+html.accent-page .apple-row::before{
   content:"";
   position:absolute;
   left:-10px;
@@ -639,149 +656,33 @@ html.ootd-page .apple-row::before{
   width:2px;
   border-radius:999px;
   background: transparent;
-  transition: background .14s ease;
+  transition: background 160ms ease;
 }
 
-html.ootd-page .apple-row:hover::before{
-  background: var(--ootd-accent);
+html.accent-page .apple-row:hover::before{
+  background: color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
 /* focus ring */
-html.ootd-page :is(a,button):focus-visible{
-  outline:none;
-  box-shadow: 0 0 0 3px rgba(139,92,246,.22);
-  border-radius:10px;
-}
-
-html.ootd-page .apple-list > :is(.apple-row, .series-link-btn){
-  border-bottom: 1px solid var(--border);
-}
-
-html.ootd-page .apple-list > :last-child{
-  border-bottom: none;
-}
-
-
-/* =========================
-   V1 PAGE (clean Apple + subtle V1 accent)
-   Scoped: <html class="v1-page">
-   ========================= */
-
-html.v1-page{
-  --v1-accent: #f1c84b;                 /* logo gold */
-  --v1-accent-soft: rgba(241,200,75,.18);
-  --v1-accent-line: rgba(241,200,75,.55);
-}
-
-/* No background wash. Just use your normal bg. */
-html.v1-page body{
-  background: var(--bg) !important;
-}
-
-/* Header underline: thinner + cleaner */
-html.v1-page .exp-header::after{
-  height: 2px;
-  opacity: 0.8;
-  background: linear-gradient(
-    90deg,
-    rgba(241,200,75,0.00),
-    rgba(241,200,75,0.55),
-    rgba(241,200,75,0.00)
-  );
-  filter: none;
-}
-
-
-
-/* Segmented: Apple clean (less shadow, tighter borders) */
-html.v1-page .segmented{
-  background: rgba(0,0,0,0.035);
-  border-color: rgba(0,0,0,0.10);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.04);
-}
-
-html.dark.v1-page .segmented{
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.12);
-  box-shadow: 0 18px 36px rgba(0,0,0,0.35);
-}
-
-/* Active segmented: NOT gold-filled (too loud).
-   Just a quiet elevated pill + tiny gold hairline. */
-html.v1-page .segmented-btn.is-active{
-  background: rgba(255,255,255,0.92);
-  box-shadow:
-    0 12px 28px rgba(0,0,0,0.08),
-    0 0 0 1px var(--v1-accent-soft);
-}
-
-html.dark.v1-page .segmented-btn.is-active{
-  background: rgba(0,0,0,0.55);
-  box-shadow:
-    0 14px 30px rgba(0,0,0,0.45),
-    0 0 0 1px rgba(241,200,75,0.16);
-}
-
-/* V1: text hover uses gold instead of blue */
-
-html.v1-page .apple-row:hover,
-html.v1-page .series-link-btn:hover,
-html.v1-page .navbar a:hover{
-  color: #f1c84b;
-}
-
-/* arrow follows text color */
-html.v1-page .apple-row:hover .apple-arrow{
-  color: #f1c84b;
-}
-
-/* Arrow alignment fix + micro motion (feels premium) */
-html.v1-page .apple-arrow{
-  margin-right: 10px; /* fixes your -10px row margins */
-  opacity: 0.65;
-  transform: translateX(0);
-  transition: transform 140ms ease, opacity 140ms ease;
-}
-html.v1-page .apple-row:hover .apple-arrow{
-  opacity: 0.9;
-  transform: translateX(2px);
-}
-
-/* Optional: subtle V1 accent only on hover via a tiny left rail */
-html.v1-page .apple-row{
-  position: relative;
-}
-html.v1-page .apple-row::before{
-  content:"";
-  position:absolute;
-  left: -10px;               /* matches your negative margin system */
-  top: 10px;
-  bottom: 10px;
-  width: 2px;
-  border-radius: 999px;
-  background: rgba(241,200,75,0.0);
-  transition: background 160ms ease;
-}
-html.v1-page .apple-row:hover::before{
-  background: rgba(241,200,75,0.45);
-}
-
-/* Links: quiet gold underline (V1 hint, still Apple) */
-html.v1-page .exp-link{
-  text-decoration-color: rgba(241,200,75,0.35);
-  text-underline-offset: 3px;
-}
-html.v1-page .exp-link:hover{
-  text-decoration-color: rgba(241,200,75,0.75);
-}
-
-/* Focus ring: gold only when tabbing (clean accessibility polish) */
-html.v1-page :is(a, button):focus-visible{
+html.accent-page :is(a,button):focus-visible{
   outline: none;
-  box-shadow: 0 0 0 3px rgba(241,200,75,0.22);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
   border-radius: 10px;
 }
 
-html.v1-page .apple-list > :last-child{
+/* dividers: keep between items, remove on last */
+html.accent-page .apple-list > :is(.apple-row, .series-link-btn){
+  border-bottom: 1px solid var(--border);
+}
+html.accent-page .apple-list > :last-child{
   border-bottom: none;
+}
+
+/* optional: exp-link underline color (if you use it) */
+html.accent-page .exp-link{
+  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  text-underline-offset: 3px;
+}
+html.accent-page .exp-link:hover{
+  text-decoration-color: color-mix(in srgb, var(--accent) 75%, transparent);
 }
