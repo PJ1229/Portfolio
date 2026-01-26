@@ -949,3 +949,110 @@ html.dark.ootd-page body{
       center;
   }
 }
+/* =========================
+   V1 PAGE (clean Apple + subtle V1 accent)
+   Scoped: <html class="v1-page">
+   ========================= */
+
+html.v1-page{
+  --v1-accent: #f1c84b;                 /* logo gold */
+  --v1-accent-soft: rgba(241,200,75,.18);
+  --v1-accent-line: rgba(241,200,75,.55);
+}
+
+/* No background wash. Just use your normal bg. */
+html.v1-page body{
+  background: var(--bg) !important;
+}
+
+/* Header underline: thinner + cleaner */
+html.v1-page .exp-header::after{
+  height: 2px;
+  opacity: 0.8;
+  background: linear-gradient(
+    90deg,
+    rgba(241,200,75,0.00),
+    rgba(241,200,75,0.55),
+    rgba(241,200,75,0.00)
+  );
+  filter: none;
+}
+
+/* Segmented: Apple clean (less shadow, tighter borders) */
+html.v1-page .segmented{
+  background: rgba(0,0,0,0.035);
+  border-color: rgba(0,0,0,0.10);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.04);
+}
+
+html.dark.v1-page .segmented{
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.35);
+}
+
+/* Active segmented: NOT gold-filled (too loud).
+   Just a quiet elevated pill + tiny gold hairline. */
+html.v1-page .segmented-btn.is-active{
+  background: rgba(255,255,255,0.92);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.08),
+    0 0 0 1px var(--v1-accent-soft);
+}
+
+html.dark.v1-page .segmented-btn.is-active{
+  background: rgba(0,0,0,0.55);
+  box-shadow:
+    0 14px 30px rgba(0,0,0,0.45),
+    0 0 0 1px rgba(241,200,75,0.16);
+}
+
+/* Rows: remove gradient hover. Use a clean Apple hover surface. */
+
+
+/* Arrow alignment fix + micro motion (feels premium) */
+html.v1-page .apple-arrow{
+  margin-right: 10px; /* fixes your -10px row margins */
+  opacity: 0.65;
+  transform: translateX(0);
+  transition: transform 140ms ease, opacity 140ms ease;
+}
+html.v1-page .apple-row:hover .apple-arrow{
+  opacity: 0.9;
+  transform: translateX(2px);
+}
+
+/* Optional: subtle V1 accent only on hover via a tiny left rail */
+html.v1-page .apple-row{
+  position: relative;
+}
+html.v1-page .apple-row::before{
+  content:"";
+  position:absolute;
+  left: -10px;               /* matches your negative margin system */
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  border-radius: 999px;
+  background: rgba(241,200,75,0.0);
+  transition: background 160ms ease;
+}
+html.v1-page .apple-row:hover::before{
+  background: rgba(241,200,75,0.45);
+}
+
+/* Links: quiet gold underline (V1 hint, still Apple) */
+html.v1-page .exp-link{
+  text-decoration-color: rgba(241,200,75,0.35);
+  text-underline-offset: 3px;
+}
+html.v1-page .exp-link:hover{
+  text-decoration-color: rgba(241,200,75,0.75);
+}
+
+/* Focus ring: gold only when tabbing (clean accessibility polish) */
+html.v1-page :is(a, button):focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(241,200,75,0.22);
+  border-radius: 10px;
+}
