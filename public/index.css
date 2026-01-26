@@ -618,10 +618,10 @@ html.dark.accent-page .segmented-btn.is-active{
 
 /* hover colors */
 html.accent-page .apple-row:hover,
-html.accent-page .series-link-btn:hover,
-html.accent-page .navbar a:hover{
+html.accent-page .series-link-btn:hover{
   color: var(--accent);
 }
+
 
 html.accent-page .apple-row:hover .apple-arrow,
 html.accent-page .series-link-btn:hover .apple-arrow{
@@ -685,4 +685,9 @@ html.accent-page .exp-link{
 }
 html.accent-page .exp-link:hover{
   text-decoration-color: color-mix(in srgb, var(--accent) 75%, transparent);
+}
+
+/* make the active nav item use the page accent instead of blue */
+html.accent-page{
+  --nav-active: var(--accent);
 }
