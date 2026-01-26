@@ -34,37 +34,37 @@
 
 <section class="apple-list">
 
-  <a class="apple-row" href="https://www.linkedin.com/posts/pjk1m_im-incredibly-excited-to-be-joining-yazaki-activity-7299908831822630912-jM2o" target="_blank">
+  <a class="apple-row has-date" href="https://www.linkedin.com/posts/pjk1m_im-incredibly-excited-to-be-joining-yazaki-activity-7299908831822630912-jM2o" target="_blank">
     <span class="apple-date">Feb 2025</span>
     <span class="apple-title">Recruitment</span>
     <span class="apple-arrow">→</span>
   </a>
 
-  <a class="apple-row" href="https://www.linkedin.com/posts/pjk1m_this-past-tuesday-i-had-the-incredible-opportunity-activity-7343664430427082753-fPfE" target="_blank">
+  <a class="apple-row has-date" href="https://www.linkedin.com/posts/pjk1m_this-past-tuesday-i-had-the-incredible-opportunity-activity-7343664430427082753-fPfE" target="_blank">
     <span class="apple-date">Jun 2025</span>
     <span class="apple-title">World Wide Engineering Conference</span>
     <span class="apple-arrow">→</span>
   </a>
 
-  <a class="apple-row" href="https://www.linkedin.com/posts/pjk1m_last-wednesday-at-yazaki-north-america-i-activity-7351449499640266752-e8KA" target="_blank">
+  <a class="apple-row has-date" href="https://www.linkedin.com/posts/pjk1m_last-wednesday-at-yazaki-north-america-i-activity-7351449499640266752-e8KA" target="_blank">
     <span class="apple-date">Jul 2025</span>
     <span class="apple-title">Process Improvement Proposal</span>
     <span class="apple-arrow">→</span>
   </a>
 
-  <a class="apple-row" href="https://www.linkedin.com/posts/pjk1m_last-friday-my-teammates-and-i-took-home-activity-7353883287234207747-JKwD" target="_blank">
+  <a class="apple-row has-date" href="https://www.linkedin.com/posts/pjk1m_last-friday-my-teammates-and-i-took-home-activity-7353883287234207747-JKwD" target="_blank">
     <span class="apple-date">Jul 2025</span>
     <span class="apple-title">Wiffleball Tournament</span>
     <span class="apple-arrow">→</span>
   </a>
 
-  <a class="apple-row" href="https://www.linkedin.com/posts/pjk1m_yesterday-i-had-the-incredible-opportunity-activity-7359191599832092672-jRxp" target="_blank">
+  <a class="apple-row has-date" href="https://www.linkedin.com/posts/pjk1m_yesterday-i-had-the-incredible-opportunity-activity-7359191599832092672-jRxp" target="_blank">
     <span class="apple-date">Aug 2025</span>
     <span class="apple-title">Final Presentation</span>
     <span class="apple-arrow">→</span>
   </a>
 
-  <a class="apple-row" href="https://www.linkedin.com/posts/pjk1m_today-marks-my-last-day-at-yazaki-north-america-activity-7362186173760360448-aNB0" target="_blank">
+  <a class="apple-row has-date" href="https://www.linkedin.com/posts/pjk1m_today-marks-my-last-day-at-yazaki-north-america-activity-7362186173760360448-aNB0" target="_blank">
     <span class="apple-date">Aug 2025</span>
     <span class="apple-title">Internship Recap</span>
     <span class="apple-arrow">→</span>
@@ -79,19 +79,7 @@
 
 </main>
 
-<script>
-const toggle = document.getElementById("theme-toggle");
-const root = document.documentElement;
-
-if (localStorage.theme === "dark") root.classList.add("dark");
-toggle.textContent = root.classList.contains("dark") ? "◇" : "◆";
-
-toggle.addEventListener("click", () => {
-  root.classList.toggle("dark");
-  localStorage.theme = root.classList.contains("dark") ? "dark" : "light";
-  toggle.textContent = root.classList.contains("dark") ? "◇" : "◆";
-});
-</script>
+<script defer src="../js/theme.js"></script>
 
 </body>
 </html>
