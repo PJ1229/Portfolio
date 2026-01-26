@@ -451,7 +451,6 @@ html.dark .segmented-btn:not(.is-active) {
 .segmented-btn:active {
   transform: scale(0.97);
 }
-/* ---------- Apple-like lists (shared) ---------- */
 
 /* ---------- Apple-like lists (shared) ---------- */
 
@@ -541,414 +540,128 @@ html.dark .segmented-btn:not(.is-active) {
   }
 }
 
-/* --- OOTD list polish / fixes --- */
 
-/* tighter series view spacing */
-.series-panel .apple-list{
-  margin-top: 0;              /* removes extra top breathing room */
-}
 
-.series-panel .series-blurb{
-  margin-top: 0;
-  padding-top: 0;
-}
-
-/* make separators ONLY apply inside apple-list, not globally */
-.apple-row,
-.series-link-btn{
-  border-bottom: none;        /* reset */
-}
-
-/* then add the separator only when inside a list */
-.apple-list > .apple-row,
-.apple-list > .series-link-btn{
-  border-bottom: 1px solid var(--border);
-}
-
-/* kill separator on last item (fixes the “random line” issue) */
-.apple-list > .apple-row:last-child,
-.apple-list > .series-link-btn:last-child{
-  border-bottom: none;
-}
-
-/* if you ever wrap rows in another div by accident, this keeps them clean */
-.apple-list > *{
-  margin: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.apple-row.has-date{ grid-template-columns: 84px 1fr auto; }
-.apple-date{ font-size:12px; opacity:.55; }
-.apple-title{ font-size:16px; }
 
 /* =========================
-   OOTD: CHROMIFY ALL TEXT (liquid silver)
-   Usage:
-   <html class="ootd-page chromify-all" ...>
+   OOTD — MATCH V1 (PURPLE)
+   Usage: <html class="ootd-page">
    ========================= */
 
-/* metallic palette */
-/* LIGHT MODE chrome needs contrast */
-html.ootd-page.chromify-all{
-  /* darker chrome for white backgrounds */
-  --chrome-a: rgba(35,35,35,0.98);
-  --chrome-b: rgba(80,80,80,0.96);
-  --chrome-c: rgba(20,20,20,0.98);
-  --chrome-d: rgba(120,120,120,0.95);
-
-  /* tiny fashion-tech tint */
-  --chrome-pink: rgba(255, 59, 212, 0.16);
-  --chrome-cyan: rgba(90, 200, 255, 0.14);
-
-  /* make it readable */
-  --chrome-shadow: rgba(0,0,0,0.14);
-  --chrome-outline: rgba(0,0,0,0.18);
+html.ootd-page{
+  --ootd-accent: #8b5cf6;
+  --ootd-soft: rgba(139,92,246,.18);
 }
 
-/* DARK MODE keeps the bright chrome */
-html.dark.ootd-page.chromify-all{
-  --chrome-a: rgba(255,255,255,0.92);
-  --chrome-b: rgba(190,190,190,0.88);
-  --chrome-c: rgba(255,255,255,0.82);
-  --chrome-d: rgba(150,150,150,0.82);
-
-  --chrome-pink: rgba(255, 59, 212, 0.22);
-  --chrome-cyan: rgba(90, 200, 255, 0.20);
-
-  --chrome-shadow: rgba(0,0,0,0.55);
-  --chrome-outline: rgba(255,255,255,0.08);
-}
-
-
-/* apply chrome to basically everything text-y */
-html.ootd-page.chromify-all body,
-html.ootd-page.chromify-all body *{
-  /* keep layout stable */
-  text-rendering: geometricPrecision;
-}
-
-/* only target real text elements (avoid SVGs/icons/etc) */
-html.ootd-page.chromify-all :is(
-  h1,h2,h3,h4,h5,h6,
-  p,span,small,strong,em,
-  a,button,label,li,
-  #page-title,#page-subtitle
-){
-  /* chrome gradient */
-  background-image:
-    linear-gradient(
-      110deg,
-      var(--chrome-a) 0%,
-      var(--chrome-b) 18%,
-      var(--chrome-c) 34%,
-      var(--chrome-d) 50%,
-      var(--chrome-c) 66%,
-      var(--chrome-b) 82%,
-      var(--chrome-a) 100%
-    ),
-    radial-gradient(900px 220px at 20% 10%, var(--chrome-pink), rgba(255,255,255,0) 60%),
-    radial-gradient(900px 220px at 80% 90%, var(--chrome-cyan), rgba(255,255,255,0) 60%);
-  background-size: 240% 100%, 100% 100%, 100% 100%;
-  background-position: 0% 50%, 0% 0%, 0% 0%;
-
-  /* the actual “chrome” text */
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-
-  /* liquid depth */
-  text-shadow:
-    0 10px 30px var(--chrome-shadow);
-  filter: drop-shadow(0 0 0.5px var(--chrome-outline));
-}
-
-/* keep body copy readable (slightly less intense) */
-html.ootd-page.chromify-all :is(p,li,small){
-  opacity: 0.92;
-  background-size: 260% 100%, 100% 100%, 100% 100%;
-}
-
-/* links still feel tappable */
-html.ootd-page.chromify-all a{
-  text-decoration: none;
-}
-html.ootd-page.chromify-all a:hover{
-  filter: drop-shadow(0 0 10px rgba(255,59,212,0.10));
-}
-
-/* segmented + list arrows should *not* get chrome (they look weird) */
-html.ootd-page.chromify-all .apple-arrow,
-html.ootd-page.chromify-all .theme-btn{
-  color: var(--text);
-  -webkit-text-fill-color: unset;
-  background: none;
-}
-
-/* animate the chrome flow */
-@keyframes chromeFlow{
-  0%   { background-position: 0% 50%, 0% 0%, 0% 0%; }
-  50%  { background-position: 100% 50%, 0% 0%, 0% 0%; }
-  100% { background-position: 0% 50%, 0% 0%, 0% 0%; }
-}
-
-/* run animation on the important text */
-html.ootd-page.chromify-all :is(
-  h1,h2,h3,
-  a,button,
-  .apple-title,
-  .series-blurb,
-  #page-subtitle
-){
-  animation: chromeFlow 7.5s ease-in-out infinite;
-}
-
-/* reduce motion support */
-@media (prefers-reduced-motion: reduce){
-  html.ootd-page.chromify-all :is(
-    h1,h2,h3,a,button,.apple-title,.series-blurb,#page-subtitle
-  ){
-    animation: none;
-  }
-}
-
-/* =========================
-  OOTD PAGE (scoped)
-  Add: <html class="ootd-page" ...>
-  Paste this near the BOTTOM of index.css
-  ========================= */
-
-/* --- light “fashion-tech” wash behind page --- */
+/* keep page clean */
 html.ootd-page body{
-  background:
-    radial-gradient(1200px 700px at 20% -10%, rgba(255, 59, 212, 0.10), rgba(255, 255, 255, 0) 55%),
-    radial-gradient(1100px 650px at 90% 10%, rgba(90, 200, 255, 0.10), rgba(255, 255, 255, 0) 55%),
-    var(--bg);
+  background: var(--bg) !important;
 }
 
-/* dark mode wash */
-html.dark.ootd-page body{
-  background:
-    radial-gradient(1000px 650px at 25% -10%, rgba(255, 59, 212, 0.14), rgba(0,0,0,0) 55%),
-    radial-gradient(1000px 650px at 85% 5%, rgba(90, 200, 255, 0.12), rgba(0,0,0,0) 55%),
-    var(--bg);
-}
-
-
+/* header underline (same as V1, purple) */
 html.ootd-page .exp-header::after{
   content:"";
   position:absolute;
   left:0;
   right:0;
   bottom:0;
-  height: 3px;
-  border-radius: 999px;
+  height:2px;
+  opacity:.8;
   background: linear-gradient(
     90deg,
-    rgba(255,59,212,0.00),
-    rgba(255,59,212,0.55),
-    rgba(90,200,255,0.55),
-    rgba(255,59,212,0.00)
+    rgba(139,92,246,0),
+    rgba(139,92,246,.55),
+    rgba(139,92,246,0)
   );
-  filter: blur(0.15px);
-  opacity: 0.75;
 }
 
-html.dark.ootd-page .exp-header::after{
-  opacity: 0.95;
-}
-
-/* --- remove any “underline only under segmented” bug if you had it --- */
-html.ootd-page .segmented::after{
-  content: none !important;
-}
-
-/* --- segmented: a bit more “fashion-tech” (still Apple-ish) --- */
+/* segmented (same behavior as V1) */
 html.ootd-page .segmented{
-  background: rgba(0,0,0,0.045);
-  border-color: rgba(0,0,0,0.10);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.04);
+  background: rgba(0,0,0,.035);
+  border-color: rgba(0,0,0,.10);
+  box-shadow: 0 10px 26px rgba(0,0,0,.04);
 }
 
 html.dark.ootd-page .segmented{
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(255,255,255,0.12);
-  box-shadow: 0 18px 36px rgba(0,0,0,0.35);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.12);
+  box-shadow: 0 18px 36px rgba(0,0,0,.35);
 }
 
 html.ootd-page .segmented-btn.is-active{
-  background: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,.92);
   box-shadow:
-    0 12px 28px rgba(0,0,0,0.08),
-    0 0 0 1px rgba(255,59,212,0.14);
+    0 12px 28px rgba(0,0,0,.08),
+    0 0 0 1px var(--ootd-soft);
 }
 
 html.dark.ootd-page .segmented-btn.is-active{
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,.55);
   box-shadow:
-    0 14px 30px rgba(0,0,0,0.45),
-    0 0 0 1px rgba(255,59,212,0.18);
+    0 14px 30px rgba(0,0,0,.45),
+    0 0 0 1px rgba(139,92,246,.16);
 }
 
-/* --- CHROMIFY TEXT (chromatic aberration) --- */
-/* Use on title, and optionally on small headers */
-html.ootd-page #page-title,
-html.ootd-page .chromify{
+/* rows: FLAT like V1 (no cards) */
+html.ootd-page .apple-row{
   position: relative;
-  letter-spacing: -0.02em;
-  /* base shadow */
-  text-shadow: 0 10px 40px rgba(0,0,0,0.06);
 }
 
-/* chroma layers */
-html.ootd-page #page-title::before,
-html.ootd-page #page-title::after,
-html.ootd-page .chromify::before,
-html.ootd-page .chromify::after{
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  opacity: 0.55;
-}
-
-/* pink offset */
-html.ootd-page #page-title::before,
-html.ootd-page .chromify::before{
-  transform: translate(-1.2px, 0px);
-  color: rgba(255, 59, 212, 0.85);
-  filter: blur(0.15px);
-}
-
-/* cyan offset */
-html.ootd-page #page-title::after,
-html.ootd-page .chromify::after{
-  transform: translate(1.2px, 0px);
-  color: rgba(90, 200, 255, 0.85);
-  filter: blur(0.15px);
-}
-
-/* stronger in dark mode */
-html.dark.ootd-page #page-title::before,
-html.dark.ootd-page #page-title::after,
-html.dark.ootd-page .chromify::before,
-html.dark.ootd-page .chromify::after{
-  opacity: 0.75;
-}
-
-/* IMPORTANT:
-  For chromify to work, you must set data-text on the element:
-  <h1 id="page-title" data-text="OOTD">OOTD</h1>
-  JS below updates that automatically when title changes.
-*/
-
-/* --- list: slightly more premium spacing + hover sheen --- */
-html.ootd-page .apple-list{
-  margin-top: 18px;
-}
-
-html.ootd-page .apple-row,
-html.ootd-page .series-link-btn{
-  border-bottom-color: rgba(0,0,0,0.09);
-}
-
-html.dark.ootd-page .apple-row,
-html.dark.ootd-page .series-link-btn{
-  border-bottom-color: rgba(255,255,255,0.10);
-}
-
-html.ootd-page .apple-row:hover,
-html.ootd-page .series-link-btn:hover{
-  color: var(--nav-active);
-}
-
+/* purple text on hover */
 html.ootd-page .apple-row:hover{
-  background: linear-gradient(
-    90deg,
-    rgba(255,59,212,0.00),
-    rgba(255,59,212,0.05),
-    rgba(90,200,255,0.05),
-    rgba(255,59,212,0.00)
-  );
+  color: var(--ootd-accent);
 }
 
-html.dark.ootd-page .apple-row:hover{
-  background: linear-gradient(
-    90deg,
-    rgba(255,59,212,0.00),
-    rgba(255,59,212,0.08),
-    rgba(90,200,255,0.06),
-    rgba(255,59,212,0.00)
-  );
+/* arrow follows */
+html.ootd-page .apple-row:hover .apple-arrow{
+  color: var(--ootd-accent);
 }
 
-/* keep the hover background from changing height */
-/* compensate arrow for negative row margins */
-html.ootd-page .apple-row svg,
-html.ootd-page .series-link-btn svg{
-  margin-right: 10px;
+/* arrow micro motion */
+html.ootd-page .apple-arrow{
+  margin-right:10px;
+  opacity:.45;
+  transition: transform .14s ease, opacity .14s ease;
+}
+
+html.ootd-page .apple-row:hover .apple-arrow{
+  transform: translateX(2px);
+  opacity:.9;
+}
+
+/* subtle left rail (V1 style) */
+html.ootd-page .apple-row::before{
+  content:"";
+  position:absolute;
+  left:-10px;
+  top:10px;
+  bottom:10px;
+  width:2px;
+  border-radius:999px;
+  background: transparent;
+  transition: background .14s ease;
+}
+
+html.ootd-page .apple-row:hover::before{
+  background: var(--ootd-accent);
+}
+
+/* focus ring */
+html.ootd-page :is(a,button):focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 3px rgba(139,92,246,.22);
+  border-radius:10px;
+}
+
+html.ootd-page .apple-list > :is(.apple-row, .series-link-btn){
+  border-bottom: 1px solid var(--border);
+}
+
+html.ootd-page .apple-list > :last-child{
+  border-bottom: none;
 }
 
 
-/* date rows (Ford-style) */
-html.ootd-page .apple-row.has-date{
-  grid-template-columns: 84px 1fr auto;
-  align-items: center;
-  column-gap: 16px;
-}
-
-html.ootd-page .apple-date{
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-html.dark.ootd-page .apple-date{
-  opacity: 0.7;
-}
-
-/* series panel blurb spacing */
-html.ootd-page .series-panel{
-  margin-top: 8px;
-}
-
-html.ootd-page .series-blurb{
-  margin: 0 0 18px 0;
-  opacity: .75;
-  max-width: 62ch;
-}
-
-/* =========================
-   OOTD background animation
-   ========================= */
-
-html.ootd-page body,
-html.dark.ootd-page body{
-  background-size: 140% 140%;
-  animation: ootdGradientDrift 22s ease-in-out infinite alternate;
-}
-
-@keyframes ootdGradientDrift {
-  0%{
-    background-position:
-      0% 0%,
-      100% 0%,
-      center;
-  }
-  50%{
-    background-position:
-      30% 20%,
-      70% 40%,
-      center;
-  }
-  100%{
-    background-position:
-      60% 10%,
-      40% 30%,
-      center;
-  }
-}
 /* =========================
    V1 PAGE (clean Apple + subtle V1 accent)
    Scoped: <html class="v1-page">
@@ -977,6 +690,8 @@ html.v1-page .exp-header::after{
   );
   filter: none;
 }
+
+
 
 /* Segmented: Apple clean (less shadow, tighter borders) */
 html.v1-page .segmented{
@@ -1065,4 +780,8 @@ html.v1-page :is(a, button):focus-visible{
   outline: none;
   box-shadow: 0 0 0 3px rgba(241,200,75,0.22);
   border-radius: 10px;
+}
+
+html.v1-page .apple-list > :last-child{
+  border-bottom: none;
 }
