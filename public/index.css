@@ -178,6 +178,15 @@ li { margin-bottom: 6px; }
   color: var(--subtext);
 }
 
+.exp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--nav-active);
+}
+
 .exp-header {
   display: flex;
   align-items: flex-end;
