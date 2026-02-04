@@ -401,6 +401,18 @@ li { margin-bottom: 6px; }
   color: var(--subtext);
 }
 
+.film-section-links-top .film-section-link {
+  margin: 0 0 6px;
+}
+
+.film-section-links-top .film-section-link:last-child {
+  margin-bottom: 0;
+}
+
+.film-section-link a {
+  color: #1a73e8;
+}
+
 .film-filters {
   display: flex;
   flex-wrap: wrap;
