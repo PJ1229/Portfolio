@@ -34,8 +34,8 @@
   <div class="container">
 
     <h1>Building in Public, Failure, and Exclusivity</h1>
-    <p style="color:var(--subtext); margin-top:-6px; font-size:15px;">
-      (Dec 2025)
+    <p class="post-meta-line">
+      (Dec 2025) · <span class="reading-time" data-reading-time></span>
     </p>
 
     <hr class="section-divider" style="margin-top:28px;">
@@ -158,6 +158,19 @@
     
 
   </div>
+
+  <script>
+    (function () {
+      const container = document.querySelector(".container");
+      const output = document.querySelector("[data-reading-time]");
+      if (!container || !output) return;
+      const text = container.innerText || "";
+      const words = text.trim().split(/\s+/).filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(words / 200));
+      output.textContent = `${minutes} min read`;
+    })();
+  </script>
+
 
   <!-- DARK MODE SCRIPT -->
   <script>

@@ -47,7 +47,7 @@
                 <div class="exp-title">
                 Authenticity & Virality
                 </div>
-                <div class="exp-date">Jan 2026</div>
+        <div class="exp-date">Jan 2026 · <span class="blog-read" data-read-for="blog-posts/authenticity-virality.html">— min read</span></div>
                 <p>
                   How do I create viral content that remains authentic in storytelling?
                 </p>
@@ -59,7 +59,7 @@
                 <div class="exp-title">
                 Building in Public, Failure, and Exclusivity
                 </div>
-                <div class="exp-date">Dec 2025</div>
+        <div class="exp-date">Dec 2025 · <span class="blog-read" data-read-for="blog-posts/building-failure-exclusivity.html">— min read</span></div>
                 <p>
                   I transferred schools, failed a startup, changed majors, found filmmaking, and learned that building in public isn’t just about growth.
                 </p>
@@ -68,6 +68,30 @@
     </div>
 
   </div>
+
+  <script>
+    (function () {
+      const items = document.querySelectorAll("[data-read-for]");
+      if (!items.length) return;
+      items.forEach(async (el) => {
+        const href = el.getAttribute("data-read-for");
+        if (!href) return;
+        try {
+          const res = await fetch(href, { cache: "force-cache" });
+          if (!res.ok) return;
+          const html = await res.text();
+          const text = html.replace(/<script[\s\S]*?<\/script>/gi, " ")
+            .replace(/<style[\s\S]*?<\/style>/gi, " ")
+            .replace(/<[^>]+>/g, " ");
+          const words = text.trim().split(/\s+/).filter(Boolean).length;
+          const minutes = Math.max(1, Math.round(words / 200));
+          el.textContent = `${minutes} min read`;
+        } catch (err) {
+          // leave placeholder on failure
+        }
+      });
+    })();
+  </script>
 
   <!-- DARK MODE SCRIPT -->
   <script>
