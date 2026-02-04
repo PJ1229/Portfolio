@@ -3,14 +3,26 @@ const express = require("express");
 const path = require("path");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
+const compression = require("compression");
 require("dotenv").config();
 
 const app = express();
 
 // --- Middleware ---
 app.use(cors());
-app.use(express.json()); // parse JSON body
+app.use(helmet());
+app.use(compression());
+app.use(express.json({ limit: "64kb" })); // parse JSON body with size cap
 app.use(express.static(path.join(__dirname, "public"))); // serve static files
+
+const requiredEnv = ["EMAIL_USER", "EMAIL_PASS"];
+const missingEnv = requiredEnv.filter((key) => !process.env[key]);
+if (missingEnv.length) {
+  console.error(`Missing required env vars: ${missingEnv.join(", ")}`);
+  process.exit(1);
+}
 
 // --- Serve index.html at root ---
 app.get("/", (req, res) => {
@@ -18,11 +30,38 @@ app.get("/", (req, res) => {
 });
 
 // --- Contact API endpoint ---
-app.post("/api/contact", async (req, res) => {
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.post("/api/contact", contactLimiter, async (req, res) => {
   const { subject, name, email, message } = req.body;
 
   if (!subject || !name || !email || !message) {
     return res.status(400).json({ error: "All fields are required." });
+  }
+
+  const trimmedSubject = String(subject).trim();
+  const trimmedName = String(name).trim();
+  const trimmedEmail = String(email).trim();
+  const trimmedMessage = String(message).trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (
+    !trimmedSubject ||
+    !trimmedName ||
+    !trimmedEmail ||
+    !trimmedMessage ||
+    trimmedSubject.length > 120 ||
+    trimmedName.length > 120 ||
+    trimmedEmail.length > 254 ||
+    trimmedMessage.length > 4000 ||
+    !emailRegex.test(trimmedEmail)
+  ) {
+    return res.status(400).json({ error: "Invalid input." });
   }
 
   try {
@@ -37,18 +76,19 @@ app.post("/api/contact", async (req, res) => {
 
     // Email content
     const mailOptions = {
-      from: `"${name}" <${email}>`,
+      from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
+      replyTo: trimmedEmail,
       to: process.env.EMAIL_USER,
-      subject: `[Portfolio Contact] ${subject}`,
+      subject: `[Portfolio Contact] ${trimmedSubject}`,
       text: `
         📬 New message from your portfolio site:
 
-        Name: ${name}
-        Email: ${email}
-        Subject: ${subject}
+        Name: ${trimmedName}
+        Email: ${trimmedEmail}
+        Subject: ${trimmedSubject}
 
         Message:
-        ${message}
+        ${trimmedMessage}
       `,
     };
 

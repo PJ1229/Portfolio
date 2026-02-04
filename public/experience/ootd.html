@@ -162,6 +162,38 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
+    function createRow({ date, label, url, asButton, seriesId }) {
+      const row = document.createElement(asButton ? "button" : "a");
+      row.className = "apple-row has-date";
+
+      if (asButton) {
+        row.type = "button";
+        row.dataset.series = seriesId;
+        row.classList.add("series-link-btn");
+      } else {
+        row.href = url;
+        row.target = "_blank";
+        row.rel = "noopener noreferrer";
+      }
+
+      const dateSpan = document.createElement("span");
+      dateSpan.className = "apple-date";
+      dateSpan.textContent = date || "";
+
+      const labelSpan = document.createElement("span");
+      labelSpan.className = "apple-title";
+      labelSpan.textContent = label;
+
+      const arrowSpan = document.createElement("span");
+      arrowSpan.className = "apple-arrow";
+      arrowSpan.textContent = "→";
+
+      row.appendChild(dateSpan);
+      row.appendChild(labelSpan);
+      row.appendChild(arrowSpan);
+      return row;
+    }
+
     function showSeries(seriesId) {
       const page = seriesPages[seriesId];
       if (!page) return;
@@ -169,27 +201,25 @@
       inSeriesView = true;
       linksContainer.style.display = "none";
       seriesContainer.style.display = "";
+      seriesContainer.innerHTML = "";
 
       titleEl.textContent = page.title;
       subtitleEl.textContent = "Series write-up";
 
-      const listRows = (page.links || []).map(l => {
-        const dateHtml = l.date ? `<span class="apple-date">${l.date}</span>` : `<span class="apple-date"></span>`;
-        return `
-          <a class="apple-row has-date" href="${l.url}" target="_blank" rel="noopener noreferrer">
-            ${dateHtml}
-            <span class="apple-title">${l.label}</span>
-            <span class="apple-arrow">→</span>
-          </a>
-        `;
-      }).join("");
+      const blurb = document.createElement("p");
+      blurb.className = "series-blurb";
+      blurb.textContent = page.blurb || "";
 
-      seriesContainer.innerHTML = `
-        <p class="series-blurb">${page.blurb || ""}</p>
-        <div class="apple-list">
-          ${listRows}
-        </div>
-      `;
+      const list = document.createElement("div");
+      list.className = "apple-list";
+
+      (page.links || []).forEach((l) => {
+        const row = createRow({ date: l.date, label: l.label, url: l.url });
+        list.appendChild(row);
+      });
+
+      seriesContainer.appendChild(blurb);
+      seriesContainer.appendChild(list);
 
       setFooterLink();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -211,34 +241,33 @@
       linksContainer.innerHTML = "";
       set.links.forEach(({ date, label, url, seriesId }) => {
         if (key === "v1") {
-          linksContainer.insertAdjacentHTML("beforeend", `
-            <a class="apple-row" href="${url}" target="_blank" rel="noopener noreferrer">
-              <span>${label}</span>
-              <span class="apple-arrow">→</span>
-            </a>
-          `);
+          const row = document.createElement("a");
+          row.className = "apple-row";
+          row.href = url;
+          row.target = "_blank";
+          row.rel = "noopener noreferrer";
+
+          const labelSpan = document.createElement("span");
+          labelSpan.textContent = label;
+
+          const arrowSpan = document.createElement("span");
+          arrowSpan.className = "apple-arrow";
+          arrowSpan.textContent = "→";
+
+          row.appendChild(labelSpan);
+          row.appendChild(arrowSpan);
+          linksContainer.appendChild(row);
           return;
         }
 
-        const dateHtml = date ? `<span class="apple-date">${date}</span>` : `<span class="apple-date"></span>`;
-
-        if (seriesId) {
-          linksContainer.insertAdjacentHTML("beforeend", `
-            <button class="series-link-btn apple-row has-date" type="button" data-series="${seriesId}">
-              ${dateHtml}
-              <span class="apple-title">${label}</span>
-              <span class="apple-arrow">→</span>
-            </button>
-          `);
-        } else {
-          linksContainer.insertAdjacentHTML("beforeend", `
-            <a class="apple-row has-date" href="${url}" target="_blank" rel="noopener noreferrer">
-              ${dateHtml}
-              <span class="apple-title">${label}</span>
-              <span class="apple-arrow">→</span>
-            </a>
-          `);
-        }
+        const row = createRow({
+          date,
+          label,
+          url,
+          asButton: Boolean(seriesId),
+          seriesId,
+        });
+        linksContainer.appendChild(row);
       });
     }
 

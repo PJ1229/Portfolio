@@ -36,7 +36,7 @@
     <h1>PJ Kim</h1>
 
     <p>
-      I'm a sophmore at the 
+      I'm a sophomore at the 
       <a target="_blank" href="https://www.engin.umich.edu/">University of Michigan</a> 
       studying computer engineering.
       I'm also a freelance film producer and a builder.
@@ -60,28 +60,7 @@
   </div>
 
   <!-- DARK MODE SCRIPT -->
-  <script>
-    const toggle = document.getElementById("theme-toggle");
-    const root = document.documentElement;
-
-    // Load saved theme
-    if (localStorage.theme === "dark") {
-      root.classList.add("dark");
-      toggle.textContent = "◇";
-    }
-
-    toggle.addEventListener("click", () => {
-      root.classList.toggle("dark");
-
-      if (root.classList.contains("dark")) {
-        localStorage.theme = "dark";
-        toggle.textContent = "◇";
-      } else {
-        localStorage.theme = "light";
-        toggle.textContent = "◆";
-      }
-    });
-  </script>
+  <script defer src="js/theme.js"></script>
 
 </body>
 </html>

@@ -98,26 +98,30 @@
       linksContainer.innerHTML = "";
 
       set.links.forEach(({ date, label, url }) => {
-        // V1 tab: simple row (no date column)
-        if (key === "v1") {
-          linksContainer.insertAdjacentHTML("beforeend", `
-            <a class="apple-row" href="${url}" target="_blank" rel="noopener noreferrer">
-              <span>${label}</span>
-              <span class="apple-arrow">→</span>
-            </a>
-          `);
-          return;
+        const row = document.createElement("a");
+        row.className = key === "v1" ? "apple-row" : "apple-row has-date";
+        row.href = url;
+        row.target = "_blank";
+        row.rel = "noopener noreferrer";
+
+        if (key !== "v1") {
+          const dateSpan = document.createElement("span");
+          dateSpan.className = "apple-date";
+          dateSpan.textContent = date || "";
+          row.appendChild(dateSpan);
         }
 
-        // Deliverables tab: Ford-style date column
-        const dateHtml = date ? `<span class="apple-date">${date}</span>` : `<span class="apple-date"></span>`;
-        linksContainer.insertAdjacentHTML("beforeend", `
-          <a class="apple-row has-date" href="${url}" target="_blank" rel="noopener noreferrer">
-            ${dateHtml}
-            <span class="apple-title">${label}</span>
-            <span class="apple-arrow">→</span>
-          </a>
-        `);
+        const labelSpan = document.createElement("span");
+        labelSpan.className = key === "v1" ? "" : "apple-title";
+        labelSpan.textContent = label;
+
+        const arrowSpan = document.createElement("span");
+        arrowSpan.className = "apple-arrow";
+        arrowSpan.textContent = "→";
+
+        row.appendChild(labelSpan);
+        row.appendChild(arrowSpan);
+        linksContainer.appendChild(row);
       });
     }
 
