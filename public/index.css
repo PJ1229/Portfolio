@@ -463,24 +463,54 @@ html.dark .film-filter.is-active {
   border-bottom: none;
 }
 
+.film-longform-hero {
+  position: relative;
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.film-longform-hero img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.film-longform-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 18px 18px 16px;
+  color: #ffffff;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 55%, rgba(0,0,0,0.85) 100%);
+}
+
 .film-longform-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
-  color: var(--heading);
+  color: #ffffff;
 }
 
 .film-longform-meta {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  color: var(--subtext);
-  opacity: 0.7;
+  opacity: 0.85;
   margin: 4px 0 6px;
 }
 
 .film-longform-desc {
-  color: var(--subtext);
-  margin: 0;
+  margin: 0 0 8px;
+  color: rgba(255,255,255,0.9);
+}
+
+.film-longform-links {
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .film-card-static {
