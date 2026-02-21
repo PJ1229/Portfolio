@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../index.css">
+  <title>FILSOC x VSA Fall Dance</title>
+  <link rel="icon" href="../images/logo.png" type="image/icon type">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M0J8NYPG27"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M0J8NYPG27');
+</script>
+
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html">Home</a>
+    <a href="../experience.html">Experience</a>
+    <!--<a href="../projects.html">Projects</a>-->
+    <a class="active" href="../film.html">Film</a>
+    <a href="../blog.html">Blog</a>
+    <button id="theme-toggle" class="theme-btn">◆</button>
+  </nav>
+
+  <div class="container">
+
+    <h1>FILSOC x VSA Fall Dance</h1>
+    <p style="margin-top:-6px;">
+      dance choreography film for FILSOC and VSA at Wayne State University
+    </p>
+    <p class="film-date">February 2026</p>
+
+    <hr class="section-divider">
+
+    <!-- VIDEO EMBED -->
+    <div style="margin-bottom:28px;">
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden;">
+        <iframe 
+          src="https://www.youtube.com/embed/-f-tY4n9Q78"
+          title="FILSOC x VSA Fall Dance"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="position:absolute; top:0; left:0; width:100%; height:100%;"
+        ></iframe>
+      </div>
+    </div>
+
+    <h2 style="margin-top:0;">About</h2>
+    <p style="margin-top:-4px;">
+      A short dance choreography film created for FILSOC (Filipino organization) and VSA (Vietnamese organization) at Wayne State University.
+    </p>
+
+    <h3>Role</h3>
+    <ul>
+      <li>co-videography and edit — <span style="font-weight:500;">PJ Kim</span></li>
+      <li>co-videography — <span style="font-weight:500;">Mark Zhu</span></li>
+    </ul>
+
+    <h3>Choreographers</h3>
+    <ul>
+      <li>Emma Cruz</li>
+      <li>Anika Rose Abelgas</li>
+      <li>Kaitlyn Deleon</li>
+    </ul>
+
+    <h3>Details</h3>
+    <ul>
+      <li>Camera: Fujifilm XS-20</li>
+      <li>Tools: Premiere Pro</li>
+    </ul>
+
+    <hr class="section-divider" style="margin-top:40px;">
+    <p>
+      <a href="../film.html" style="color:#1a73e8;">← back to film</a>
+    </p>
+
+  </div>
+
+  <!-- DARK MODE SCRIPT -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    if (localStorage.theme === "dark") {
+      root.classList.add("dark");
+      toggle.textContent = "◇";
+    }
+
+    toggle.addEventListener("click", () => {
+      root.classList.toggle("dark");
+      toggle.textContent = root.classList.contains("dark") ? "◇" : "◆";
+      localStorage.theme = root.classList.contains("dark") ? "dark" : "light";
+    });
+  </script>
+</body>
+</html>
