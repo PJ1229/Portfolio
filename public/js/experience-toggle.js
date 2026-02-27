@@ -3,8 +3,6 @@
   window.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll(".segmented-btn[data-view]");
     const entries = document.querySelectorAll(".exp-entry[data-type]");
-    const subtitle = document.getElementById("exp-subtitle");
-
     if (!buttons.length || !entries.length) return;
 
     function setView(view) {
@@ -18,7 +16,6 @@
         entry.style.display = (entry.dataset.type === view) ? "block" : "none";
       });
 
-      if (subtitle) subtitle.textContent = view === "swe" ? "SWE Experience" : "Growth Experience";
       localStorage.exp_view = view;
     }
 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>DSA Progress</title>
+  <link rel="icon" href="images/logo.png" type="image/icon type">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M0J8NYPG27"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M0J8NYPG27');
+</script>
+
+<body class="dsa-page">
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="experience.html">Experience</a>
+    <a href="film.html">Film</a>
+    <a href="blog.html">Blog</a>
+    <button id="theme-toggle" class="theme-btn">◆</button>
+  </nav>
+
+  <div class="container">
+    <p class="dsa-title">DSA Progress</p>
+    <p class="dsa-subtitle">
+      Daily logs pulled from my GitHub commits.
+      <a href="https://github.com/PJ1229/leetcode.git" target="_blank" rel="noopener noreferrer">repo →</a>
+    </p>
+
+    <div class="dsa-list" id="dsa-list">
+      <p class="dsa-muted">Loading progress…</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const container = document.getElementById("dsa-list");
+      if (!container) return;
+
+      const repo = "PJ1229/leetcode";
+      const url = `https://api.github.com/repos/${repo}/commits?per_page=100`;
+
+      function formatDate(iso) {
+        const d = new Date(iso);
+        if (Number.isNaN(d.getTime())) return iso;
+        return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+      }
+
+      function groupByDay(commits) {
+        const map = new Map();
+        commits.forEach((item) => {
+          const date = item.commit && item.commit.author && item.commit.author.date;
+          const day = date ? date.slice(0, 10) : "unknown";
+          if (!map.has(day)) map.set(day, []);
+          map.get(day).push({
+            message: item.commit && item.commit.message ? item.commit.message : "Untitled commit",
+            url: item.html_url,
+            date: date || ""
+          });
+        });
+        return Array.from(map.entries())
+          .sort((a, b) => b[0].localeCompare(a[0]));
+      }
+
+      fetch(url)
+        .then((res) => res.ok ? res.json() : Promise.reject(res))
+        .then((data) => {
+          if (!Array.isArray(data) || !data.length) {
+            container.innerHTML = "<p class=\"dsa-muted\">No logs yet.</p>";
+            return;
+          }
+
+          const groups = groupByDay(data);
+          container.innerHTML = "";
+
+          groups.forEach(([day, items]) => {
+            const section = document.createElement("div");
+            section.className = "dsa-day";
+
+            const title = document.createElement("div");
+            title.className = "dsa-day-title";
+            title.textContent = formatDate(items[0].date || day);
+
+            const list = document.createElement("ul");
+            list.className = "dsa-items";
+
+            items.forEach((item) => {
+              const li = document.createElement("li");
+              const link = document.createElement("a");
+              link.href = item.url;
+              link.target = "_blank";
+              link.rel = "noopener noreferrer";
+              link.textContent = item.message.split("\n")[0];
+              li.appendChild(link);
+              list.appendChild(li);
+            });
+
+            section.appendChild(title);
+            section.appendChild(list);
+            container.appendChild(section);
+          });
+        })
+        .catch(() => {
+          container.innerHTML = "<p class=\"dsa-muted\">Could not load logs yet.</p>";
+        });
+    })();
+  </script>
+
+  <script defer src="js/theme.js"></script>
+</body>
+</html>

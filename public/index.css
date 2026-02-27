@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
 @font-face {
   font-family: sf-pro;
   src: url(fonts/SF-Pro.ttf);
@@ -6,31 +8,31 @@
 /* ---------- THEME VARIABLES ---------- */
 
 :root {
-  --bg: #f5f5f7;
-  --surface: #ffffff;
+  --bg: #ffffff;
+  --surface: transparent;
   --text: #111111;
-  --subtext: #3d3d3d;
+  --subtext: #4a4a4a;
   --heading: #0a0a0a;
   --border: #e6e6e9;
-  --link: #0a0a0a;
-  --link-hover: #4d4d4d;
-  --nav-active: #0a84ff;
-  --page-width: 820px;
-  --page-pad: 28px;
-  --radius: 14px;
+  --link: #111111;
+  --link-hover: #5a5a5a;
+  --nav-active: #111111;
+  --page-width: 700px;
+  --page-pad: 20px;
+  --radius: 10px;
   --shadow: none;
 }
 
 html.dark {
   --bg: #0b0b0d;
-  --surface: #121215;
+  --surface: transparent;
   --text: #e9e9eb;
   --subtext: #b3b3b6;
   --heading: #f5f5f7;
   --border: #2b2b2f;
   --link: #ffffff;
   --link-hover: #c9c9cc;
-  --nav-active: #4da3ff;
+  --nav-active: #ffffff;
   --shadow: none;
 }
 
@@ -39,13 +41,13 @@ html.dark {
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Inter", "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
-  font-size: 16px;
-  line-height: 1.68;
-  letter-spacing: -0.01em;
-  word-spacing: 0.02em;
+  font-size: 15.5px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  word-spacing: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -54,11 +56,11 @@ html, body {
 .container {
   max-width: var(--page-width);
   width: calc(100% - (2 * var(--page-pad)));
-  margin: 64px auto;
-  padding: 36px var(--page-pad);
+  margin: 52px auto;
+  padding: 20px var(--page-pad);
   background: var(--surface);
   border: none;
-  border-radius: var(--radius);
+  border-radius: 0;
   box-shadow: var(--shadow);
 }
 
@@ -66,15 +68,15 @@ html, body {
 /* ---------- Typography ---------- */
 
 h1, h2, h3 {
-  font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Inter", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   font-weight: 600;
   color: var(--heading);
   margin-top: 0;
 }
 
-h1 { font-size: 36px; letter-spacing: -0.02em; }
-h2 { font-size: 24px; margin-top: 36px; letter-spacing: -0.01em; }
-h3 { font-size: 19px; margin-top: 28px; }
+h1 { font-size: 28px; letter-spacing: -0.02em; }
+h2 { font-size: 20px; margin-top: 24px; letter-spacing: -0.01em; }
+h3 { font-size: 16px; margin-top: 18px; }
 
 p {
   color: var(--subtext);
@@ -115,13 +117,13 @@ li { margin-bottom: 6px; }
 .navbar {
   display: flex;
   gap: 24px;
-  padding: 18px var(--page-pad);
+  padding: 0;
   border: none;
   max-width: var(--page-width);
   width: calc(100% - (2 * var(--page-pad)));
   margin: 24px auto 0;
-  background: var(--surface);
-  border-radius: var(--radius);
+  background: transparent;
+  border-radius: 0;
   box-shadow: var(--shadow);
 }
 
@@ -133,6 +135,8 @@ li { margin-bottom: 6px; }
 .navbar a.active {
   color: var(--nav-active);
   font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .navbar a:hover {
@@ -153,7 +157,7 @@ li { margin-bottom: 6px; }
 
 .theme-btn:hover {
   color: var(--link-hover);
-  transform: translateY(-1px);
+  transform: none;
 }
 
 /* ---------- Experience Page Styling ---------- */
@@ -201,19 +205,9 @@ li { margin-bottom: 6px; }
 .exp-header {
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 28px;
-}
-
-.exp-header-text h1 {
-  margin: 0;
-}
-
-.exp-subtitle {
-  margin-top: 6px;
-  font-size: 13px;
-  opacity: 0.65;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .exp-section .exp-entry:last-child {
@@ -306,6 +300,99 @@ li { margin-bottom: 6px; }
 
 /* ---------- Film Page ---------- */
 
+.film-project .project-kicker {
+  margin-top: -6px;
+}
+
+.film-project .section-title {
+  margin-top: 0;
+}
+
+.film-project .section-lead {
+  margin-top: -4px;
+}
+
+.film-project .section-spacer {
+  margin-top: 32px;
+}
+
+.film-project .section-link {
+  margin-top: 10px;
+}
+
+.film-project .section-divider.is-end {
+  margin-top: 40px;
+}
+
+.film-page h1,
+.blog-page h1,
+.experience-page h1 {
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+
+.dsa-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--heading);
+  margin: 0;
+}
+
+.dsa-subtitle {
+  margin-top: 6px;
+  color: var(--subtext);
+}
+
+.dsa-list {
+  margin-top: 20px;
+}
+
+.dsa-day {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.dsa-day:last-child {
+  border-bottom: none;
+}
+
+.dsa-day-title {
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 6px;
+}
+
+.dsa-items {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.dsa-items li {
+  margin-bottom: 6px;
+}
+
+.dsa-muted {
+  color: var(--subtext);
+}
+
+.film-project h1,
+.film-project h2,
+.film-project h3 {
+  color: var(--heading);
+  font-weight: 600;
+}
+
+.film-project h1 {
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+
+.film-project h2,
+.film-project h3 {
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
 .film-date {
   margin: 6px 0 0;
   font-size: 13px;
@@ -317,7 +404,7 @@ li { margin-bottom: 6px; }
 .section-divider {
   border: none;
   border-top: 1px solid var(--border);
-  margin: 40px 0;
+  margin: 24px 0;
 }
 
 .film-grid {
@@ -366,7 +453,7 @@ li { margin-bottom: 6px; }
 }
 
 .film-page .editorial-card:hover .film-thumb img {
-  transform: scale(1.02);
+  transform: none;
 }
 
 .film-page .film-meta-block {
@@ -401,12 +488,12 @@ li { margin-bottom: 6px; }
   color: var(--subtext);
 }
 
-.film-section-links-top .film-section-link {
-  margin: 0 0 6px;
+.film-section-links-top {
+  text-align: center;
 }
 
-.film-section-links-top .film-section-link:last-child {
-  margin-bottom: 0;
+.film-section-links-top .film-section-link {
+  margin: 0;
 }
 
 .film-section-link a {
@@ -534,23 +621,37 @@ html.dark .film-filter.is-active {
   }
 
   .container {
-    margin: 28px auto;
-    padding: 24px 18px;
-    border-radius: var(--radius);
+    margin: 24px auto;
+    padding: 18px 16px;
+    border-radius: 0;
   }
 
   .navbar {
     gap: 14px;
-    padding: 12px 16px;
+    padding: 0;
     margin: 16px auto 0;
     overflow-x: auto;
     white-space: nowrap;
-    border-radius: var(--radius);
+    border-radius: 0;
   }
 
-  h1 { font-size: 28px; }
-  h2 { font-size: 21px; }
-  h3 { font-size: 17px; }
+  h1 { font-size: 24px; }
+  h2 { font-size: 19px; }
+  h3 { font-size: 15px; }
+
+  .film-project h1 { font-size: 24px; }
+  .film-project h2 { font-size: 19px; }
+  .film-project h3 { font-size: 15px; }
+
+  .film-page h1,
+  .blog-page h1,
+  .experience-page h1 {
+    font-size: 20px;
+  }
+
+  .dsa-title {
+    font-size: 18px;
+  }
 
   .exp-title {
     font-size: 18px;
@@ -576,7 +677,7 @@ html.dark .film-filter.is-active {
 }
 
 .film-card:hover img {
-  transform: scale(1.04);
+  transform: none;
 }
 
 .film-label {
