@@ -30,16 +30,58 @@
   <div class="container">
     <p class="dsa-title">Guitar Practice</p>
     <p class="dsa-subtitle">
-      Daily guitar practice logs via YouTube. Most clips live on my channel:
-      <a href="https://www.youtube.com/@pj.k1m" target="_blank" rel="noopener noreferrer">youtube.com/@pj.k1m →</a>
+      Daily Guitar practice logs via YouTube. Most clips live in this playlist:
+      <a href="https://www.youtube.com/playlist?list=PLOOEcr8flEUQKD08-AmKlSv-eydxa3Ot6" target="_blank" rel="noopener noreferrer">learning guitar playlist →</a>
     </p>
 
-    <div class="dsa-list">
+    <div class="dsa-list" id="guitar-list">
       <p class="dsa-muted">
-        For now, you can find my practice uploads on YouTube. I’ll eventually wire this page to pull directly from a practice playlist.
+        Loading Guitar videos…
       </p>
     </div>
   </div>
+
+  <script>
+    (function () {
+      const container = document.getElementById("guitar-list");
+      if (!container) return;
+
+      container.innerHTML = '<p class="dsa-muted">Loading Guitar videos…</p>';
+
+      fetch("/api/guitar-videos")
+        .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+        .then((data) => {
+          if (!data || !Array.isArray(data.items) || !data.items.length) {
+            container.innerHTML = '<p class="dsa-muted">No Guitar videos yet.</p>';
+            return;
+          }
+
+          const list = document.createElement("ul");
+          list.className = "dsa-items";
+
+          data.items.forEach((item) => {
+            const title = item.title || "Untitled video";
+
+            const li = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = item.url;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = title;
+
+            li.appendChild(link);
+            list.appendChild(li);
+          });
+
+          container.innerHTML = "";
+          container.appendChild(list);
+        })
+        .catch(() => {
+          container.innerHTML =
+            '<p class="dsa-muted">Could not load Guitar videos yet.</p>';
+        });
+    })();
+  </script>
 
   <script defer src="js/theme.js"></script>
 </body>

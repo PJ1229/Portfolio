@@ -106,6 +106,54 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
   }
 });
 
+// --- Guitar playlist proxy (YouTube Data API) ---
+app.get("/api/guitar-videos", async (req, res) => {
+  const apiKey = process.env.YOUTUBE_API_KEY;
+  const playlistId = "PLOOEcr8flEUQKD08-AmKlSv-eydxa3Ot6";
+
+  if (!apiKey) {
+    console.error("Missing YOUTUBE_API_KEY");
+    return res.status(500).json({ error: "Server is not configured for guitar videos." });
+  }
+
+  const url = new URL("https://www.googleapis.com/youtube/v3/playlistItems");
+  url.searchParams.set("part", "snippet,contentDetails");
+  url.searchParams.set("maxResults", "50");
+  url.searchParams.set("playlistId", playlistId);
+  url.searchParams.set("key", apiKey);
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      console.error("YouTube API error", response.status, response.statusText);
+      return res.status(502).json({ error: "Failed to load playlist." });
+    }
+
+    const data = await response.json();
+    const items =
+      Array.isArray(data.items) ?
+      data.items
+        .filter((item) => item.snippet && item.snippet.resourceId && item.snippet.resourceId.videoId)
+        .map((item) => {
+          const vId = item.snippet.resourceId.videoId;
+          return {
+            id: vId,
+            title: item.snippet.title || "Untitled video",
+            url: `https://www.youtube.com/watch?v=${vId}`,
+            publishedAt: item.contentDetails && item.contentDetails.videoPublishedAt
+              ? item.contentDetails.videoPublishedAt
+              : null,
+          };
+        })
+      : [];
+
+    res.json({ items });
+  } catch (err) {
+    console.error("Error fetching YouTube playlist:", err);
+    res.status(500).json({ error: "Failed to load playlist." });
+  }
+});
+
 // --- Server startup ---
 const PORT = process.env.PORT || 5050;
 app.listen(PORT, () => {
