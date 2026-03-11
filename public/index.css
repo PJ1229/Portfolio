@@ -362,6 +362,25 @@ li { margin-bottom: 6px; }
   margin-top: 20px;
 }
 
+.dsa-stats {
+  margin-bottom: 12px;
+}
+
+.dsa-streak-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.dsa-streak-meta {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--subtext);
+}
+
 .dsa-day {
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
