@@ -47,6 +47,23 @@ app.get("/lab/", (req, res) => {
   sendLabIndex(res);
 });
 
+// Shortcuts: old lab-style URLs at root
+app.get("/inspo.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "lab", "inspo.html"));
+});
+
+app.get("/blog.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "lab", "blog.html"));
+});
+
+app.get("/dsa.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "lab", "dsa.html"));
+});
+
+app.get("/guitar.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "lab", "guitar.html"));
+});
+
 // --- Legacy site (v1) ---
 app.get("/legacy", (req, res) => {
   res.redirect("/legacy/");
