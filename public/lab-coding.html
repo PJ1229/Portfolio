@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>dsa</title>
+  <link rel="icon" href="images/logo.png" type="image/icon type">
+  <style>
+    .lab-page {
+      font-size: 18px;
+    }
+
+    .lab-page .container {
+      max-width: 760px;
+    }
+
+    .lab-page p {
+      line-height: 1.9;
+    }
+
+    .lab-page h1 {
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .lab-page a {
+      color: #0b5bff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .lab-page a:hover {
+      color: #0b5bff;
+      text-decoration: underline;
+      font-style: normal;
+    }
+
+    .lab-page .container ul a {
+      color: #0b5bff;
+      font-weight: 500;
+    }
+
+    /* condensed log spacing (lab only) */
+    .lab-page .dsa-stats {
+      margin-bottom: 12px;
+    }
+
+    .lab-page .dsa-streak-pill,
+    .lab-page .dsa-streak-meta {
+      display: none;
+    }
+
+    .lab-page .dsa-day {
+      padding: 8px 0;
+    }
+
+    .lab-page .dsa-day-title {
+      margin-bottom: 2px;
+    }
+
+    .lab-page .dsa-items li {
+      margin-bottom: 2px;
+    }
+
+    .lab-page .dsa-items {
+      margin: 0;
+      padding-left: 16px;
+    }
+  </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M0J8NYPG27"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M0J8NYPG27');
+</script>
+
+<body class="lab-page">
+  <div class="container">
+    <p style="margin-bottom: 6px;">
+      <a href="lab.html">back</a> · <a href="index.html">home</a>
+    </p>
+
+    <h1>dsa</h1>
+    <p style="margin-top: 0;">
+      daily logs pulled from my GitHub commits.
+      <a href="https://github.com/PJ1229/leetcode.git" target="_blank" rel="noopener noreferrer">repo →</a>
+    </p>
+
+    <div class="dsa-list" id="dsa-list">
+      <p class="dsa-muted">Loading progress…</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const container = document.getElementById("dsa-list");
+      if (!container) return;
+
+      const repo = "PJ1229/leetcode";
+      const url = `https://api.github.com/repos/${repo}/commits?per_page=100`;
+
+      function formatDate(iso) {
+        const d = new Date(iso);
+        if (Number.isNaN(d.getTime())) return iso;
+        return d.toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric"
+        });
+      }
+
+      function getLocalDayKey(iso) {
+        const d = new Date(iso);
+        if (Number.isNaN(d.getTime())) return "unknown";
+
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, "0");
+        const day = String(d.getDate()).padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+      }
+
+      function groupByDay(commits) {
+        const map = new Map();
+
+        commits.forEach((item) => {
+          const date = item.commit && item.commit.author && item.commit.author.date;
+          const day = date ? getLocalDayKey(date) : "unknown";
+
+          if (!map.has(day)) map.set(day, []);
+          map.get(day).push({
+            message: item.commit && item.commit.message ? item.commit.message : "Untitled commit",
+            url: item.html_url,
+            date: date || ""
+          });
+        });
+
+        return Array.from(map.entries())
+          .sort((a, b) => b[0].localeCompare(a[0]));
+      }
+
+      function computeStreaks(groups) {
+        const dayKeys = groups.map(([day]) => day).filter((d) => d !== "unknown");
+        if (!dayKeys.length) return { current: 0, longest: 0, activeDays: 0 };
+
+        const daySet = new Set(dayKeys);
+        const today = new Date();
+
+        function toKey(d) {
+          const year = d.getFullYear();
+          const month = String(d.getMonth() + 1).padStart(2, "0");
+          const day = String(d.getDate()).padStart(2, "0");
+          return `${year}-${month}-${day}`;
+        }
+
+        let current = 0;
+        const cursor = new Date(today);
+        while (daySet.has(toKey(cursor))) {
+          current += 1;
+          cursor.setDate(cursor.getDate() - 1);
+        }
+
+        const sortedAsc = [...dayKeys].sort();
+        let longest = 1;
+        let run = 1;
+        for (let i = 1; i < sortedAsc.length; i++) {
+          const prev = new Date(sortedAsc[i - 1]);
+          const cur = new Date(sortedAsc[i]);
+          const diffDays = (cur - prev) / (1000 * 60 * 60 * 24);
+          if (Math.abs(diffDays - 1) < 0.01) {
+            run += 1;
+          } else {
+            if (run > longest) longest = run;
+            run = 1;
+          }
+        }
+        if (run > longest) longest = run;
+
+        return {
+          current,
+          longest,
+          activeDays: daySet.size
+        };
+      }
+
+      fetch(url)
+        .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+        .then((data) => {
+          if (!Array.isArray(data) || !data.length) {
+            container.innerHTML = '<p class="dsa-muted">No logs yet.</p>';
+            return;
+          }
+
+          const groups = groupByDay(data);
+          const streaks = computeStreaks(groups);
+          container.innerHTML = "";
+
+          const stats = document.createElement("p");
+          stats.className = "dsa-muted dsa-stats";
+          stats.textContent =
+            `${streaks.current} day${streaks.current === 1 ? "" : "s"} in a row` +
+            ` · longest: ${streaks.longest}` +
+            ` · active days: ${streaks.activeDays}`;
+          container.appendChild(stats);
+
+          groups.forEach(([day, items]) => {
+            const section = document.createElement("div");
+            section.className = "dsa-day";
+
+            const title = document.createElement("div");
+            title.className = "dsa-day-title";
+            title.textContent = formatDate(items[0].date || day);
+
+            const list = document.createElement("ul");
+            list.className = "dsa-items";
+
+            items.forEach((item) => {
+              const li = document.createElement("li");
+              const link = document.createElement("a");
+              link.href = item.url;
+              link.target = "_blank";
+              link.rel = "noopener noreferrer";
+              link.textContent = item.message.split("\n")[0];
+              li.appendChild(link);
+              list.appendChild(li);
+            });
+
+            section.appendChild(title);
+            section.appendChild(list);
+            container.appendChild(section);
+          });
+        })
+        .catch(() => {
+          container.innerHTML = '<p class="dsa-muted">Could not load logs yet.</p>';
+        });
+    })();
+  </script>
+
+  <script defer src="js/theme.js"></script>
+</body>
+</html>
+

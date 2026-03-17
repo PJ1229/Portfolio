@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>guitar</title>
+  <link rel="icon" href="images/logo.png" type="image/icon type">
+  <style>
+    .lab-page {
+      font-size: 18px;
+    }
+
+    .lab-page .container {
+      max-width: 760px;
+    }
+
+    .lab-page p {
+      line-height: 1.9;
+    }
+
+    .lab-page h1 {
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .lab-page a {
+      color: #0b5bff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .lab-page a:hover {
+      color: #0b5bff;
+      text-decoration: underline;
+      font-style: normal;
+    }
+
+    .lab-page .container ul a {
+      color: #0b5bff;
+      font-weight: 500;
+    }
+
+    /* condensed list spacing (lab only) */
+    .lab-page .dsa-items {
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    .lab-page .dsa-items li {
+      margin-bottom: 2px;
+    }
+  </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M0J8NYPG27"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M0J8NYPG27');
+</script>
+
+<body class="lab-page">
+  <div class="container">
+    <p style="margin-bottom: 6px;">
+      <a href="lab.html">back</a> · <a href="index.html">home</a>
+    </p>
+
+    <h1>guitar</h1>
+    <p style="margin-top: 0;">
+      daily guitar practice logs via youtube.
+      <a href="https://www.youtube.com/playlist?list=PLOOEcr8flEUQKD08-AmKlSv-eydxa3Ot6" target="_blank" rel="noopener noreferrer">playlist →</a>
+    </p>
+
+    <div class="dsa-list" id="guitar-list">
+      <p class="dsa-muted">Loading guitar videos…</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const container = document.getElementById("guitar-list");
+      if (!container) return;
+
+      container.innerHTML = '<p class="dsa-muted">Loading guitar videos…</p>';
+
+      fetch("/api/guitar-videos")
+        .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+        .then((data) => {
+          if (!data || !Array.isArray(data.items) || !data.items.length) {
+            container.innerHTML = '<p class="dsa-muted">No guitar videos yet.</p>';
+            return;
+          }
+
+          const list = document.createElement("ul");
+          list.className = "dsa-items";
+
+          data.items.forEach((item) => {
+            const title = item.title || "Untitled video";
+
+            const li = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = item.url;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = title;
+
+            li.appendChild(link);
+            list.appendChild(li);
+          });
+
+          container.innerHTML = "";
+          container.appendChild(list);
+        })
+        .catch(() => {
+          container.innerHTML = '<p class="dsa-muted">Could not load guitar videos yet.</p>';
+        });
+    })();
+  </script>
+
+  <script defer src="js/theme.js"></script>
+</body>
+</html>
+
