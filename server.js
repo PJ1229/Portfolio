@@ -30,8 +30,16 @@ if (missingEnv.length) {
   process.exit(1);
 }
 
-// --- Serve lab landing at root (legacy index.html still available directly) ---
+// --- Lab as primary site (keep legacy pages available by direct URL) ---
 app.get("/", (req, res) => {
+  res.redirect("/lab/");
+});
+
+app.get("/lab", (req, res) => {
+  res.redirect("/lab/");
+});
+
+app.get("/lab/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "lab", "index.html"));
 });
 
