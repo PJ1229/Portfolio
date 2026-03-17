@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../index.css">
-  <title>MSU aKDPhi Reveal</title>
-  <link rel="icon" href="../images/logo.png" type="image/icon type">
+  <link rel="stylesheet" href="/index.css">
+  <title>FILSOC x VSA Fall Dance</title>
+  <link rel="icon" href="/images/logo.png" type="image/icon type">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -26,26 +26,25 @@
     <!--<a href="../projects.html">Projects</a>-->
     <a class="active" href="../film.html">Film</a>
     <a href="../blog.html">Blog</a>
-
     <button id="theme-toggle" class="theme-btn">◆</button>
   </nav>
 
   <div class="container">
 
-    <h1>MSU aKDPhi Reveal</h1>
+    <h1>FILSOC x VSA Fall Dance</h1>
     <p class="project-kicker">
-      a vertical 9:16 reveal trailer for the new class reveal
+      dance choreography film for FILSOC and VSA at Wayne State University
     </p>
-    <p class="film-date">November 2025</p>
+    <p class="film-date">February 2026</p>
 
     <hr class="section-divider">
 
-    <!-- VIDEO EMBED (swap link when ready) -->
+    <!-- VIDEO EMBED -->
     <div style="margin-bottom:28px;">
-      <div style="position:relative; padding-bottom:177.78%; height:0; border-radius:12px; overflow:hidden;">
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden;">
         <iframe 
-          src="https://www.youtube.com/embed/QPo2jvfSGbI"
-          title="MSU aKDPhi Reveal Film"
+          src="https://www.youtube.com/embed/-f-tY4n9Q78"
+          title="FILSOC x VSA Fall Dance"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
@@ -54,28 +53,35 @@
       </div>
     </div>
 
-    <!-- ABOUT -->
     <h2 class="section-title">About</h2>
     <p class="section-lead">
-      shot in a fast, dynamic 9:16 format to match the chapter’s energy.
+      A short dance choreography film created for FILSOC (Filipino organization) and VSA (Vietnamese organization) at Wayne State University.
     </p>
 
     <h3>Role</h3>
     <ul>
-      <li>direction, cinematography, and edit — <span style="font-weight:500;">PJ Kim</span></li>
+      <li>co-videography and edit — <span style="font-weight:500;">PJ Kim</span></li>
+      <li>co-videography — <span style="font-weight:500;">Mark Zhu</span></li>
+    </ul>
+
+    <h3>Choreographers</h3>
+    <ul>
+      <li>Emma Cruz</li>
+      <li>Anika Rose Abelgas</li>
+      <li>Kaitlyn Deleon</li>
     </ul>
 
     <h3>Details</h3>
     <ul>
-      <li>Format: 9:16 vertical, optimized for reels + tiktok</li>
-      <li>Camera: Fujifilm XS-20, handheld, studio lighting</li>
-      <li>Tools: Premiere Pro (cut + color), After Effects (motion overlays)</li>
+      <li>Camera: Fujifilm XS-20</li>
+      <li>Tools: Premiere Pro</li>
     </ul>
 
     <hr class="section-divider is-end">
     <p>
       <a href="../film.html">← back to film</a>
     </p>
+
   </div>
 
   <!-- DARK MODE SCRIPT -->
@@ -83,7 +89,6 @@
     const toggle = document.getElementById("theme-toggle");
     const root = document.documentElement;
 
-    // Load saved theme
     if (localStorage.theme === "dark") {
       root.classList.add("dark");
       toggle.textContent = "◇";
@@ -91,14 +96,8 @@
 
     toggle.addEventListener("click", () => {
       root.classList.toggle("dark");
-
-      if (root.classList.contains("dark")) {
-        localStorage.theme = "dark";
-        toggle.textContent = "◇";
-      } else {
-        localStorage.theme = "light";
-        toggle.textContent = "◆";
-      }
+      toggle.textContent = root.classList.contains("dark") ? "◇" : "◆";
+      localStorage.theme = root.classList.contains("dark") ? "dark" : "light";
     });
   </script>
 </body>

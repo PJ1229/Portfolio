@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../index.css">
-  <title>OOTD Launch Commercial</title>
-  <link rel="icon" href="../images/logo.png" type="image/icon type">
+  <link rel="stylesheet" href="/index.css">
+  <title>Lost</title>
+  <link rel="icon" href="/images/logo.png" type="image/icon type">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -32,31 +32,20 @@
 
   <div class="container">
 
-    <h1>OOTD Launch</h1>
+    <h1>Lost</h1>
     <p class="project-kicker">
-      short launch commercial for <span style="font-weight:500;">OOTD</span> — shot on digital and graded to feel like film.
+      a short film about finding fullfilment
     </p>
-    <p class="film-date">November 2025</p>
+    <p class="film-date">September 2025</p>
 
     <hr class="section-divider">
 
-    <!-- HERO IMAGE 
-    <div style="margin-bottom:28px;">
-      <img 
-        src="../images/ootd_launch_video.png" 
-        alt="OOTD launch film still"
-        style="width:100%; border-radius:12px; display:block;"
-      >
-    </div>
-    -->
-
-    <!-- OPTIONAL VIDEO EMBED (replace src when you have link) -->
-    
+    <!-- OPTIONAL VIDEO EMBED -->
     <div style="margin-bottom:28px;">
       <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden;">
         <iframe 
-          src="https://www.youtube.com/embed/3dAS3Fd5bIc"
-          title="OOTD Launch Film"
+          src="https://www.youtube.com/embed/Zzzu14VqvNs"
+          title="Reflection — Short Film"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
@@ -65,12 +54,13 @@
       </div>
     </div>
 
-    <!-- PROJECT META -->
+    <!-- ABOUT -->
     <h2 class="section-title">About</h2>
     <p class="section-lead">
-      a playful, summer picnic built around the OOTD notification.
-      the goal was to feel like a memory: soft light, warm tones, and subtle
-      motion.
+      a small reflection piece about losing myself in the constant chase for status — recruiting, social media, networking — 
+      and realizing how little of it was rooted in real connection. the film sits with that tension: feeling lost, 
+      recognizing the emptiness, and slowly remembering what actually fulfills me. at its core, it’s about coming back 
+      to the things that bring people together, and choosing to create from a place of honesty rather than expectation.
     </p>
 
     <h3>Role</h3>
@@ -80,9 +70,10 @@
 
     <h3>Details</h3>
     <ul>
-      <li>Format: 4K digital, graded to emulate color film</li>
-      <li>Camera: Fujifilm XS-20, handheld, natural light with reflectors</li>
-      <li>Tools: Premiere Pro, After Effects (text + notification overlays)</li>
+      <li>Format: 4K digital, desaturated with soft grain for a muted look</li>
+      <li>Camera: Fujifilm XS-20 + primes, natural lighting</li>
+      <li>Tools: Premiere Pro (cut + grade)</li>
+      <li>Music: Moon by Daniel Caesar</li>
     </ul>
 
     <hr class="section-divider is-end">
@@ -97,7 +88,6 @@
     const toggle = document.getElementById("theme-toggle");
     const root = document.documentElement;
 
-    // Load saved theme
     if (localStorage.theme === "dark") {
       root.classList.add("dark");
       toggle.textContent = "◇";
@@ -115,5 +105,6 @@
       }
     });
   </script>
+
 </body>
 </html>

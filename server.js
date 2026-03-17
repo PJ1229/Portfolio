@@ -30,7 +30,7 @@ if (missingEnv.length) {
   process.exit(1);
 }
 
-// --- Lab as primary site (keep legacy pages available by direct URL) ---
+// --- Lab as primary site ---
 app.get("/", (req, res) => {
   res.redirect("/lab/");
 });
@@ -41,6 +41,15 @@ app.get("/lab", (req, res) => {
 
 app.get("/lab/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "lab", "index.html"));
+});
+
+// --- Legacy site (v1) ---
+app.get("/legacy", (req, res) => {
+  res.redirect("/legacy/");
+});
+
+app.get("/legacy/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "legacy", "index.html"));
 });
 
 // --- Contact API endpoint ---

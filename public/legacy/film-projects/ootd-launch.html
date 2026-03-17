@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../index.css">
-  <title>Words from the People You Love</title>
-  <link rel="icon" href="../images/logo.png" type="image/icon type">
+  <link rel="stylesheet" href="/index.css">
+  <title>OOTD Launch Commercial</title>
+  <link rel="icon" href="/images/logo.png" type="image/icon type">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -14,6 +14,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-M0J8NYPG27');
 </script>
 
@@ -25,25 +26,37 @@
     <!--<a href="../projects.html">Projects</a>-->
     <a class="active" href="../film.html">Film</a>
     <a href="../blog.html">Blog</a>
+
     <button id="theme-toggle" class="theme-btn">◆</button>
   </nav>
 
   <div class="container">
 
-    <h1>Words from the People You Love</h1>
+    <h1>OOTD Launch</h1>
     <p class="project-kicker">
-      music video · co-directed with Kyra Burkhardt
+      short launch commercial for <span style="font-weight:500;">OOTD</span> — shot on digital and graded to feel like film.
     </p>
-    <p class="film-date">August 2025</p>
+    <p class="film-date">November 2025</p>
 
     <hr class="section-divider">
 
-    <!-- VIDEO EMBED -->
+    <!-- HERO IMAGE 
+    <div style="margin-bottom:28px;">
+      <img 
+        src="/images/ootd_launch_video.png" 
+        alt="OOTD launch film still"
+        style="width:100%; border-radius:12px; display:block;"
+      >
+    </div>
+    -->
+
+    <!-- OPTIONAL VIDEO EMBED (replace src when you have link) -->
+    
     <div style="margin-bottom:28px;">
       <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden;">
         <iframe 
-          src="https://www.youtube.com/embed/pfPAqTV1U0A"
-          title="Words from the People You Love"
+          src="https://www.youtube.com/embed/3dAS3Fd5bIc"
+          title="OOTD Launch Film"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
@@ -52,25 +65,24 @@
       </div>
     </div>
 
+    <!-- PROJECT META -->
     <h2 class="section-title">About</h2>
     <p class="section-lead">
-      A music video for Noah Kahan’s “Forever.” I asked friends to send quotes
-      they loved from people close to them, then embedded those words into the
-      video as a quiet thread running through each scene.
+      a playful, summer picnic built around the OOTD notification.
+      the goal was to feel like a memory: soft light, warm tones, and subtle
+      motion.
     </p>
 
     <h3>Role</h3>
     <ul>
-      <li>co-direction — <span style="font-weight:500;">PJ Kim</span></li>
-      <li>co-direction — <span style="font-weight:500;">Kyra Burkhardt</span></li>
+      <li>direction, cinematography, and edit — <span style="font-weight:500;">PJ Kim</span></li>
     </ul>
 
     <h3>Details</h3>
     <ul>
-      <li>Song: “Forever” — Noah Kahan</li>
-      <li>Format: music video</li>
-      <li>Camera: Fujifilm XS-20</li>
-      <li>Tools: Premiere Pro</li>
+      <li>Format: 4K digital, graded to emulate color film</li>
+      <li>Camera: Fujifilm XS-20, handheld, natural light with reflectors</li>
+      <li>Tools: Premiere Pro, After Effects (text + notification overlays)</li>
     </ul>
 
     <hr class="section-divider is-end">
@@ -85,6 +97,7 @@
     const toggle = document.getElementById("theme-toggle");
     const root = document.documentElement;
 
+    // Load saved theme
     if (localStorage.theme === "dark") {
       root.classList.add("dark");
       toggle.textContent = "◇";
@@ -92,8 +105,14 @@
 
     toggle.addEventListener("click", () => {
       root.classList.toggle("dark");
-      toggle.textContent = root.classList.contains("dark") ? "◇" : "◆";
-      localStorage.theme = root.classList.contains("dark") ? "dark" : "light";
+
+      if (root.classList.contains("dark")) {
+        localStorage.theme = "dark";
+        toggle.textContent = "◇";
+      } else {
+        localStorage.theme = "light";
+        toggle.textContent = "◆";
+      }
     });
   </script>
 </body>
