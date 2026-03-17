@@ -98,6 +98,66 @@ p {
   white-space: nowrap;
 }
 
+/* ---------- Lab Pages (experimental) ---------- */
+
+.lab-page {
+  font-size: 18px;
+}
+
+.lab-page .container {
+  max-width: 760px;
+}
+
+.lab-page p {
+  line-height: 1.9;
+}
+
+.lab-page h1 {
+  font-size: 32px;
+  letter-spacing: -0.02em;
+}
+
+.lab-page a {
+  color: #0b5bff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+
+.lab-page a:hover {
+  color: #0b5bff;
+  text-decoration: underline;
+  font-style: normal;
+}
+
+/* override global list-link inheritance */
+.lab-page .container ul a {
+  color: #0b5bff;
+  font-weight: 500;
+}
+
+/* condensed log spacing for lab log pages */
+.lab-page.lab-log .dsa-stats {
+  margin-bottom: 12px;
+}
+
+.lab-page.lab-log .dsa-day {
+  padding: 8px 0;
+}
+
+.lab-page.lab-log .dsa-day-title {
+  margin-bottom: 2px;
+}
+
+.lab-page.lab-log .dsa-items {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.lab-page.lab-log .dsa-items li {
+  margin-bottom: 2px;
+}
+
 
 a {
   text-decoration: none;
