@@ -122,6 +122,20 @@ p {
 .lab-page h1 {
   font-size: 32px;
   letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+.lab-page h2 {
+  font-size: 18px;
+  margin-top: 18px;
+  letter-spacing: -0.01em;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.lab-page h3 {
+  font-size: 16px;
+  margin-top: 16px;
 }
 
 .lab-page a {
@@ -182,6 +196,22 @@ p {
 .lab-page.lab-inspo .inspo-list a:hover {
   color: #55565a;
   font-style: normal;
+}
+
+.lab-page.lab-inspo .inspo-list a.is-impact {
+  color: #fb3b2e;
+}
+
+.lab-page.lab-inspo .inspo-list a.is-impact:hover {
+  color: #fb3b2e;
+}
+
+.lab-page.lab-inspo .is-red {
+  color: #ff2d2d;
+  font-weight: 700;
+  /* make it read visually heavier */
+  text-shadow: 0 0 0 currentColor;
+  -webkit-text-stroke: 0.25px currentColor;
 }
 
 /* lab blog list */
