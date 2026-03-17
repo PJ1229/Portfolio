@@ -29,9 +29,9 @@ if (missingEnv.length) {
   process.exit(1);
 }
 
-// --- Serve index.html at root ---
+// --- Serve lab landing at root (legacy index.html still available directly) ---
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "lab", "index.html"));
 });
 
 // --- Contact API endpoint ---
