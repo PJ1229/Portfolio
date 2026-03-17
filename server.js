@@ -30,17 +30,21 @@ if (missingEnv.length) {
   process.exit(1);
 }
 
-// --- Lab as primary site ---
+// --- Lab as primary site (no redirects to avoid loops with external rules) ---
+function sendLabIndex(res) {
+  res.sendFile(path.join(__dirname, "public", "lab", "index.html"));
+}
+
 app.get("/", (req, res) => {
-  res.redirect("/lab/");
+  sendLabIndex(res);
 });
 
 app.get("/lab", (req, res) => {
-  res.redirect("/lab/");
+  sendLabIndex(res);
 });
 
 app.get("/lab/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "lab", "index.html"));
+  sendLabIndex(res);
 });
 
 // --- Legacy site (v1) ---
