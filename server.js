@@ -20,7 +20,8 @@ app.use(
 );
 app.use(compression());
 app.use(express.json({ limit: "64kb" })); // parse JSON body with size cap
-app.use(express.static(path.join(__dirname, "public"))); // serve static files
+// serve static files (but don't auto-serve public/index.html at "/")
+app.use(express.static(path.join(__dirname, "public"), { index: false }));
 
 const requiredEnv = ["EMAIL_USER", "EMAIL_PASS"];
 const missingEnv = requiredEnv.filter((key) => !process.env[key]);
