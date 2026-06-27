@@ -48,7 +48,7 @@
   <script>
     (function () {
       /**
-       * WEEKS[] = { range, start, posts? }
+       * WEEKS[] = { range, start, posts?, off?, note? }
        * posts[] = { type, date?, title?, links? } — type: "creative reel" | "short film" | "promo" | "vlog"
        * date: display label, e.g. "apr 29"
        * title: short descriptor (omit words already in type, e.g. no "promo" on promo posts)
@@ -248,8 +248,31 @@
             },
           ],
         },
-        { range: "jun 15–21", start: "2026-06-15" },
-        { range: "jun 22–28", start: "2026-06-22" },
+        { range: "jun 15–21", start: "2026-06-15", off: true, note: "halfway point" },
+        {
+          range: "jun 22–28",
+          start: "2026-06-22",
+          posts: [
+            {
+              type: "creative reel",
+              date: "jun 24",
+              title: "learning davinci color",
+              links: [
+                { url: "https://www.instagram.com/p/DZ8oxreDZcV/?img_index=1", label: "instagram" },
+                { url: "https://www.tiktok.com/@pj.k1m/video/7654747313029614861", label: "tiktok" },
+              ],
+            },
+            {
+              type: "creative reel",
+              date: "jun 27",
+              title: "learning affect effects vfx",
+              links: [
+                { url: "https://www.instagram.com/reel/DaGomUYonMc/", label: "instagram" },
+                { url: "https://www.tiktok.com/@pj.k1m/video/7656183423630839054", label: "tiktok" },
+              ],
+            },
+          ],
+        },
         { range: "jun 29–jul 5", start: "2026-06-29" },
         { range: "jul 6–12", start: "2026-07-06" },
         { range: "jul 13–19", start: "2026-07-13" },
@@ -398,13 +421,23 @@
 
         const title = document.createElement("div");
         title.className = "dsa-day-title";
-        title.textContent = "week " + (i + 1) + " · " + week.range;
+        title.textContent =
+          "week " +
+          (i + 1) +
+          " · " +
+          week.range +
+          (week.note && !week.off ? " (" + week.note + ")" : "");
         day.appendChild(title);
 
         const ul = document.createElement("ul");
         ul.className = "dsa-items";
 
-        if (!posts.length) {
+        if (week.off) {
+          const li = document.createElement("li");
+          li.className = "dsa-muted";
+          li.textContent = week.note ? "off week · " + week.note : "off week";
+          ul.appendChild(li);
+        } else if (!posts.length) {
           const li = document.createElement("li");
           li.className = "dsa-muted";
           li.textContent = "tba";
