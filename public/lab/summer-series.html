@@ -49,7 +49,7 @@
     (function () {
       /**
        * WEEKS[] = { range, start, posts?, off?, note? }
-       * posts[] = { type, date?, title?, links? } — type: "creative reel" | "short film" | "promo" | "vlog"
+       * posts[] = { type, date?, title?, links? } — type: "creative post" | "short film" | "promo" | "vlog"
        * date: display label, e.g. "apr 29"
        * title: short descriptor (omit words already in type, e.g. no "promo" on promo posts)
        * links: string url, { url, label }, or array of those
@@ -83,7 +83,7 @@
           start: "2026-05-04",
           posts: [
             {
-              type: "creative reel",
+              type: "creative post",
               date: "may 4",
               title: "murph",
               links: [
@@ -117,7 +117,7 @@
               ],
             },
             {
-              type: "creative reel",
+              type: "creative post",
               date: "may 16",
               title: "umich colorgrading edit",
               links: [
@@ -132,7 +132,7 @@
           start: "2026-05-18",
           posts: [
             {
-              type: "creative reel",
+              type: "creative post",
               date: "may 18",
               title: "kwin dj edit",
               links: [
@@ -155,7 +155,7 @@
           start: "2026-05-25",
           posts: [
             {
-              type: "creative reel",
+              type: "creative post",
               date: "may 25",
               title: "movement \"larping\" edit",
               links: [
@@ -164,7 +164,7 @@
               ],
             },
             {
-              type: "creative reel",
+              type: "creative post",
               date: "may 25",
               title: "movement cinematic edit",
               links: [
@@ -173,7 +173,7 @@
               ],
             },
             {
-              type: "creative reel",
+              type: "creative post",
               date: "may 25",
               title: "movement personal edit",
               links: [
@@ -205,7 +205,7 @@
               ],
             },
             {
-              type: "creative reel",
+              type: "creative post",
               date: "jun 3",
               title: "film emulation practice",
               links: [
@@ -214,7 +214,7 @@
               ],
             },
             {
-              type: "creative reel",
+              type: "creative post",
               date: "jun 4",
               title: "color theory practice",
               links: [
@@ -229,7 +229,7 @@
           start: "2026-06-08",
           posts: [
             {
-              type: "creative reel",
+              type: "creative post",
               date: "jun 12",
               title: "learning davinci resolve",
               links: [
@@ -238,7 +238,7 @@
               ],
             },
             {
-              type: "creative reel",
+              type: "creative post",
               date: "jun 13",
               title: "winnie x kawaii rave set",
               links: [
@@ -254,7 +254,7 @@
           start: "2026-06-22",
           posts: [
             {
-              type: "creative reel",
+              type: "creative post",
               date: "jun 24",
               title: "learning davinci color",
               links: [
@@ -263,7 +263,7 @@
               ],
             },
             {
-              type: "creative reel",
+              type: "creative post",
               date: "jun 27",
               title: "learning affect effects vfx",
               links: [
@@ -278,7 +278,7 @@
           start: "2026-06-29",
           posts: [
             {
-              type: "creative reel",
+              type: "creative post",
               date: "jun 29",
               title: "davinci color practice",
               links: [
@@ -301,7 +301,7 @@
               ],
             },
             {
-              type: "creative reel",
+              type: "creative post",
               date: "jul 11",
               title: "rule of thirds",
               links: [
@@ -311,7 +311,30 @@
             },
           ],
         },
-        { range: "jul 13–19", start: "2026-07-13" },
+        {
+          range: "jul 13–19",
+          start: "2026-07-13",
+          posts: [
+            {
+              type: "creative post",
+              date: "jul 13",
+              title: "editing breakdown",
+              links: [
+                { url: "https://www.instagram.com/p/DavXEt7IQvE/", label: "instagram" },
+                { url: "https://www.tiktok.com/@pj.k1m/video/7662054518422621454", label: "tiktok" },
+              ],
+            },
+            {
+              type: "creative post",
+              date: "jul 14",
+              title: "film from out west",
+              links: [
+                { url: "https://www.instagram.com/p/DaypuGxjYVz/?img_index=1", label: "instagram" },
+                { url: "https://www.tiktok.com/@pj.k1m/photo/7662531395704655117", label: "tiktok" },
+              ],
+            },
+          ],
+        },
         { range: "jul 20–26", start: "2026-07-20" },
         { range: "jul 27–aug 2", start: "2026-07-27" },
         { range: "aug 3–9", start: "2026-08-03" },
@@ -354,7 +377,7 @@
             if (post.type === "vlog") vlogs++;
             else if (post.type === "promo") promos++;
             else if (post.type === "short film") shortFilms++;
-            else if (post.type === "creative reel") reels++;
+            else if (post.type === "creative post") reels++;
           }
         }
         return { vlogs, reels, promos, shortFilms, total: vlogs + reels + promos + shortFilms };
@@ -366,7 +389,7 @@
         const { vlogs, reels, promos, shortFilms, total } = countPosted();
         const parts = [];
         if (vlogs) parts.push(vlogs + " " + (vlogs === 1 ? "vlog" : "vlogs"));
-        if (reels) parts.push(reels + " " + (reels === 1 ? "creative reel" : "creative reels"));
+        if (reels) parts.push(reels + " " + (reels === 1 ? "creative post" : "creative posts"));
         if (shortFilms) parts.push(shortFilms + " " + (shortFilms === 1 ? "short film" : "short films"));
         if (promos) parts.push(promos + " " + (promos === 1 ? "promo" : "promos"));
         parts.push(total + " total");
