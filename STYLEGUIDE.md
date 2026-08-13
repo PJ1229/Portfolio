@@ -1,5 +1,26 @@
 ## style guide (portfolio)
 
+## film register (`public/film/`)
+
+The film portfolio is a separate register from the lab site: its own stylesheet
+(`public/film/film.css`) and page class (`.film-page`). The lowercase hard rule
+below does **not** apply to it. The `/inspo` page has moved onto this register.
+
+### type — three roles, no more
+- **display titles** — condensed grotesque, uppercase, tight tracking (`Anton`).
+- **running header / prose** — serif, Title Case / sentence case (`Instrument Serif`).
+- **metadata / nav / credits** — mono, uppercase, letterspaced (`IBM Plex Mono`).
+
+### tokens
+- black canvas `#0F0F0F` · white paper `#FFFFFF` · ink `#000` · grays for dim/meta.
+- black and white only — no color accent. labels, nav, and metadata use grayscale.
+- hairline frames only. no shadows, no rounded corners, no gradients.
+
+### rules
+- never mix casings within a role. display = uppercase, metadata = uppercase
+  mono, prose = Title Case / sentence case.
+- titles sit optically flush to the card's edges.
+
 ### voice + casing
 - **default casing**: sentence case for paragraphs, **lowercase** for lab headings/titles unless there’s a strong reason not to.
 - **hard rule (lab pages)**: all lab page text is forced lowercase via CSS (`text-transform: lowercase`).

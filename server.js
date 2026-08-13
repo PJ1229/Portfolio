@@ -30,21 +30,42 @@ if (missingEnv.length) {
   process.exit(1);
 }
 
-// --- Lab as primary site (no redirects to avoid loops with external rules) ---
+// --- Site entry points ---
+// The film portfolio takes over the root. The lab site is still reachable at
+// /lab (see the /lab routes below); no lab content is removed.
 function sendLabIndex(res) {
   res.sendFile(path.join(__dirname, "public", "lab", "index.html"));
 }
 
+function sendFilmPage(res, file) {
+  res.sendFile(path.join(__dirname, "public", "film", file));
+}
+
+// Film portfolio (root)
 app.get("/", (req, res) => {
-  sendLabIndex(res);
+  sendFilmPage(res, "index.html");
 });
 
-// Some pages use relative "index.html" back links.
-// In production this can resolve to "/index.html" (e.g. from "/dsa.html"),
-// so serve the lab index there too.
 app.get("/index.html", (req, res) => {
-  sendLabIndex(res);
+  sendFilmPage(res, "index.html");
 });
+
+app.get("/unsanctioned", (req, res) => {
+  sendFilmPage(res, "unsanctioned.html");
+});
+
+app.get("/love-from-toronto", (req, res) => {
+  sendFilmPage(res, "love-from-toronto.html");
+});
+
+app.get("/about", (req, res) => {
+  sendFilmPage(res, "about.html");
+});
+
+// Writing moves to Substack. TODO: fill in the Substack profile URL, then uncomment.
+// app.get("/writing", (req, res) => {
+//   res.redirect(302, "https://<substack-url>");
+// });
 
 app.get("/lab", (req, res) => {
   sendLabIndex(res);
@@ -60,6 +81,10 @@ app.get("/lab/index.html", (req, res) => {
 
 // Shortcuts: old lab-style URLs at root
 app.get("/inspo.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "lab", "inspo.html"));
+});
+
+app.get("/inspo", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "lab", "inspo.html"));
 });
 
@@ -86,6 +111,10 @@ app.get("/guitar.html", (req, res) => {
 });
 
 app.get("/summer-series.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "lab", "summer-series.html"));
+});
+
+app.get("/summer-26", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "lab", "summer-series.html"));
 });
 

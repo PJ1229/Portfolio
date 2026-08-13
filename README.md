@@ -20,4 +20,6 @@ Default port is `5050` unless `PORT` is set.
 | [STYLEGUIDE.md](STYLEGUIDE.md) | Voice, lab nav, blog/inspo conventions |
 | [ARCHIVE.md](ARCHIVE.md) | Removed lab copy, restore snippets, legacy tree note |
 | [IDEAS.md](IDEAS.md) | Backlog ideas not implemented yet |
+| [FILM_SITE_PLAN.md](FILM_SITE_PLAN.md) | Plan for turning the site into a film portfolio (not started) |
+| [design-refs/film-site/INSPO.md](design-refs/film-site/INSPO.md) | Web-design references for the film portfolio |
 | [README.md](README.md) | This file |

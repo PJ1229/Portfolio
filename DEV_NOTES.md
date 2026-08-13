@@ -1,3 +1,16 @@
+## Film portfolio (new root)
+
+- Lives under `public/film/`: `index.html` (work index), `unsanctioned.html`,
+  `love-in-toronto.html`, `about.html`, and `film.css` (its own stylesheet,
+  separate from `public/index.css`).
+- Served at `/`, `/unsanctioned`, `/love-in-toronto`, and `/about`.
+- Assets under `public/images/unsanctioned/` and `public/images/love-in-toronto/`
+  (compressed WebP, no large files committed).
+- `/inspo` and `/summer-26` are clean aliases for the lab `inspo.html` and
+  `summer-series.html`. `inspo` has moved onto the film register.
+- The lab site is still reachable at `/lab` (and `/lab/`); no lab content was
+  removed. Legacy stays at `/legacy/`.
+
 ## Codebase layout
 
 - **New “lab” site (primary):**
