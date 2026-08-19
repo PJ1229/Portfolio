@@ -55,6 +55,38 @@ Then immediately after that `</p>`:
 
 ---
 
+## film register — `public/film/`
+
+### 2026-08-19 — love from toronto unpublished
+
+- **Unpublished:** 2026-08-19
+- **Removed:** the project card from the WORK grid on `public/film/index.html`,
+  and the `/love-from-toronto` route from `server.js`. A 404 guard now also
+  covers `/film/love-from-toronto.html` so the page isn't live-but-unlinked.
+- **Still in repo:** `public/film/love-from-toronto.html` and
+  `public/images/love-from-toronto/` are untouched for a future re-publish.
+- **Restore:** (1) remove the `/love-from-toronto` 404 guard in `server.js` and
+  re-add `app.get("/love-from-toronto", …)` → `sendFilmPage(res,
+  "love-from-toronto.html")`; (2) re-add a `.project` card to the grid on
+  `public/film/index.html` with its `data-type` / `data-client` / `data-status`
+  attributes (see STYLEGUIDE's project content model).
+
+```html
+<a class="project" href="/love-from-toronto"
+   data-type="FILM"
+   data-client="self"
+   data-status="IN PROGRESS"
+   data-year="2026">
+  <img src="../images/love-from-toronto/hero.webp" alt="Love from Toronto" loading="lazy">
+  <div class="project-overlay">
+    <h2 class="disp">LOVE FROM TORONTO</h2>
+    <div data-project-meta></div>
+  </div>
+</a>
+```
+
+---
+
 ## superseded site — `public/legacy/`
 
 - **What:** older portfolio tree (v1) kept under `public/legacy/`. The primary site is served from `public/lab/` for `/` and related routes (see `server.js`).  

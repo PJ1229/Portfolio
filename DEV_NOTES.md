@@ -1,10 +1,15 @@
 ## Film portfolio (new root)
 
-- Lives under `public/film/`: `index.html` (work index), `unsanctioned.html`,
-  `love-in-toronto.html`, `about.html`, and `film.css` (its own stylesheet,
-  separate from `public/index.css`).
-- Served at `/`, `/unsanctioned`, `/love-in-toronto`, and `/about`.
-- Assets under `public/images/unsanctioned/` and `public/images/love-in-toronto/`
+- Lives under `public/film/`: `index.html` (work/projects index),
+  `unsanctioned.html`, `about.html`, `projects.js` (project content-model
+  renderer), and `film.css` (its own stylesheet, separate from
+  `public/index.css`).
+- Served at `/`, `/unsanctioned`, and `/about`. `/writing` 302s to the
+  Substack publication (`https://substack.com/@pjk1m`).
+- **Love from Toronto is unpublished.** `public/film/love-from-toronto.html`
+  and its assets stay in the repo for a future re-publish, but `/love-from-toronto`
+  and `/film/love-from-toronto.html` return 404 (guard in `server.js`).
+- Assets under `public/images/unsanctioned/` and `public/images/love-from-toronto/`
   (compressed WebP, no large files committed).
 - `/inspo` and `/summer-26` are clean aliases for the lab `inspo.html` and
   `summer-series.html`. `inspo` has moved onto the film register.

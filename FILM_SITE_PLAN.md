@@ -10,6 +10,17 @@ Status: **built (2026-08-13).** The design system, four pages, routes, and the
 index. Remaining work is content-level (logline, crew confirmation, Substack
 URL, reel uploads) — see open questions.
 
+**Update (2026-08-19):** the register is now a **Projects** model, not a Films
+model. Project cards carry `type[]` / `client` / `status` data attributes
+(rendered by `public/film/projects.js`); client work (e.g. Michigan Athletics)
+will live in the same WORK grid via a `client` badge. Primary nav is
+`WORK · WRITING · INFO`; every page footer links to `/inspo`. `/writing`
+302s to `https://substack.com/@pjk1m`. **Love from Toronto is unpublished**
+(404 at `/love-from-toronto`; source kept in `public/film/`). The
+`/unsanctioned` detail page is now the ordered, optional-section template
+(Overview → Trailer/Hero → BTS → Impact/Results → Credits → Gallery →
+Related Writing).
+
 ---
 
 ## decisions (locked 2026-08-13)

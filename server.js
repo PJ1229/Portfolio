@@ -20,6 +20,13 @@ app.use(
 );
 app.use(compression());
 app.use(express.json({ limit: "64kb" })); // parse JSON body with size cap
+
+// Unpublished — Love from Toronto. Source files stay in the repo for a future
+// re-publish, but the page is not live at any URL (including the static path).
+app.use(["/love-from-toronto", "/film/love-from-toronto.html"], (req, res) => {
+  res.status(404).type("text/plain").send("Not found");
+});
+
 // serve static files (but don't auto-serve public/index.html at "/")
 app.use(express.static(path.join(__dirname, "public"), { index: false }));
 
@@ -54,18 +61,14 @@ app.get("/unsanctioned", (req, res) => {
   sendFilmPage(res, "unsanctioned.html");
 });
 
-app.get("/love-from-toronto", (req, res) => {
-  sendFilmPage(res, "love-from-toronto.html");
-});
-
 app.get("/about", (req, res) => {
   sendFilmPage(res, "about.html");
 });
 
-// Writing moves to Substack. TODO: fill in the Substack profile URL, then uncomment.
-// app.get("/writing", (req, res) => {
-//   res.redirect(302, "https://<substack-url>");
-// });
+// Writing lives on Substack — /writing is just a link out (no on-site archive).
+app.get("/writing", (req, res) => {
+  res.redirect(302, "https://substack.com/@pjk1m");
+});
 
 app.get("/lab", (req, res) => {
   sendLabIndex(res);

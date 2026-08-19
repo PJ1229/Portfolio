@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PJ Kim — Films</title>
-  <meta name="description" content="Films by PJ Kim — Project Unsanctioned and Love from Toronto.">
+  <title>PJ Kim — Work</title>
+  <meta name="description" content="Selected projects by PJ Kim — films, events, promos, sports, and brand work.">
   <link rel="icon" href="../images/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,39 +23,40 @@
 
   <header class="nav dark-nav" style="padding: clamp(16px,3vw,28px) var(--gutter);">
     <span>WORK</span>
-    <a href="/about">INFO</a>
+    <div class="nav-links">
+      <a href="/writing">WRITING</a>
+      <a href="/about">INFO</a>
+    </div>
   </header>
 
   <section class="home-hero">
     <img src="../images/unsanctioned/website-hero.webp" alt="Project Unsanctioned — hero">
     <div class="hero-overlay">
-      <p class="mono">PJ KIM — FILMMAKER</p>
-      <h1 class="disp">FILM WORKS</h1>
+      <p class="mono">PJ KIM — FILMMAKER / CREATIVE TECHNOLOGIST</p>
+      <h1 class="disp">SELECTED WORK</h1>
     </div>
   </section>
 
   <section class="section dark-section" style="padding: clamp(32px,6vw,72px) 0;">
     <div class="projects">
-      <a class="project" href="/unsanctioned">
+      <a class="project" href="/unsanctioned"
+         data-type="EVENT,PROMO,FILM"
+         data-client="self"
+         data-status="IN PROGRESS"
+         data-year="2026">
         <img src="../images/unsanctioned/chad-tiffany-close.webp" alt="Project Unsanctioned" loading="lazy">
         <div class="project-overlay">
           <h2 class="disp">PROJECT UNSANCTIONED</h2>
-          <p class="mono">RAVE PROMO · OSTAR × HOUSE BL3ND</p>
-          <p class="mono">PUBLISHED · 2026</p>
-        </div>
-      </a>
-      <a class="project" href="/love-from-toronto">
-        <img src="../images/love-from-toronto/hero.webp" alt="Love from Toronto" loading="lazy">
-        <div class="project-overlay">
-          <h2 class="disp">LOVE FROM TORONTO</h2>
-          <p class="mono">TRAVEL FILM · FUJIFILM X-S20</p>
-          <p class="mono">DRAFT — TRAILER ONLY</p>
+          <div data-project-meta></div>
         </div>
       </a>
     </div>
   </section>
 
-  <footer class="monogram">PJK1M</footer>
+  <footer class="monogram">
+    <a href="/inspo">INSPO</a> · PJK1M
+  </footer>
 
+  <script src="../film/projects.js"></script>
 </body>
 </html>
