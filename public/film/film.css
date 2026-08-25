@@ -6,8 +6,8 @@
   --canvas: #000000;
   --paper: #ffffff;
   --ink: #000000;
-  --ink-dim: #000000;
-  --paper-dim: #ffffff;
+  --ink-dim: rgba(0, 0, 0, 0.55);
+  --paper-dim: rgba(255, 255, 255, 0.6);
   --accent: #ffffff; /* was orange — now monochrome */
   --rule: 1px;
   --gutter: clamp(16px, 4vw, 56px);
@@ -178,6 +178,10 @@
   color: var(--ink);
 }
 .film-page .paper-section p.prose + p.prose { margin-top: 1em; }
+
+/* section-context mono (secondary text) */
+.film-page .dark-section .mono { color: var(--paper-dim); }
+.film-page .paper-section .mono { color: var(--ink-dim); }
 
 /* ---- credits (two-column mono) ---- */
 .film-page .credits {
