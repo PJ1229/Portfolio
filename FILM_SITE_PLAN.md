@@ -355,3 +355,62 @@ Nothing here blocks step 1.
 - **Fate of `dsa` and `guitar`.** Dropped from the portfolio, but `guitar`
   has a live `/api/guitar-videos` YouTube route in `server.js`. Decide whether
   they move to `legacy/` or are deleted, and whether that API route goes.
+
+---
+
+## unsanctioned — campaign expansion (2026-08-24)
+
+The unsanctioned page grows from a single-film page into the full campaign,
+now presented as a dated timeline: film + photo drop + teaser + post-rave
+impact, with BTS as the process chapter. Locked decisions:
+
+- Event: **Arcade Rave: Gotta Gacha** — Friday, August 21, 2026 · 10PM–2AM.
+  Presented by OSTAR × House Bl3nd, collab with Gotta Gacha
+  ([gottagacha.com](https://gottagacha.com)).
+- Hero film: posted **Aug 11** ([YouTube](https://www.youtube.com/watch?v=FLqxwn8_9xI)).
+- Photo drop: posted **Aug 14** — stills by **Michael Counts**, edited by
+  **PJ Kim**, shot on **Fujifilm X-S20**. Source: `06_deliverables/social/`
+  (page uses `1,2,3,7`).
+- Teaser: posted **Aug 18** ([instagram.com/p/DcMg6QLIgrd](https://www.instagram.com/p/DcMg6QLIgrd/)).
+  Shot by **Anthony Nguyen** on **Sony a7III · S-Log2**; edit + grade by PJ Kim.
+  Its 10 stills are filed at
+  `ostar/project-unsanctioned/03_graphics/stills/ant_C4734_*.jpg`
+  (sorted by timecode, not the `StillNNN` suffix).
+- Justin's edit: posted **Aug 19** ([instagram.com/reel/DcOzYjayYHM](https://www.instagram.com/reel/DcOzYjayYHM/)),
+  shot & cut by **Justin Lagman** on **Sony a7II**.
+- Event stills: **Alex Ge**, **Sony a7IV · S-Log3**, 6 photos filed at
+  `ostar/gotta-gotcha/06_deliverables/stills/`.
+- Design (banner + lineup): **Justin Lagman** — banner posted **Aug 12**,
+  lineup posted **Aug 21** (day of the rave).
+- BTS: process ran **Jun 16 → Aug 21** — first meeting Jun 16, then Jun 30,
+  Jul 10, Jul 26, big logistics meeting Aug 12; production Aug 1 → rave.
+  BTS photos filed at `04_bts/photos/` (scripts/directing/editing/food;
+  scripts, editing, food are verticals — rotated 90° CW for the web exports).
+  Coloring carousel (Scene 1) slides from
+  `06_deliverables/carousels/scene1-coloring-carousel/`; SFX breakdown and
+  coloring breakdown link out to TikTok.
+- Impact (Instagram, one month of the teaser): **+100K Instagram impressions**,
+  **+144 followers**. Attendance: RSVP list maxed out — **361 marked "went"** on
+  Partiful, **~250 actually through the door**. Page shows numbers only, no
+  RSVP screenshot. Aftermovie is coming → section stays `IN PROGRESS`.
+- Lineup: Cinco 10:00PM · Ayo B2B HangoutWithG 11:00PM · Artificial Sky
+  12:00AM · **KWIN** 1:00AM–shutdown.
+
+Final section order on `/unsanctioned`:
+
+```
+01 Overview          white card — "campaign ships in four parts"
+02 Trailer/Hero      dark — AUG 11
+03 Gallery           dark — hero/trailer stills
+04 Photo Drop        paper — AUG 14; Michael Counts stills, edited by PJ
+05 3 Days Before     dark — AUG 18; IG link-out poster + 10 stills
+06 Justin's Edit     paper — AUG 19; Justin Lagman's a7II cut, IG reel
+07 Post-Rave/Impact  dark — AUG 21; stats, banner/lineup, 6 event stills
+08 BTS               paper — JUN 16 → AUG 21; meetings, photos, reels
+09 Credits           dark — grouped per deliverable
+```
+
+Asset pipeline: WebP exports live in `public/images/unsanctioned/` under
+`teaser/`, `post-rave/`, `bts/`, `photo-drop/`, `carousel/`. New CSS:
+`.stats`, `.designs`, `.lightbox` (stills open full-screen via
+`public/film/lightbox.js`).
