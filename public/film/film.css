@@ -17,7 +17,7 @@
   background: var(--canvas);
   color: var(--paper);
   font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -41,7 +41,7 @@
 .film-page .serif i, .film-page .serif em { font-style: italic; }
 .film-page .mono {
   font-family: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -63,7 +63,7 @@
 }
 .film-page .nav a {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
@@ -75,7 +75,7 @@
 /* ---- running header (serif, centered) ---- */
 .film-page .runhead {
   font-family: "Instrument Serif", Georgia, serif;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.35;
   color: var(--ink-dim);
   text-align: center;
@@ -111,7 +111,7 @@
 }
 .film-page .datestamp {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-dim);
@@ -135,7 +135,7 @@
 .film-page .dark-section { background: var(--canvas); color: var(--paper); }
 .film-page .dark-section h2 {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--paper-dim);
@@ -154,7 +154,7 @@
 .film-page .paper-section .section-inner { max-width: 1040px; }
 .film-page .paper-section h2 {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink-dim);
@@ -168,7 +168,7 @@
 }
 .film-page .paper-section .meta {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-dim);
@@ -198,7 +198,7 @@
   padding: 14px 0;
   border-bottom: var(--rule) solid rgba(255, 255, 255, 0.18);
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1.5;
@@ -230,7 +230,7 @@
   padding: 34px 16px 12px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #ffffff;
@@ -259,7 +259,7 @@
   border: var(--rule) solid rgba(255, 255, 255, 0.4);
   color: var(--paper);
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   padding: 9px 14px;
@@ -290,7 +290,7 @@
   border: var(--rule) solid transparent;
   color: var(--paper);
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   padding: 8px 12px;
@@ -299,14 +299,14 @@
 .film-page .lightbox .lb-bar button:hover { border-color: rgba(255, 255, 255, 0.4); }
 .film-page .lightbox .lb-count {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   color: var(--paper-dim);
 }
 .film-page .lightbox .lb-caption {
   margin-top: 10px;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--paper-dim);
@@ -335,7 +335,7 @@
   display: block;
   margin-top: 8px;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--paper-dim);
@@ -364,7 +364,7 @@
 .film-page .designs figcaption {
   margin-top: 10px;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--paper-dim);
@@ -449,7 +449,7 @@
   position: absolute;
   left: 18px; bottom: 16px;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--paper);
@@ -492,7 +492,7 @@
   display: block;
   margin-top: 0;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #ffffff;
@@ -512,7 +512,7 @@
 }
 .film-page .about-detail {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1.8;
@@ -526,7 +526,7 @@
   text-align: center;
   padding: clamp(24px, 4vw, 48px) 0;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.3em;
   color: var(--paper-dim);
 }
@@ -540,7 +540,7 @@
 }
 .film-page .watch a {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--paper);
@@ -567,7 +567,7 @@
 .film-page .inspo-list a:hover { color: var(--ink-dim); }
 .film-page .inspo-list .inspo-meta {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-dim);
@@ -593,7 +593,7 @@
 }
 .film-page .project-tags li {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   line-height: 1;
@@ -609,7 +609,7 @@
 .film-page .project-client {
   display: inline-block;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   line-height: 1;
