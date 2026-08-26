@@ -548,11 +548,13 @@
 .film-page .watch a:hover { color: var(--accent); }
 
 /* ---- inspo list ---- */
-.film-page .inspo-list {
+.film-page .inspo-list,
+.film-page .inspo-films {
   list-style: none;
   margin-top: clamp(28px, 5vw, 48px);
 }
-.film-page .inspo-list li {
+.film-page .inspo-list li,
+.film-page .inspo-films li {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -562,10 +564,14 @@
   font-size: 18px;
   line-height: 1.4;
 }
-.film-page .inspo-list li:last-child { border-bottom: var(--rule) solid rgba(0, 0, 0, 0.14); }
-.film-page .inspo-list a { color: var(--ink); }
-.film-page .inspo-list a:hover { color: var(--ink-dim); }
-.film-page .inspo-list .inspo-meta {
+.film-page .inspo-list li:last-child,
+.film-page .inspo-films li:last-child { border-bottom: var(--rule) solid rgba(0, 0, 0, 0.14); }
+.film-page .inspo-list a,
+.film-page .inspo-films a { color: var(--ink); }
+.film-page .inspo-list a:hover,
+.film-page .inspo-films a:hover { color: var(--ink-dim); }
+.film-page .inspo-list .inspo-meta,
+.film-page .inspo-films .inspo-meta {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 12px;
   letter-spacing: 0.14em;
@@ -573,9 +579,12 @@
   color: var(--ink-dim);
   white-space: nowrap;
 }
+/* the letterboxd favorites sit right under their intro line */
+.film-page .inspo-films { margin-top: 0.5em; }
 /* inspo keeps its red markers (scoped exception to the monochrome register) */
 .film-page.inspo-page .is-red { color: #ff2d2d; }
-.film-page.inspo-page .inspo-list a.is-red:hover { color: #ff2d2d; }
+.film-page.inspo-page .inspo-list a.is-red:hover,
+.film-page.inspo-page .inspo-films a.is-red:hover { color: #ff2d2d; }
 
 /* ---- project content model: type tags + client badge + status ---- */
 .film-page [data-project-meta] {
