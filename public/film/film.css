@@ -52,6 +52,7 @@
   color: var(--ink);
   margin: var(--gutter);
   padding: var(--pad);
+  overflow: hidden;
 }
 
 /* ---- nav, pinned to card / page corners ---- */
@@ -102,12 +103,21 @@
   align-items: flex-start;
   gap: clamp(10px, 2vw, 24px);
   margin-top: clamp(24px, 4vw, 48px);
+  margin-left: calc(var(--pad) * -1);
+  margin-right: calc(var(--pad) * -1);
 }
+.film-page .hero-title-main { flex: 1; min-width: 0; }
 .film-page .hero-title .disp {
-  font-size: clamp(52px, 12vw, 168px);
-  line-height: 0.86;
-  flex: 1;
-  min-width: 0;
+  font-size: clamp(48px, 12.5vw, 176px);
+  line-height: 0.84;
+}
+.film-page .hero-sub {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.6vw, 30px);
+  line-height: 1.25;
+  color: var(--ink-dim);
+  margin-top: 0.5em;
 }
 .film-page .datestamp {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
@@ -119,6 +129,7 @@
   transform: rotate(180deg);
   white-space: nowrap;
   padding-top: 0.35em;
+  margin-right: var(--pad);
 }
 
 /* ---- sections ---- */
@@ -425,8 +436,18 @@
   margin-bottom: 12px;
 }
 .film-page .home-hero .hero-overlay .disp {
-  font-size: clamp(44px, 11vw, 150px);
+  font-size: clamp(52px, 16vw, 320px);
+  line-height: 0.84;
   color: var(--paper);
+  white-space: nowrap;
+  text-align: center;
+  margin-left: calc(var(--gutter) * -1);
+  margin-right: calc(var(--gutter) * -1);
+}
+.film-page .home-hero .hero-overlay .hero-sub {
+  color: var(--paper-dim);
+  margin-top: 14px;
+  text-align: center;
 }
 
 /* ---- film poster (clickable, replaces embed) ---- */
@@ -529,6 +550,27 @@
   font-size: 13px;
   letter-spacing: 0.3em;
   color: var(--paper-dim);
+}
+
+/* ---- contact band (every page footer) ---- */
+.film-page .contact-band {
+  padding: clamp(64px, 10vw, 140px) var(--gutter) clamp(40px, 6vw, 72px);
+  text-align: center;
+}
+.film-page .contact-email {
+  display: inline-block;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(26px, 6.5vw, 84px);
+  line-height: 1.05;
+  color: var(--paper);
+  word-break: break-word;
+}
+.film-page .contact-email:hover { color: var(--accent); }
+.film-page .contact-band .mono {
+  display: block;
+  margin-top: clamp(18px, 3vw, 28px);
+  color: var(--paper-dim);
+  letter-spacing: 0.24em;
 }
 
 /* ---- platform links ---- */
