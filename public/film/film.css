@@ -435,10 +435,6 @@
   font-size: clamp(44px, 11vw, 150px);
   color: var(--paper);
 }
-.film-page .home-hero .hero-overlay .hero-sub {
-  color: var(--paper-dim);
-  margin-top: 14px;
-}
 
 /* ---- film poster (clickable, replaces embed) ---- */
 .film-page .film-link {
