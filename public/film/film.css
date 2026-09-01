@@ -706,6 +706,22 @@
 .film-page .monogram a { color: inherit; }
 .film-page .monogram a:hover { color: var(--accent); }
 
+/* ---- filmic application page ---- */
+.film-page.filmic-page .stills { grid-template-columns: 1fr; }
+.film-page.filmic-page .split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+.film-page.filmic-page .prose { max-width: 44em; }
+.film-page.filmic-page .prose + .prose { margin-top: 1em; }
+.film-page.filmic-page .dark-section .prose { color: var(--paper); }
+.film-page.filmic-page .photo-note { margin-top: 10px; }
+@media (min-width: 900px) {
+  .film-page.filmic-page .split { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
+}
+
 /* ---- responsive ---- */
 @media (min-width: 900px) {
   .film-page .projects { grid-template-columns: repeat(2, 1fr); }

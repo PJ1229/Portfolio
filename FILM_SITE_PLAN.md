@@ -126,6 +126,7 @@ untouched archive.
 pjk1m.com/
   /                   work index — 2 films, row-based
   /unsanctioned       deep film page (the site's centre of gravity)
+  /filmic             the Filmic application (2026) — essays, critique, speed round
   /love-in-toronto    lighter WIP page, built on the trailer
   /about              short filmmaker bio
   /inspo              kept, restyled into the new system

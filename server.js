@@ -61,6 +61,10 @@ app.get("/unsanctioned", (req, res) => {
   sendFilmPage(res, "unsanctioned.html");
 });
 
+app.get("/filmic", (req, res) => {
+  sendFilmPage(res, "filmic.html");
+});
+
 app.get("/about", (req, res) => {
   sendFilmPage(res, "about.html");
 });
