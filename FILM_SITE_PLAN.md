@@ -393,7 +393,8 @@ impact, with BTS as the process chapter. Locked decisions:
 - Impact (Instagram, one month of the teaser): **+100K Instagram impressions**,
   **+144 followers**. Attendance: RSVP list maxed out — **361 marked "went"** on
   Partiful, **~250 actually through the door**. Page shows numbers only, no
-  RSVP screenshot. Aftermovie is coming → section stays `IN PROGRESS`.
+  RSVP screenshot. Aftermovie reference was dropped when the project was marked
+  finished — the campaign reads as complete.
 - Lineup: Cinco 10:00PM · Ayo B2B HangoutWithG 11:00PM · Artificial Sky
   12:00AM · **KWIN** 1:00AM–shutdown.
 
