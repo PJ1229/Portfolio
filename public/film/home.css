@@ -1,0 +1,153 @@
+/* home — merged work index + info.
+   Loads after film.css. Every rule is scoped to .film-page.home-page.
+   film.css supplies the tokens, .disp / .mono roles, .home-hero, .projects
+   and .monogram; this file only adds what the merge needs. */
+
+/* ---- nav sits over the hero ---- */
+.film-page.home-page .home-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: clamp(16px, 3vw, 28px) var(--gutter);
+}
+.film-page.home-page .home-nav .mono { color: var(--paper-dim); }
+.film-page.home-page .home-nav a:hover { color: var(--paper); }
+
+.film-page.home-page .home-hero { position: relative; }
+/* more air under the title stack; film.css's clamp bottoms the last line out */
+.film-page.home-page .home-hero .hero-overlay {
+  padding-bottom: clamp(40px, 7vw, 72px);
+}
+
+/* Focal point per still. film.css defaults every slide to `right center`,
+   which holds at desktop but swings the crop off the subject as the viewport
+   narrows — at phone widths the still is scaled to ~4x the container and
+   `right` keeps only the far edge of the frame. Anchor each slide on its own
+   subject instead so it survives any aspect ratio. */
+.film-page.home-page .home-hero-slide[data-slide="if-not-later-when"] img {
+  object-position: 66% 57%;
+}
+.film-page.home-page .home-hero-slide[data-slide="unsanctioned"] img {
+  object-position: 27% 35%;
+}
+
+/* ---- hero title list — this is the index ---- */
+.film-page.home-page .home-eyebrow {
+  color: var(--paper-dim);
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+}
+.film-page.home-page .home-titles {
+  list-style: none;
+  display: grid;
+  gap: clamp(2px, 0.6vw, 8px);
+}
+.film-page.home-page .home-titles a {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.25s ease;
+}
+/* film.css colors and sizes .hero-overlay .disp / .mono directly, which would
+   otherwise beat the anchor rule above and keep every title full white. Scope
+   through .home-hero so the title list wins and its parts inherit the
+   active/inactive color from the anchor. */
+.film-page.home-page .home-hero .home-titles a .disp {
+  font-size: clamp(26px, 6.2vw, 76px);
+  line-height: 0.96;
+  color: inherit;
+}
+.film-page.home-page .home-hero .home-titles a sup {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  padding-top: 0.35em;
+  margin-bottom: 0;
+  color: inherit;
+}
+.film-page.home-page .home-titles li.is-active a,
+.film-page.home-page .home-titles a:hover,
+.film-page.home-page .home-titles a:focus-visible { color: var(--paper); }
+.film-page.home-page .home-titles a:focus-visible {
+  outline: var(--rule) solid var(--paper);
+  outline-offset: 6px;
+}
+
+/* ---- shared section rhythm ---- */
+.film-page.home-page .home-work,
+.film-page.home-page .home-info {
+  padding: clamp(48px, 8vw, 96px) var(--gutter);
+}
+.film-page.home-page .home-count {
+  color: var(--paper-dim);
+  margin-bottom: clamp(20px, 3vw, 32px);
+}
+
+/* ---- info (was /about) ---- */
+.film-page.home-page .home-info { border-top: var(--rule) solid rgba(255, 255, 255, 0.14); }
+.film-page.home-page .info-statement {
+  font-size: clamp(32px, 5.4vw, 68px);
+  line-height: 1.08;
+  max-width: 15em;
+}
+.film-page.home-page .info-statement i { font-style: italic; }
+.film-page.home-page .info-support {
+  margin-top: clamp(24px, 4vw, 44px);
+  max-width: 34em;
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.45;
+  color: var(--paper-dim);
+}
+
+/* label / value table — same pattern as the film-page credits block */
+.film-page.home-page .info-table {
+  margin-top: clamp(40px, 6vw, 72px);
+  border-top: var(--rule) solid rgba(255, 255, 255, 0.14);
+}
+.film-page.home-page .info-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.32fr) 1fr;
+  gap: clamp(16px, 3vw, 40px);
+  padding: 14px 0;
+  border-bottom: var(--rule) solid rgba(255, 255, 255, 0.14);
+}
+.film-page.home-page .info-row dt,
+.film-page.home-page .info-row dd {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.7;
+}
+.film-page.home-page .info-row dt { color: var(--paper-dim); }
+.film-page.home-page .info-row dd { color: var(--paper); }
+.film-page.home-page .info-row dd a:hover { color: var(--paper-dim); }
+.film-page.home-page .info-row dd a:focus-visible {
+  outline: var(--rule) solid var(--paper);
+  outline-offset: 3px;
+}
+
+@media (max-width: 719px) {
+  .film-page.home-page .info-row { grid-template-columns: 1fr; gap: 2px; }
+
+  /* the identity line is long; give it its own row so it never collides with
+     WRITING / INFO / INSPO at phone widths */
+  .film-page.home-page .home-nav {
+    flex-wrap: wrap;
+    row-gap: 14px;
+    align-items: flex-start;
+  }
+  .film-page.home-page .home-nav .mono {
+    flex: 1 1 100%;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+  }
+  .film-page.home-page .home-nav .nav-links { gap: clamp(14px, 4vw, 18px); }
+}
+
+/* ---- motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .film-page.home-page .home-titles a { transition: none; }
+}

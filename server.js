@@ -90,14 +90,22 @@ app.get("/lab/index.html", (req, res) => {
   sendLabIndex(res);
 });
 
-// Shortcuts: old lab-style URLs at root
-app.get("/inspo.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "lab", "inspo.html"));
+// Inspo lives on the film register now (public/film/inspo.html), but keeps
+// its root URL. /lab/inspo.html is where it used to sit — redirect so old
+// links and bookmarks still land.
+app.get("/inspo", (req, res) => {
+  sendFilmPage(res, "inspo.html");
 });
 
-app.get("/inspo", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "lab", "inspo.html"));
+app.get("/inspo.html", (req, res) => {
+  sendFilmPage(res, "inspo.html");
 });
+
+app.get("/lab/inspo.html", (req, res) => {
+  res.redirect(301, "/inspo");
+});
+
+// Shortcuts: old lab-style URLs at root
 
 app.get("/blog.html", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "lab", "blog.html"));

@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PJ Kim — Work</title>
-  <meta name="description" content="Selected projects by PJ Kim — films, events, promos, sports, and brand work.">
+  <title>PJ Kim — Filmmaker</title>
+  <meta name="description" content="PJ Kim — filmmaker and electrical engineering student. Selected films, events, promos and brand work.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PJ Kim — Work">
-  <meta property="og:description" content="Selected projects by PJ Kim — films, events, promos, sports, and brand work.">
+  <meta property="og:title" content="PJ Kim — Filmmaker">
+  <meta property="og:description" content="PJ Kim — filmmaker and electrical engineering student. Selected films, events, promos and brand work.">
   <meta property="og:url" content="https://pjk1m.com/">
-  <meta property="og:image" content="https://pjk1m.com/images/unsanctioned/website-hero.webp">
+  <meta property="og:image" content="https://pjk1m.com/images/if-not-later-when/hero.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PJ Kim — Work">
-  <meta name="twitter:description" content="Selected projects by PJ Kim — films, events, promos, sports, and brand work.">
-  <meta name="twitter:image" content="https://pjk1m.com/images/unsanctioned/website-hero.webp">
+  <meta name="twitter:title" content="PJ Kim — Filmmaker">
+  <meta name="twitter:description" content="PJ Kim — filmmaker and electrical engineering student. Selected films, events, promos and brand work.">
+  <meta name="twitter:image" content="https://pjk1m.com/images/if-not-later-when/hero.webp">
+  <link rel="canonical" href="https://pjk1m.com/">
   <link rel="icon" href="../images/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../film/film.css">
+  <link rel="stylesheet" href="../film/home.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0J8NYPG27"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -28,55 +30,112 @@
   </script>
 </head>
 
-<body class="film-page">
+<body class="film-page home-page">
 
-  <header class="nav dark-nav" style="padding: clamp(16px,3vw,28px) var(--gutter);">
-    <span>WORK</span>
+  <header class="nav dark-nav home-nav">
+    <span class="mono">PJ KIM — FILMMAKER / CREATIVE TECHNOLOGIST</span>
     <div class="nav-links">
       <a href="/writing">WRITING</a>
-      <a href="/about">INFO</a>
+      <a href="#info">INFO</a>
+      <a href="/inspo">INSPO</a>
     </div>
   </header>
 
-  <section class="home-hero" aria-label="Selected work — cycling project stills">
-    <div class="home-hero-slide is-active" data-still="if not later, when?">
-      <img src="../images/if-not-later-when/stack-03.webp" alt="if not later, when? — a boy sitting on a bench" fetchpriority="high">
-    </div>
-    <div class="home-hero-slide" aria-hidden="true" data-still="project unsanctioned">
-      <img src="../images/unsanctioned/website-hero.webp" alt="Project Unsanctioned — hero" loading="eager">
-    </div>
-    <div class="hero-overlay">
-      <p class="mono">PJ KIM — FILMMAKER / CREATIVE TECHNOLOGIST <span class="hero-still-sep" aria-hidden="true">·</span> <span class="hero-still-label">if not later, when?</span></p>
-      <h1 class="disp">SELECTED WORK</h1>
-    </div>
-  </section>
+  <main>
 
-  <section class="section dark-section" style="padding: clamp(32px,6vw,72px) 0;">
-    <div class="projects">
-      <a class="project" href="/if-not-later-when"
-         data-type="FILM"
-         data-client="self"
-         data-status="RELEASED"
-         data-year="2026">
-        <img src="../images/if-not-later-when/hero.webp" alt="Two figures at sunset in a field" loading="lazy">
-        <div class="project-overlay">
-          <h2 class="disp">IF NOT LATER, WHEN?</h2>
-          <div data-project-meta></div>
+    <!-- hero: the title list is the index. Hovering or focusing a title swaps
+         the still behind it; clicking opens the project. -->
+    <section class="home-hero" aria-label="Selected work">
+      <div class="home-hero-slide is-active" data-slide="if-not-later-when">
+        <img src="../images/if-not-later-when/stack-03.webp"
+             alt="if not later, when? — a boy sitting on a bench" fetchpriority="high">
+      </div>
+      <div class="home-hero-slide" data-slide="unsanctioned" aria-hidden="true">
+        <img src="../images/unsanctioned/website-hero.webp"
+             alt="Project Unsanctioned — hero" loading="eager">
+      </div>
+
+      <div class="hero-overlay">
+        <p class="mono home-eyebrow">SELECTED WORK</p>
+        <ol class="home-titles">
+          <li>
+            <a href="/if-not-later-when" data-slide="if-not-later-when">
+              <span class="disp">IF NOT LATER, WHEN?</span><sup class="mono">2026</sup>
+            </a>
+          </li>
+          <li>
+            <a href="/unsanctioned" data-slide="unsanctioned">
+              <span class="disp">PROJECT UNSANCTIONED</span><sup class="mono">2026</sup>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- work -->
+    <section class="home-work" aria-label="Projects">
+      <p class="mono home-count">01 — 02</p>
+      <div class="projects">
+        <a class="project" href="/if-not-later-when"
+           data-type="FILM"
+           data-client="self"
+           data-status="RELEASED"
+           data-year="2026">
+          <img src="../images/if-not-later-when/hero.webp" alt="Two figures at sunset in a field" loading="lazy">
+          <div class="project-overlay">
+            <h2 class="disp">IF NOT LATER, WHEN?</h2>
+            <div data-project-meta></div>
+          </div>
+        </a>
+        <a class="project" href="/unsanctioned"
+           data-type="EVENT,PROMO,FILM"
+           data-client="self"
+           data-status="RELEASED"
+           data-year="2026">
+          <img src="../images/unsanctioned/chad-tiffany-close.webp" alt="Project Unsanctioned" loading="lazy">
+          <div class="project-overlay">
+            <h2 class="disp">PROJECT UNSANCTIONED</h2>
+            <div data-project-meta></div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- info (was /about) -->
+    <section class="home-info" id="info" aria-label="Info">
+      <p class="mono home-count">INFO</p>
+
+      <p class="info-statement">PJ Kim <i>shoots, cuts, and grades</i> films —
+        and studies electrical engineering when he's not on set.</p>
+
+      <p class="info-support">He shoots Fuji in F-Log2, grades in Resolve, and documents the process
+        as carefully as the picture. Films ship on YouTube, Instagram and TikTok.</p>
+
+      <dl class="info-table">
+        <div class="info-row">
+          <dt>Study</dt>
+          <dd>University of Michigan · Electrical Engineering</dd>
         </div>
-      </a>
-      <a class="project" href="/unsanctioned"
-         data-type="EVENT,PROMO,FILM"
-         data-client="self"
-         data-status="RELEASED"
-         data-year="2026">
-        <img src="../images/unsanctioned/chad-tiffany-close.webp" alt="Project Unsanctioned" loading="lazy">
-        <div class="project-overlay">
-          <h2 class="disp">PROJECT UNSANCTIONED</h2>
-          <div data-project-meta></div>
+        <div class="info-row">
+          <dt>Email</dt>
+          <dd><a href="mailto:pekim@umich.edu">pekim@umich.edu</a></dd>
         </div>
-      </a>
-    </div>
-  </section>
+        <div class="info-row">
+          <dt>Instagram</dt>
+          <dd><a href="https://www.instagram.com/pj.k1m/" target="_blank" rel="noopener noreferrer">@pj.k1m</a></dd>
+        </div>
+        <div class="info-row">
+          <dt>YouTube</dt>
+          <dd><a href="https://www.youtube.com/@pj.k1m" target="_blank" rel="noopener noreferrer">@pj.k1m</a></dd>
+        </div>
+        <div class="info-row">
+          <dt>TikTok</dt>
+          <dd><a href="https://www.tiktok.com/@pj.k1m" target="_blank" rel="noopener noreferrer">@pj.k1m</a></dd>
+        </div>
+      </dl>
+    </section>
+
+  </main>
 
   <footer class="monogram">
     <a href="/inspo">INSPO</a> · PJK1M
@@ -84,26 +143,33 @@
 
   <script src="../film/projects.js"></script>
   <script>
-    // Cycle the Selected Work hero between project stills. Each slide is a
-    // full-bleed cover image inside the same hero, so every still scrolls
-    // with the page exactly like the original unsanctioned hero. The still
-    // label above SELECTED WORK follows the active slide.
+    // Hero stills follow the title list. No timer — the person drives it.
     (function () {
       var hero = document.querySelector(".home-hero");
       if (!hero) return;
       var slides = Array.prototype.slice.call(hero.querySelectorAll(".home-hero-slide"));
-      if (slides.length < 2) return;
-      var label = hero.querySelector(".hero-still-label");
-      var active = 0;
-      function show(i) {
-        slides[active].classList.remove("is-active");
-        slides[active].setAttribute("aria-hidden", "true");
-        active = (i + slides.length) % slides.length;
-        slides[active].classList.add("is-active");
-        slides[active].removeAttribute("aria-hidden");
-        if (label) label.textContent = slides[active].getAttribute("data-still") || "";
+      var links = Array.prototype.slice.call(hero.querySelectorAll(".home-titles a"));
+      if (slides.length < 2 || !links.length) return;
+
+      function show(key) {
+        slides.forEach(function (s) {
+          var on = s.getAttribute("data-slide") === key;
+          s.classList.toggle("is-active", on);
+          if (on) s.removeAttribute("aria-hidden");
+          else s.setAttribute("aria-hidden", "true");
+        });
+        links.forEach(function (a) {
+          a.parentNode.classList.toggle("is-active", a.getAttribute("data-slide") === key);
+        });
       }
-      setInterval(function () { show(active + 1); }, 6000);
+
+      links.forEach(function (a) {
+        var key = a.getAttribute("data-slide");
+        a.addEventListener("mouseenter", function () { show(key); });
+        a.addEventListener("focus", function () { show(key); });
+      });
+
+      show(links[0].getAttribute("data-slide"));
     })();
   </script>
 </body>

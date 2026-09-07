@@ -1,40 +1,81 @@
 /* if not later, when? — page styles.
    Loads after film.css. Every rule is scoped to .film-page.inlw-page.
-   Paper-and-ember palette, Newsreader, no animation. */
+
+   Voice: a journal entry. Off-white grainy paper, typewriter body, mono stamps
+   for metadata, hairline panels around images, no animation.
+
+   TYPE SCALE
+     title          clamp(30px, 5.6vw, 62px)   Courier Prime, staggered lines
+     body           15px / 1.85                 Courier Prime, 52ch max
+     stamp          11px, 0.22em, uppercase     IBM Plex Mono
+     value          12px, 0.06em                IBM Plex Mono
+     (nothing below 15px except stamps and labels)
+
+   RESTRAINT BUDGET (deliberate — don't grow these)
+     --accent appears in 5 places: hero block, story folio, essay link,
+     swatch bar (via --look-night), link hover inherited from film.css.
+     Stagger is used once (the title). Wide-set is used once (the pullquote).
+
+   DIAL-BACK
+     Grain too much   -> drop --grain-opacity to 0 (or delete the ::before rule).
+     Mono too much    -> set --font-body to Georgia, "Times New Roman", serif
+                         (Newsreader is no longer loaded on this page).
+     Grade too flat   -> uncomment the DARK PLATE VARIANT at the end of §7. */
 
 /* ---- tokens ---- */
 .film-page.inlw-page {
-  --paper: #DFCFC7;      /* page background — dusk sky, desaturated */
-  --paper-warm: #EBDDD4; /* lifted paper — essay section only */
-  --paper-card: #F4EDE6; /* near-white card — watch section */
-  --ink: #2B1F1F;        /* body text */
-  --ink-dim: #6B5750;    /* secondary text */
-  --rule: #B79E93;       /* hairline color; page rules write 1px solid var(--rule) */
-  --ember: #17110F;      /* grade section background */
-  --ember-ink: #D8C6B8;  /* text on ember */
-  --look-day: #A8A867;   /* grade accents — swatch strips only */
+  --paper: #F2EFE8;       /* off-white page */
+  --paper-warm: #EBE7DE;  /* one step down — essay sheet */
+  --paper-card: #F7F5F0;  /* lifted panel — watch */
+  --ink: #1C1A17;         /* near-black body */
+  --ink-dim: #6E6862;     /* stamps, labels, secondary */
+  --rule: #CFC8BE;        /* hairline COLOR — page rules write 1px solid var(--rule) */
+  --accent: #8C3A2E;      /* the film's ember red — the only accent on the page */
+  --look-day: #A8A867;    /* swatch bars only */
   --look-dusk: #D89680;
   --look-night: #8C3A2E;
+  --grain-opacity: 0.5;
   --gutter: clamp(20px, 5vw, 72px);
+  --font-body: "Courier Prime", ui-monospace, "Courier New", monospace;
+  --font-stamp: "IBM Plex Mono", ui-monospace, monospace;
 
   background: var(--paper);
   color: var(--ink);
-  font-family: "Newsreader", Georgia, "Times New Roman", serif;
-  font-size: 19px;
-  line-height: 1.65;
-  margin: 0; /* film.css resets descendants only; body itself keeps UA margin */
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.85;
+  margin: 0;
 }
 
-/* ---- shared chrome: keep markup, fix legibility on paper ---- */
-.film-page.inlw-page .nav.dark-nav { color: var(--ink); }
-.film-page.inlw-page .nav.dark-nav a { color: var(--ink); }
-.film-page.inlw-page .nav.dark-nav a:hover { color: var(--ink-dim); }
-.film-page.inlw-page .monogram { color: var(--ink-dim); }
-.film-page.inlw-page .monogram a { color: var(--ink); }
-.film-page.inlw-page .monogram a:hover { color: var(--ink-dim); }
+/* ---- grain ----
+   z-index sits under the lightbox (film.css uses 200) so an opened still is
+   never seen through noise. */
+.film-page.inlw-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+@media (prefers-contrast: more) {
+  .film-page.inlw-page::before { display: none; }
+}
 
-/* --rule is now a color, so shared components that used it as a width get
-   literal 1px borders on this page (lightbox stays fully functional). */
+/* ---- shared chrome ---- */
+.film-page.inlw-page .nav.dark-nav,
+.film-page.inlw-page .nav.dark-nav a { color: var(--ink-dim); }
+.film-page.inlw-page .nav.dark-nav a:hover { color: var(--ink); }
+.film-page.inlw-page .nav-links { gap: clamp(16px, 3vw, 40px); }
+.film-page.inlw-page .monogram { color: var(--ink-dim); }
+.film-page.inlw-page .monogram a { color: var(--ink-dim); }
+.film-page.inlw-page .monogram a:hover { color: var(--accent); }
+
+/* --rule is a color here, so shared components that used it as a width need
+   literal borders (keeps the lightbox intact). */
 .film-page.inlw-page .lightbox .lb-close { border: 1px solid rgba(255, 255, 255, 0.4); }
 .film-page.inlw-page .lightbox .lb-bar button { border: 1px solid transparent; }
 
@@ -44,148 +85,167 @@
   outline: 2px solid var(--ink);
   outline-offset: 3px;
 }
-.film-page.inlw-page .inlw-grade a:focus-visible { outline-color: var(--ember-ink); }
 
-/* ---- shared section scaffolding ---- */
-.film-page.inlw-page .inlw-section {
-  padding: clamp(56px, 9vw, 120px) var(--gutter);
-}
-.film-page.inlw-page .inlw-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-}
+/* ---- scaffolding ---- */
+.film-page.inlw-page .inlw-section { padding: clamp(56px, 9vw, 112px) var(--gutter); }
+.film-page.inlw-page .inlw-inner { max-width: 1000px; margin: 0 auto; }
 .film-page.inlw-page .inlw-heading {
-  margin: 0 0 clamp(24px, 4vw, 40px);
-  font-family: "Newsreader", Georgia, serif;
+  margin: 0 0 clamp(28px, 4vw, 44px);
+  font-family: var(--font-stamp);
   font-weight: 400;
-  font-style: normal;
-  font-size: clamp(22px, 3vw, 30px);
-  line-height: 1.2;
-  color: var(--ink-dim);
-}
-
-/* ---- 6.1 hero — full-bleed title card, the only full-bleed moment ---- */
-.film-page.inlw-page .inlw-hero {
-  position: relative;
-  height: min(92vh, 900px);
-  min-height: 480px;
-  overflow: hidden;
-  background: var(--ember);
-}
-.film-page.inlw-page .inlw-hero > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-.film-page.inlw-page .inlw-hero-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 var(--gutter) clamp(28px, 5vw, 56px);
-  background: linear-gradient(to top, rgba(23, 17, 15, 0.55) 0%, rgba(23, 17, 15, 0.55) 24%, rgba(23, 17, 15, 0) 45%);
-}
-.film-page.inlw-page .inlw-title {
-  margin: 0;
-  font-family: "Newsreader", Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(40px, 9vw, 116px);
-  line-height: 1;
-  color: var(--ember-ink);
-}
-.film-page.inlw-page .inlw-hero-sub {
-  margin: 1em 0 0;
-  font-size: 15px;
-  line-height: 1.4;
-  color: var(--ember-ink);
-  opacity: 0.7;
-}
-
-/* ---- 6.2 the story — still on one side, copy on solid paper beside it ---- */
-.film-page.inlw-page .inlw-story {
-  padding: clamp(56px, 9vw, 120px) var(--gutter);
-}
-.film-page.inlw-page .inlw-story-grid {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: clamp(32px, 4vw, 64px);
-  align-items: center;
-}
-.film-page.inlw-page .inlw-story-media {
-  margin: 0;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: var(--ember);
-  border: 1px solid var(--rule);
-}
-.film-page.inlw-page .inlw-story-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.film-page.inlw-page .inlw-story-paper {
-  min-width: 0;
-}
-.film-page.inlw-page .inlw-story-folio {
-  display: block;
-  margin: 0 0 clamp(12px, 2vw, 20px);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink-dim);
 }
-.film-page.inlw-page .inlw-story-heading {
-  margin: 0 0 0.7em;
-  font-family: "Newsreader", Georgia, serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: clamp(22px, 3vw, 30px);
-  line-height: 1.2;
-  color: var(--ink-dim);
-}
-.film-page.inlw-page .inlw-story-copy {
+.film-page.inlw-page .inlw-copy {
   margin: 0;
-  max-width: 60ch;
-  font-size: clamp(17px, 1.2vw, 19px);
-  line-height: 1.65;
-  text-align: left;
-  hyphens: none;
+  max-width: 52ch;
+  font-size: 15px;
+  line-height: 1.85;
   color: var(--ink);
 }
-/* stack cleanly on narrow widths — image first, then the paper block */
-@media (max-width: 1199px) {
-  .film-page.inlw-page .inlw-story-grid {
-    grid-template-columns: 1fr;
-    gap: clamp(24px, 4vw, 40px);
-    align-items: start;
-  }
+
+/* ---- utilities ---- */
+.film-page.inlw-page .inlw-stamp {
+  margin: 0;
+  font-family: var(--font-stamp);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: var(--ink-dim);
+}
+.film-page.inlw-page .inlw-stamp--accent { color: var(--accent); }
+
+/* staggered lines: each line carries its own --x, all zeroed on small screens */
+.film-page.inlw-page .inlw-line {
+  display: block;
+  margin-left: var(--x, 0);
 }
 
-/* ---- 6.3 caption frames — six baked-in caption stills in a responsive grid ---- */
-.film-page.inlw-page .inlw-subtitles {
-  padding: 0 var(--gutter) clamp(56px, 9vw, 120px);
+/* wide-set line: justified with deliberately wide word gaps (image 4).
+   Used once — on the essay pullquote. */
+.film-page.inlw-page .inlw-wide {
+  text-align: justify;
+  word-spacing: 0.7em;
 }
-.film-page.inlw-page .inlw-subtitles-inner {
-  max-width: 1100px;
+
+/* letterspread: one short word spread across a full line (image 2).
+   Built for the layer, deliberately unused — the title stagger and the
+   pullquote wide-set are the two type gestures; a third reads as template.
+   If used, add letter spans inside and let the media query below collapse it. */
+.film-page.inlw-page .inlw-letterspread {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 719px) {
+  .film-page.inlw-page .inlw-letterspread { display: block; }
+}
+
+/* hairline panel around an image */
+.film-page.inlw-page .inlw-panel {
+  margin: 0;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  overflow: hidden;
+}
+.film-page.inlw-page .inlw-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- 6.1 hero — a postcard, not a poster ---- */
+.film-page.inlw-page .inlw-hero {
+  padding: clamp(48px, 9vw, 104px) var(--gutter) clamp(56px, 9vw, 112px);
+}
+.film-page.inlw-page .inlw-hero-inner { max-width: 1000px; margin: 0 auto; }
+.film-page.inlw-page .inlw-hero .inlw-stamp { margin-bottom: clamp(28px, 5vw, 48px); }
+.film-page.inlw-page .inlw-title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(30px, 5.6vw, 62px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.film-page.inlw-page .inlw-hero-frame {
+  position: relative;
+  width: min(620px, 64%);
+  margin: clamp(40px, 6vw, 72px) 0 0 auto;
+  aspect-ratio: 16 / 9;
+  /* .inlw-panel clips to the frame; the accent block below deliberately sits
+     outside it on the left and bottom, so this frame must not crop. The panel
+     background still covers the overlapping part — only the L sliver shows. */
+  overflow: visible;
+}
+/* the one loud gesture on the page */
+.film-page.inlw-page .inlw-hero-frame::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  bottom: -24px;
+  width: 42%;
+  height: 62%;
+  background: var(--accent);
+  z-index: -1;
+}
+.film-page.inlw-page .inlw-hero-tech { margin-top: clamp(28px, 5vw, 40px); }
+@media (max-width: 719px) {
+  .film-page.inlw-page .inlw-line { margin-left: 0; }
+  .film-page.inlw-page .inlw-hero-frame { width: 100%; margin-left: 0; }
+  .film-page.inlw-page .inlw-hero-frame::before { left: -14px; bottom: -14px; }
+}
+
+/* ---- 6.2 the story ---- */
+.film-page.inlw-page .inlw-story { padding: clamp(48px, 8vw, 96px) var(--gutter); }
+.film-page.inlw-page .inlw-story-grid {
+  max-width: 1000px;
   margin: 0 auto;
   display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+.film-page.inlw-page .inlw-story-media { aspect-ratio: 16 / 9; }
+.film-page.inlw-page .inlw-story-paper { min-width: 0; }
+.film-page.inlw-page .inlw-story-heading {
+  margin: 0 0 clamp(16px, 3vw, 24px);
+  font-family: var(--font-stamp);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: var(--ink-dim);
+}
+.film-page.inlw-page .inlw-story-folio {
+  margin-right: 0.6em;
+  color: var(--accent);
+}
+/* stack cleanly below 1200px — image first, then the paper block */
+@media (max-width: 1199px) {
+  .film-page.inlw-page .inlw-story-grid { grid-template-columns: 1fr; gap: clamp(24px, 5vw, 40px); }
+}
+
+/* ---- 6.3 caption frames — the film's own captions, in sequence ---- */
+.film-page.inlw-page .inlw-subtitles { padding: clamp(48px, 8vw, 96px) var(--gutter); }
+.film-page.inlw-page .inlw-subtitles-head { max-width: 1000px; margin: 0 auto clamp(20px, 3vw, 28px); }
+.film-page.inlw-page .stills.inlw-subtitles-inner {
+  max-width: 1000px;
+  margin: 0 auto;
   grid-template-columns: 1fr;
-  gap: clamp(14px, 2vw, 28px);
+  gap: clamp(12px, 2vw, 20px);
 }
 .film-page.inlw-page .inlw-sub-frame {
   margin: 0;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: var(--ember);
   border: 1px solid var(--rule);
+  background: var(--paper-warm);
 }
 .film-page.inlw-page .inlw-sub-frame img {
   width: 100%;
@@ -193,27 +253,23 @@
   object-fit: cover;
   display: block;
 }
-@media (min-width: 600px) {
-  .film-page.inlw-page .inlw-subtitles-inner { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 700px) {
+  .film-page.inlw-page .stills.inlw-subtitles-inner { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ---- 6.4 watch — a white card on the paper, so the YouTube section reads
-   as its own object instead of another film frame ---- */
-.film-page.inlw-page .inlw-watch .inlw-inner {
-  max-width: none;
-  background: var(--paper-card);
-  padding: clamp(28px, 5vw, 88px);
-}
+/* ---- 6.4 watch ---- */
+.film-page.inlw-page .inlw-watch { padding: clamp(48px, 8vw, 96px) var(--gutter); }
+.film-page.inlw-page .inlw-watch .inlw-inner { max-width: 1000px; }
 .film-page.inlw-page .inlw-watch-box {
-  max-width: 1100px;
-  margin: 0 auto;
+  border: 1px solid var(--rule);
+  background: var(--paper-card);
+  padding: clamp(20px, 3vw, 32px);
 }
 .film-page.inlw-page .inlw-watch-link {
   display: block;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border: 1px solid var(--rule);
-  background: var(--ember);
+  background: var(--paper-warm);
 }
 .film-page.inlw-page .inlw-watch-link img {
   width: 100%;
@@ -222,108 +278,84 @@
   display: block;
 }
 .film-page.inlw-page .inlw-watch-label {
-  margin: 14px 0 0;
-  font-size: 17px;
+  margin: clamp(16px, 3vw, 22px) 0 0;
+  font-size: 15px;
   color: var(--ink);
 }
 .film-page.inlw-page .inlw-watch-note {
-  margin: 14px 0 0;
+  margin: 10px 0 0;
   font-size: 15px;
+  line-height: 1.85;
   color: var(--ink-dim);
 }
-/* projects.js chips, restyled for the paper card */
-.film-page.inlw-page [data-project-meta] { margin-top: 18px; }
-.film-page.inlw-page .project-tags li {
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 15px;
-  letter-spacing: 0.01em;
-  text-transform: lowercase;
-  line-height: 1;
-  padding: 5px 10px;
-  border: 1px solid var(--rule);
-  color: var(--ink);
-  background: transparent;
-}
-.film-page.inlw-page .project-client {
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 15px;
-  letter-spacing: 0.01em;
-  text-transform: lowercase;
-  line-height: 1;
-  padding: 6px 10px;
-  border: 1px solid var(--rule);
-  color: var(--ink);
-  background: transparent;
-}
+/* projects.js chips, restyled as stamps */
+.film-page.inlw-page [data-project-meta] { margin-top: 16px; }
+.film-page.inlw-page .project-tags li,
+.film-page.inlw-page .project-client,
 .film-page.inlw-page .project-status {
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 15px;
-  letter-spacing: 0.01em;
-  text-transform: lowercase;
+  font-family: var(--font-stamp);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.6;
   color: var(--ink-dim);
+  background: transparent;
+  border: 0;
+  padding: 0;
 }
 
-/* ---- 6.6 the essay — a sheet laid on the page ---- */
+/* ---- 6.6 the essay — the wide-set moment ---- */
 .film-page.inlw-page .inlw-essay {
   background: var(--paper-warm);
-  padding: clamp(72px, 12vw, 160px) var(--gutter);
+  padding: clamp(72px, 11vw, 140px) var(--gutter);
 }
-.film-page.inlw-page .inlw-essay-sheet {
-  max-width: 720px;
-  margin: 0 auto;
-}
+.film-page.inlw-page .inlw-essay-sheet { max-width: 640px; margin: 0 auto; }
 .film-page.inlw-page .inlw-pullquote {
   margin: 0;
-  padding: clamp(24px, 5vw, 48px) 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  font-family: "Newsreader", Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(28px, 4.5vw, 46px);
-  line-height: 1.25;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-body);
+  font-size: clamp(17px, 2.2vw, 22px);
+  line-height: 2.1;
   color: var(--ink);
 }
 .film-page.inlw-page .inlw-standfirst {
-  margin: clamp(24px, 4vw, 40px) 0 0;
-  max-width: 54ch;
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--ink-dim);
+  margin: clamp(28px, 4vw, 40px) 0 0;
+  max-width: 52ch;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink);
 }
 .film-page.inlw-page .inlw-essay-link {
   display: inline-block;
-  margin-top: clamp(24px, 4vw, 40px);
-  font-size: 17px;
-  color: var(--ink);
+  margin-top: clamp(24px, 4vw, 36px);
+  font-family: var(--font-stamp);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
   text-decoration: underline;
-  text-decoration-color: var(--rule);
+  text-decoration-color: var(--accent);
   text-underline-offset: 3px;
 }
-.film-page.inlw-page .inlw-essay-link:hover { color: var(--ink-dim); }
+.film-page.inlw-page .inlw-essay-link:hover { color: var(--ink); text-decoration-color: var(--ink); }
 
-/* ---- 6.7 the grade — the page dims to look at color ---- */
-.film-page.inlw-page .inlw-grade {
-  background: var(--ember);
-  color: var(--ember-ink);
-  padding: clamp(64px, 10vw, 140px) var(--gutter);
-}
-.film-page.inlw-page .inlw-grade .inlw-heading { color: var(--ember-ink); }
+/* ---- 6.7 the grade ---- */
+.film-page.inlw-page .inlw-grade { padding: clamp(56px, 9vw, 112px) var(--gutter); }
 .film-page.inlw-page .inlw-look {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  gap: clamp(24px, 4vw, 64px);
+  gap: clamp(24px, 4vw, 56px);
   align-items: start;
-  padding: clamp(28px, 4vw, 48px) 0;
+  padding: clamp(28px, 4vw, 44px) 0;
 }
-.film-page.inlw-page .inlw-look + .inlw-look {
-  border-top: 1px solid rgba(216, 198, 184, 0.18);
-}
+.film-page.inlw-page .inlw-look + .inlw-look { border-top: 1px solid var(--rule); }
 .film-page.inlw-page .inlw-look-frame {
   margin: 0;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #000000;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
 }
 .film-page.inlw-page .inlw-look-frame img {
   width: 100%;
@@ -332,178 +364,150 @@
   display: block;
 }
 .film-page.inlw-page .inlw-look-note h3 {
-  margin: 0 0 0.6em;
-  font-family: "Newsreader", Georgia, serif;
+  margin: 0 0 0.9em;
+  font-family: var(--font-body);
   font-weight: 400;
-  font-style: normal;
-  font-size: clamp(22px, 3vw, 30px);
-  line-height: 1.2;
-  color: var(--ember-ink);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
 }
 .film-page.inlw-page .inlw-look-note p {
   margin: 0;
-  max-width: 52ch;
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--ember-ink);
-  opacity: 0.82;
+  max-width: 50ch;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink-dim);
 }
-.film-page.inlw-page .inlw-swatches {
-  margin-top: clamp(20px, 3vw, 28px);
-}
+.film-page.inlw-page .inlw-swatches { margin-top: clamp(20px, 3vw, 28px); }
 .film-page.inlw-page .inlw-swatch-bar {
   display: block;
-  height: 3px;
-  margin-bottom: 10px;
+  height: 2px;
+  margin-bottom: 12px;
   background: var(--look-accent, transparent);
 }
 .film-page.inlw-page .inlw-swatch-row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-}
-.film-page.inlw-page .inlw-swatch {
-  display: flex;
-  flex-direction: column;
   gap: 6px;
-  min-width: 0;
 }
-.film-page.inlw-page .inlw-swatch-chip {
-  display: block;
-  height: 44px;
+.film-page.inlw-page .inlw-swatch { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.film-page.inlw-page .inlw-swatch-chip { display: block; height: 40px; }
+.film-page.inlw-page .inlw-swatch-hex {
+  font-family: var(--font-stamp);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
 }
-@media (max-width: 719px) {
-  .film-page.inlw-page .inlw-look { grid-template-columns: 1fr; }
-}
-
-/* ---- 6.8 frame index — gallery spread, tile size held, short rows left ---- */
-.film-page.inlw-page .inlw-frames {
-  padding: clamp(56px, 9vw, 120px) var(--gutter);
-}
-/* Eight frames, two columns at most — reads as a clean 2×4 on wide. */
-.film-page.inlw-page .stills.inlw-frame-grid {
-  grid-template-columns: 1fr;
-  gap: clamp(10px, 1.5vw, 18px);
-}
-.film-page.inlw-page .stills.inlw-frame-grid figure {
-  aspect-ratio: 16 / 9;
-}
-.film-page.inlw-page .stills.inlw-frame-grid figure img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.film-page.inlw-page .stills figure { cursor: zoom-in; }
-@media (min-width: 600px) {
-  .film-page.inlw-page .stills.inlw-frame-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* ==========================================================================
-   MONO-LABEL LAYER
-   Stamp-card treatment for technical metadata and credits, plus the
-   frame-index captions. Everything for this layer lives in this one block
-   so it can be dialed back or deleted wholesale.
-   ========================================================================== */
-
-/* 6.7 grade tech — short mono labels paired with wider values */
 .film-page.inlw-page .inlw-grade-tech {
-  margin: clamp(32px, 5vw, 56px) 0 0;
+  margin: clamp(32px, 5vw, 48px) 0 0;
   border-top: 1px solid var(--rule);
 }
 .film-page.inlw-page .inlw-tech-row {
   display: grid;
-  grid-template-columns: 110px minmax(0, 1fr);
+  grid-template-columns: 120px minmax(0, 1fr);
   gap: clamp(12px, 2vw, 24px);
-  padding: 10px 0;
-}
-.film-page.inlw-page .inlw-tech-row + .inlw-tech-row {
-  border-top: 1px solid var(--rule);
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule);
 }
 .film-page.inlw-page .inlw-tech-row dt {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 10px;
-  letter-spacing: 0.18em;
+  font-family: var(--font-stamp);
+  font-size: 11px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ember-ink);
-  opacity: 0.55;
+  color: var(--ink-dim);
 }
 .film-page.inlw-page .inlw-tech-row dd {
   margin: 0;
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: var(--font-stamp);
   font-size: 12px;
   letter-spacing: 0.06em;
-  color: var(--ember-ink);
+  color: var(--ink);
+}
+@media (max-width: 719px) {
+  .film-page.inlw-page .inlw-look { grid-template-columns: 1fr; }
+  .film-page.inlw-page .inlw-swatch-row { grid-template-columns: repeat(5, 1fr); gap: 4px; }
 }
 
-/* 6.7 swatch hex — smaller, more letterspaced, dimmer */
-.film-page.inlw-page .inlw-swatch-hex {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ember-ink);
-  opacity: 0.62;
-}
+/* DARK PLATE VARIANT — uncomment to put the grade back on a dark band, which
+   makes the swatches read as a color-science plate instead of five rectangles.
+.film-page.inlw-page .inlw-grade { background: #17110F; color: #D8C6B8; }
+.film-page.inlw-page .inlw-grade .inlw-heading,
+.film-page.inlw-page .inlw-grade .inlw-look-note h3,
+.film-page.inlw-page .inlw-grade .inlw-look-note p,
+.film-page.inlw-page .inlw-grade .inlw-swatch-hex,
+.film-page.inlw-page .inlw-grade .inlw-tech-row dt,
+.film-page.inlw-page .inlw-grade .inlw-tech-row dd { color: #D8C6B8; }
+.film-page.inlw-page .inlw-grade .inlw-look + .inlw-look,
+.film-page.inlw-page .inlw-grade .inlw-grade-tech,
+.film-page.inlw-page .inlw-grade .inlw-tech-row,
+.film-page.inlw-page .inlw-grade .inlw-look-frame { border-color: rgba(216, 198, 184, 0.22); }
+.film-page.inlw-page .inlw-grade a:focus-visible { outline-color: #D8C6B8; }
+*/
 
-/* 6.8 frame index — captions fade in on hover/focus */
-.film-page.inlw-page .stills figcaption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 26px 12px 10px;
-  background: linear-gradient(to top, rgba(23, 17, 15, 0.72), rgba(23, 17, 15, 0) 85%);
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+/* ---- 6.8 frame index — captions sit under the frames, always visible ---- */
+.film-page.inlw-page .inlw-frames { padding: clamp(56px, 9vw, 112px) var(--gutter); }
+.film-page.inlw-page .stills.inlw-frame-grid {
+  grid-template-columns: 1fr;
+  gap: clamp(20px, 3vw, 32px);
+  align-items: start;
+}
+.film-page.inlw-page .stills.inlw-frame-grid figure { overflow: visible; }
+.film-page.inlw-page .stills.inlw-frame-grid figure img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+}
+.film-page.inlw-page .stills.inlw-frame-grid figcaption {
+  position: static;
+  padding: 10px 0 0;
+  background: none;
+  font-family: var(--font-stamp);
   font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #F3E7DE;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-.film-page.inlw-page .stills figure:hover figcaption,
-.film-page.inlw-page .stills figure:focus-within figcaption {
-  opacity: 1;
-}
-
-/* 6.9 credits — mono label, serif value, hairline rows */
-.film-page.inlw-page .inlw-credits {
-  padding-bottom: clamp(72px, 10vw, 140px);
-}
-.film-page.inlw-page .inlw-credits .credits {
-  border-top: 1px solid var(--rule);
-}
-.film-page.inlw-page .inlw-credits .credit {
-  grid-template-columns: minmax(160px, 0.42fr) 1fr;
-  gap: clamp(16px, 3vw, 40px);
-  padding: 14px 0;
-  border-bottom: 1px solid var(--rule);
-  font-family: "Newsreader", Georgia, serif;
-  font-size: 17px;
-  letter-spacing: 0.01em;
-  text-transform: none;
-  line-height: 1.5;
-}
-.film-page.inlw-page .inlw-credits .role {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   line-height: 1.6;
   color: var(--ink-dim);
 }
-.film-page.inlw-page .inlw-credits .name {
-  color: var(--ink);
-}
-@media (max-width: 719px) {
-  .film-page.inlw-page .inlw-credits .credit {
-    grid-template-columns: 1fr;
-    gap: 2px;
-  }
+@media (min-width: 700px) {
+  .film-page.inlw-page .stills.inlw-frame-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ---- motion: nothing animates on this page ---- */
+/* ---- 6.9 credits ---- */
+.film-page.inlw-page .inlw-credits { padding-bottom: clamp(72px, 10vw, 128px); }
+.film-page.inlw-page .inlw-credits .credits {
+  margin-top: 0;
+  border-top: 1px solid var(--rule);
+}
+.film-page.inlw-page .inlw-credits .credit {
+  grid-template-columns: minmax(180px, 0.4fr) 1fr;
+  gap: clamp(16px, 3vw, 40px);
+  padding: 13px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-body);
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.7;
+}
+.film-page.inlw-page .inlw-credits .role {
+  font-family: var(--font-stamp);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.9;
+  color: var(--ink-dim);
+}
+.film-page.inlw-page .inlw-credits .name { color: var(--ink); }
+@media (max-width: 719px) {
+  .film-page.inlw-page .inlw-credits .credit { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* ---- motion: nothing animates on this page; kept as a guard if a hover
+   fade is ever reintroduced ---- */
 @media (prefers-reduced-motion: reduce) {
   .film-page.inlw-page .stills figcaption { transition: none; }
 }

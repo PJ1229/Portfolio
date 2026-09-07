@@ -11,15 +11,16 @@
   and `/film/love-from-toronto.html` return 404 (guard in `server.js`).
 - Assets under `public/images/unsanctioned/` and `public/images/love-from-toronto/`
   (compressed WebP, no large files committed).
-- `/inspo` and `/summer-26` are clean aliases for the lab `inspo.html` and
-  `summer-series.html`. `inspo` has moved onto the film register.
+- `inspo` now lives on the film register at `public/film/inspo.html`, served
+  at `/inspo` (and `/inspo.html`); the old `/lab/inspo.html` path 301s to it.
+- `/summer-26` is a clean alias for the lab `summer-series.html`.
 - The lab site is still reachable at `/lab` (and `/lab/`); no lab content was
   removed. Legacy stays at `/legacy/`.
 
 ## Codebase layout
 
 - **New “lab” site (primary):**
-  - Lives under `public/lab/` (e.g. `public/lab/index.html`, `public/lab/dsa.html`, `public/lab/guitar.html`, `public/lab/blog.html`, `public/lab/inspo.html`, plus blog post files under `public/lab/blog/`).
+  - Lives under `public/lab/` (e.g. `public/lab/index.html`, `public/lab/dsa.html`, `public/lab/guitar.html`, `public/lab/blog.html`, plus blog post files under `public/lab/blog/`). `inspo` moved out to `public/film/inspo.html`.
   - Shared styles live in `public/index.css`.
   - Server routes `/`, `/lab`, and `/lab/` all serve `public/lab/index.html` (no redirects).
 
