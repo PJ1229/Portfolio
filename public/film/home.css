@@ -30,7 +30,9 @@
   object-position: 66% 57%;
 }
 .film-page.home-page .home-hero-slide[data-slide="unsanctioned"] img {
-  object-position: 27% 35%;
+  /* anchor the right-side subject (the 2nd ninth from the right edge) so the
+     narrow crop stays on her instead of swinging to the left figure */
+  object-position: 82% 25%;
 }
 
 /* ---- hero title list — this is the index ---- */
