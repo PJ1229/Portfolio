@@ -38,10 +38,15 @@
     </div>
   </header>
 
-  <section class="home-hero">
-    <img src="../images/unsanctioned/website-hero.webp" alt="Project Unsanctioned — hero">
+  <section class="home-hero" aria-label="Selected work — cycling project stills">
+    <div class="home-hero-slide is-active" data-still="if not later, when?">
+      <img src="../images/if-not-later-when/stack-03.webp" alt="if not later, when? — a boy sitting on a bench" fetchpriority="high">
+    </div>
+    <div class="home-hero-slide" aria-hidden="true" data-still="project unsanctioned">
+      <img src="../images/unsanctioned/website-hero.webp" alt="Project Unsanctioned — hero" loading="eager">
+    </div>
     <div class="hero-overlay">
-      <p class="mono">PJ KIM — FILMMAKER / CREATIVE TECHNOLOGIST</p>
+      <p class="mono">PJ KIM — FILMMAKER / CREATIVE TECHNOLOGIST <span class="hero-still-sep" aria-hidden="true">·</span> <span class="hero-still-label">if not later, when?</span></p>
       <h1 class="disp">SELECTED WORK</h1>
     </div>
   </section>
@@ -78,5 +83,28 @@
   </footer>
 
   <script src="../film/projects.js"></script>
+  <script>
+    // Cycle the Selected Work hero between project stills. Each slide is a
+    // full-bleed cover image inside the same hero, so every still scrolls
+    // with the page exactly like the original unsanctioned hero. The still
+    // label above SELECTED WORK follows the active slide.
+    (function () {
+      var hero = document.querySelector(".home-hero");
+      if (!hero) return;
+      var slides = Array.prototype.slice.call(hero.querySelectorAll(".home-hero-slide"));
+      if (slides.length < 2) return;
+      var label = hero.querySelector(".hero-still-label");
+      var active = 0;
+      function show(i) {
+        slides[active].classList.remove("is-active");
+        slides[active].setAttribute("aria-hidden", "true");
+        active = (i + slides.length) % slides.length;
+        slides[active].classList.add("is-active");
+        slides[active].removeAttribute("aria-hidden");
+        if (label) label.textContent = slides[active].getAttribute("data-still") || "";
+      }
+      setInterval(function () { show(active + 1); }, 6000);
+    })();
+  </script>
 </body>
 </html>

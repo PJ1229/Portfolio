@@ -402,7 +402,7 @@
 /* ==========================================================================
    MONO-LABEL LAYER
    Stamp-card treatment for technical metadata and credits, plus the
-   frame-index timecodes. Everything for this layer lives in this one block
+   frame-index captions. Everything for this layer lives in this one block
    so it can be dialed back or deleted wholesale.
    ========================================================================== */
 
@@ -446,7 +446,7 @@
   opacity: 0.62;
 }
 
-/* 6.8 frame index — timecode captions fade in on hover/focus */
+/* 6.8 frame index — captions fade in on hover/focus */
 .film-page.inlw-page .stills figcaption {
   position: absolute;
   left: 0;

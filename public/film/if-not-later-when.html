@@ -69,35 +69,48 @@
       </div>
     </section>
 
-    <!-- 6.3 caption frames — six baked-in caption stills, in sequence -->
+    <!-- 6.3 caption frames — six baked-in caption stills, in sequence.
+         They sit in a .stills grid so the lightbox can open them full-screen. -->
     <section class="inlw-subtitles" aria-label="Caption frames from the film">
-      <div class="inlw-subtitles-inner">
-        <figure class="inlw-sub-frame">
+      <div class="stills inlw-subtitles-inner">
+        <figure class="inlw-sub-frame" tabindex="0" role="button"
+                aria-label="Film frame with the caption: and if you are really like me, then before you leave tomorrow,"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/caption-01.webp"
                alt="Film frame with the caption: and if you are really like me, then before you leave tomorrow,"
                loading="lazy">
         </figure>
-        <figure class="inlw-sub-frame">
+        <figure class="inlw-sub-frame" tabindex="0" role="button"
+                aria-label="Film frame with the caption: or when you're just ready to shut the door of the taxi and have already said goodbye"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/caption-02.webp"
                alt="Film frame with the caption: or when you're just ready to shut the door of the taxi and have already said goodbye"
                loading="lazy">
         </figure>
-        <figure class="inlw-sub-frame">
+        <figure class="inlw-sub-frame" tabindex="0" role="button"
+                aria-label="Film frame with the caption: and there's not a thing left to say in this life, then, just this once,"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/caption-03.webp"
                alt="Film frame with the caption: and there's not a thing left to say in this life, then, just this once,"
                loading="lazy">
         </figure>
-        <figure class="inlw-sub-frame">
+        <figure class="inlw-sub-frame" tabindex="0" role="button"
+                aria-label="Film frame with the caption: turn to me, even in jest, or as an afterthought, which would have meant everything to me"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/caption-04.webp"
                alt="Film frame with the caption: turn to me, even in jest, or as an afterthought, which would have meant everything to me"
                loading="lazy">
         </figure>
-        <figure class="inlw-sub-frame">
+        <figure class="inlw-sub-frame" tabindex="0" role="button"
+                aria-label="Film frame with the caption: and, as you did back then,"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/caption-05.webp"
                alt="Film frame with the caption: and, as you did back then,"
                loading="lazy">
         </figure>
-        <figure class="inlw-sub-frame">
+        <figure class="inlw-sub-frame" tabindex="0" role="button"
+                aria-label="Film frame with the caption: look me in the face, hold my gaze, and call me by your name"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/caption-06.webp"
                alt="Film frame with the caption: look me in the face, hold my gaze, and call me by your name"
                loading="lazy">
@@ -237,47 +250,48 @@
     <section class="inlw-frames">
       <div class="inlw-inner">
         <h2 class="inlw-heading">every frame</h2>
-        <!-- TODO: PJ — replace the 00:00 placeholders below with each frame's real timecode. -->
+        <!-- Captions describe each frame instead of a timecode; the stills stay
+             clickable and open in the lightbox. -->
         <div class="stills inlw-frame-grid">
         <figure tabindex="0" role="button" aria-label="Two figures backlit by the sun in a field"
                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/hero.webp" alt="Two figures backlit by the sun in a field" loading="lazy">
-          <figcaption>00:00</figcaption>
+          <figcaption>two figures backlit by the sun</figcaption>
         </figure>
         <figure tabindex="0" role="button" aria-label="A girl at the edge of the water"
                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/stack-01.webp" alt="A girl at the edge of the water" loading="lazy">
-          <figcaption>00:00</figcaption>
+          <figcaption>a girl at the edge of the water</figcaption>
         </figure>
         <figure tabindex="0" role="button" aria-label="A girl looking up at the sky"
                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/stack-02.webp" alt="A girl looking up at the sky" loading="lazy">
-          <figcaption>00:00</figcaption>
+          <figcaption>a girl looking up at the sky</figcaption>
         </figure>
         <figure tabindex="0" role="button" aria-label="A boy sitting on a bench"
                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/stack-03.webp" alt="A boy sitting on a bench" loading="lazy">
-          <figcaption>00:00</figcaption>
+          <figcaption>a boy sitting on a bench</figcaption>
         </figure>
         <figure tabindex="0" role="button" aria-label="Two figures backlit in a field"
                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/inspiration-01.webp" alt="Two figures backlit in a field" loading="lazy">
-          <figcaption>00:00</figcaption>
+          <figcaption>two figures backlit in a field</figcaption>
         </figure>
         <figure tabindex="0" role="button" aria-label="A boy walking through tall grass"
                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/inspiration-02.webp" alt="A boy walking through tall grass" loading="lazy">
-          <figcaption>00:00</figcaption>
+          <figcaption>a boy walking through tall grass</figcaption>
         </figure>
         <figure tabindex="0" role="button" aria-label="A girl by the water at dusk"
                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/look-dusk.webp" alt="A girl by the water at dusk" loading="lazy">
-          <figcaption>00:00</figcaption>
+          <figcaption>a girl by the water at dusk</figcaption>
         </figure>
         <figure tabindex="0" role="button" aria-label="A girl under the sky"
                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
           <img src="../images/if-not-later-when/frame-index-01.webp" alt="A girl under the sky" loading="lazy">
-          <figcaption>00:00</figcaption>
+          <figcaption>a girl under the sky</figcaption>
         </figure>
         </div>
       </div>
