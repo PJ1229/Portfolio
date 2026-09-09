@@ -49,6 +49,10 @@ function sendFilmPage(res, file) {
 }
 
 // Film portfolio (root)
+app.get("/engineering", (req, res) => {
+  res.type("html").send(require("./engineering/render")());
+});
+
 app.get("/", (req, res) => {
   sendFilmPage(res, "index.html");
 });
